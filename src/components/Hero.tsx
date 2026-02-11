@@ -17,12 +17,12 @@ const content = {
 export default function Hero() {
   return (
     <section
-      className="flex w-full items-center justify-center px-4 md:px-6"
-      style={{ paddingTop: 96, paddingBottom: 96, overflow: "visible" }}
+      className="flex min-h-screen w-full items-center justify-center px-4 md:px-6"
+      style={{ overflow: "visible" }}
     >
       <div
         className="relative mx-auto w-full max-w-[1100px] rounded-[32px] shadow-lg shadow-sky-300/15"
-        style={{ overflow: "visible" }}
+        style={{ overflow: "visible", transform: "translateY(-24px)" }}
       >
         {/* ── Background (clipped to rounded corners) ── */}
         <div className="absolute inset-0 overflow-hidden rounded-[32px]">
