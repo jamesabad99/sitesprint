@@ -7,7 +7,7 @@ const steps = [
     description:
       "Asegura tu cupo a través de WhatsApp. Confirmamos disponibilidad y definimos el alcance inicial del proyecto.",
     gradient:
-      "linear-gradient(160deg, #1a78b8 0%, #0d5a96 40%, #0a4f8a 100%)",
+      "linear-gradient(160deg, #c4286e 0%, #8a1a50 50%, #6b1040 100%)",
   },
   {
     number: "02",
@@ -15,7 +15,7 @@ const steps = [
     description:
       "Recopilamos información clave de tu marca: identidad visual, propuesta de valor, referencias y objetivos comerciales.",
     gradient:
-      "linear-gradient(160deg, #2e8ec8 0%, #1a78b8 40%, #0d5a96 100%)",
+      "linear-gradient(160deg, #d4387e 0%, #a02060 50%, #7a1548 100%)",
   },
   {
     number: "03",
@@ -23,7 +23,7 @@ const steps = [
     description:
       "Diseñamos y desarrollamos tu sitio web con enfoque en conversión. Entrega en 48 horas + una ronda de ajustes estratégicos.",
     gradient:
-      "linear-gradient(160deg, #5fb5e5 0%, #2e8ec8 40%, #1a78b8 100%)",
+      "linear-gradient(160deg, #e04a90 0%, #b82868 50%, #8a1a50 100%)",
   },
 ];
 
@@ -38,10 +38,10 @@ export default function HowItWorks() {
         className="relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-[36px]"
         style={{
           background:
-            "linear-gradient(170deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%)",
-          border: "1px solid rgba(255,255,255,0.08)",
+            "linear-gradient(170deg, #3d0a24 0%, #1a0610 60%, #0d0308 100%)",
+          border: "1px solid rgba(160,30,80,0.15)",
           boxShadow:
-            "0 20px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06)",
+            "0 20px 60px rgba(60,5,30,0.4), inset 0 1px 0 rgba(255,255,255,0.04)",
         }}
       >
         {/* Top edge highlight */}
@@ -49,7 +49,7 @@ export default function HowItWorks() {
           className="pointer-events-none absolute inset-x-0 top-0 h-[1px]"
           style={{
             background:
-              "linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.12) 50%, transparent 90%)",
+              "linear-gradient(90deg, transparent 10%, rgba(200,60,120,0.15) 50%, transparent 90%)",
           }}
         />
 
@@ -75,15 +75,15 @@ export default function HowItWorks() {
                 style={{
                   background: step.gradient,
                   boxShadow:
-                    "0 8px 30px rgba(10,60,120,0.35), inset 0 1px 0 rgba(255,255,255,0.12)",
+                    "0 8px 30px rgba(100,15,55,0.35), inset 0 1px 0 rgba(255,255,255,0.12)",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.boxShadow =
-                    "0 16px 44px rgba(10,60,120,0.45), inset 0 1px 0 rgba(255,255,255,0.15)";
+                    "0 16px 44px rgba(100,15,55,0.45), inset 0 1px 0 rgba(255,255,255,0.15)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.boxShadow =
-                    "0 8px 30px rgba(10,60,120,0.35), inset 0 1px 0 rgba(255,255,255,0.12)";
+                    "0 8px 30px rgba(100,15,55,0.35), inset 0 1px 0 rgba(255,255,255,0.12)";
                 }}
               >
                 {/* Glass overlay */}
@@ -93,20 +93,14 @@ export default function HowItWorks() {
                 <div className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/8 blur-[28px]" />
 
                 {/* Number badge */}
-                <div className="relative flex h-10 w-10 items-center justify-center rounded-xl text-xs font-bold text-white"
-                  style={{
-                    background: "rgba(255,255,255,0.15)",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    backdropFilter: "blur(8px)",
-                  }}
-                >
+                <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-white text-xs font-bold text-[#9a1a55]">
                   {step.number}
                 </div>
 
                 <h3 className="relative mt-5 text-[1.15rem] font-semibold leading-snug text-white">
                   {step.title}
                 </h3>
-                <p className="relative mt-2.5 text-[14px] leading-[1.7] text-white/75">
+                <p className="relative mt-2.5 text-[14px] leading-[1.7] text-white/85">
                   {step.description}
                 </p>
               </div>
