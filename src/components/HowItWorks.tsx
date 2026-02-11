@@ -6,18 +6,24 @@ const steps = [
     title: "Confirmación y reserva",
     description:
       "Asegura tu cupo a través de WhatsApp. Confirmamos disponibilidad y definimos el alcance inicial del proyecto.",
+    gradient:
+      "linear-gradient(160deg, #1a78b8 0%, #0d5a96 40%, #0a4f8a 100%)",
   },
   {
     number: "02",
     title: "Definición estratégica",
     description:
       "Recopilamos información clave de tu marca: identidad visual, propuesta de valor, referencias y objetivos comerciales.",
+    gradient:
+      "linear-gradient(160deg, #2e8ec8 0%, #1a78b8 40%, #0d5a96 100%)",
   },
   {
     number: "03",
     title: "Desarrollo y entrega",
     description:
       "Diseñamos y desarrollamos tu sitio web con enfoque en conversión. Entrega en 48 horas + una ronda de ajustes estratégicos.",
+    gradient:
+      "linear-gradient(160deg, #5fb5e5 0%, #2e8ec8 40%, #1a78b8 100%)",
   },
 ];
 
@@ -65,47 +71,42 @@ export default function HowItWorks() {
             {steps.map((step) => (
               <div
                 key={step.number}
-                className="group relative overflow-hidden rounded-[20px] px-7 py-8 transition-all duration-300 ease-out hover:-translate-y-1"
+                className="group relative overflow-hidden rounded-[22px] px-7 pb-9 pt-8 transition-all duration-300 ease-out hover:-translate-y-1.5"
                 style={{
-                  background:
-                    "linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.015) 100%)",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                  boxShadow: "0 2px 16px rgba(0,0,0,0.2)",
+                  background: step.gradient,
+                  boxShadow:
+                    "0 8px 30px rgba(10,60,120,0.35), inset 0 1px 0 rgba(255,255,255,0.12)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.border =
-                    "1px solid rgba(100,180,255,0.2)";
                   e.currentTarget.style.boxShadow =
-                    "0 8px 32px rgba(0,0,0,0.3), 0 0 20px rgba(56,152,236,0.06)";
+                    "0 16px 44px rgba(10,60,120,0.45), inset 0 1px 0 rgba(255,255,255,0.15)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.border =
-                    "1px solid rgba(255,255,255,0.07)";
                   e.currentTarget.style.boxShadow =
-                    "0 2px 16px rgba(0,0,0,0.2)";
+                    "0 8px 30px rgba(10,60,120,0.35), inset 0 1px 0 rgba(255,255,255,0.12)";
                 }}
               >
-                {/* Hover corner glow */}
-                <div
-                  className="pointer-events-none absolute -right-4 -top-4 h-20 w-20 rounded-full opacity-0 blur-[24px] transition-opacity duration-300 group-hover:opacity-100"
-                  style={{ background: "rgba(56,152,236,0.1)" }}
-                />
+                {/* Glass overlay */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-black/10" />
+
+                {/* Top-right glow */}
+                <div className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/8 blur-[28px]" />
 
                 {/* Number badge */}
-                <div
-                  className="flex h-10 w-10 items-center justify-center rounded-xl text-xs font-bold text-sky-300"
+                <div className="relative flex h-10 w-10 items-center justify-center rounded-xl text-xs font-bold text-white"
                   style={{
-                    background: "rgba(56,152,236,0.1)",
-                    border: "1px solid rgba(56,152,236,0.18)",
+                    background: "rgba(255,255,255,0.15)",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    backdropFilter: "blur(8px)",
                   }}
                 >
                   {step.number}
                 </div>
 
-                <h3 className="mt-5 text-[1.1rem] font-semibold leading-snug text-white">
+                <h3 className="relative mt-5 text-[1.15rem] font-semibold leading-snug text-white">
                   {step.title}
                 </h3>
-                <p className="mt-2.5 text-[14px] leading-[1.7] text-white/50">
+                <p className="relative mt-2.5 text-[14px] leading-[1.7] text-white/75">
                   {step.description}
                 </p>
               </div>
