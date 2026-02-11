@@ -17,12 +17,12 @@ const content = {
 export default function Hero() {
   return (
     <section
-      className="flex min-h-screen w-full items-center justify-center px-4 md:px-6"
+      className="flex min-h-screen w-full items-center justify-center px-4 py-12 md:px-6 md:py-16"
       style={{ overflow: "visible" }}
     >
       <div
-        className="relative mx-auto w-full max-w-[1100px] rounded-[32px] shadow-lg shadow-sky-300/15"
-        style={{ overflow: "visible", transform: "translateY(-24px)" }}
+        className="relative mx-auto w-full max-w-[1200px] rounded-[32px] shadow-lg shadow-sky-300/15"
+        style={{ overflow: "visible" }}
       >
         {/* ── Background (clipped to rounded corners) ── */}
         <div className="absolute inset-0 overflow-hidden rounded-[32px]">
@@ -68,7 +68,7 @@ export default function Hero() {
           </nav>
 
           {/* Hero body */}
-          <div className="flex flex-col items-center px-6 pt-10 pb-24 text-center md:px-12 md:pt-14 md:pb-28">
+          <div className="flex flex-col items-center px-6 pt-12 pb-28 text-center md:px-12 md:pt-16 md:pb-36">
             {/* Badge */}
             <span className="inline-block rounded-full border border-white/30 bg-white/20 px-4 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-white backdrop-blur-sm">
               {content.badge}
