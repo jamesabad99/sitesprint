@@ -16,40 +16,38 @@ const content = {
 
 export default function Hero() {
   return (
-    <section className="w-full px-4 py-6 md:px-6 md:py-10">
-      <div className="relative mx-auto w-full max-w-[1100px] overflow-hidden rounded-[32px] shadow-lg shadow-sky-300/15">
-        {/* ── Background ── */}
-        {/* Base: vibrant sky, saturated center */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, #b8ddf4 0%, #5fb5e5 12%, #1a78b8 30%, #0a4f8a 48%, #0d5a96 58%, #2e8ec8 72%, #68b5de 86%, #8ec8ea 100%)",
-          }}
-        />
-        {/* Core radial — deep saturated center */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 50% 40% at 50% 38%, rgba(6,50,120,0.55) 0%, rgba(10,65,140,0.20) 50%, transparent 75%)",
-          }}
-        />
-        {/* Soft edge lightening — no white wash, just gentle fade */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 150% 100% at 50% 50%, transparent 35%, rgba(130,200,240,0.25) 65%, rgba(160,218,245,0.40) 100%)",
-          }}
-        />
-        {/* Top glow — subtle, not white */}
-        <div className="absolute -top-10 left-1/2 h-[180px] w-[360px] -translate-x-1/2 rounded-full bg-sky-100/30 blur-[70px]" />
-        {/* Bottom luminosity — brighter to lift lower area */}
-        <div className="absolute -bottom-10 left-1/2 h-[180px] w-[500px] -translate-x-1/2 rounded-full bg-sky-300/20 blur-[100px]" />
+    <section className="flex w-full items-center justify-center px-4 py-24 md:px-6 md:py-32">
+      <div className="relative mx-auto w-full max-w-[1100px] overflow-visible rounded-[32px] shadow-lg shadow-sky-300/15">
+        {/* ── Background (clipped to rounded corners) ── */}
+        <div className="absolute inset-0 overflow-hidden rounded-[32px]">
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, #b8ddf4 0%, #5fb5e5 12%, #1a78b8 30%, #0a4f8a 48%, #0d5a96 58%, #2e8ec8 72%, #68b5de 86%, #8ec8ea 100%)",
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 50% 40% at 50% 38%, rgba(6,50,120,0.55) 0%, rgba(10,65,140,0.20) 50%, transparent 75%)",
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 150% 100% at 50% 50%, transparent 35%, rgba(130,200,240,0.25) 65%, rgba(160,218,245,0.40) 100%)",
+            }}
+          />
+        </div>
+        {/* ── Glow (outside clip, so not cut off) ── */}
+        <div className="absolute -top-10 left-1/2 z-0 h-[180px] w-[360px] -translate-x-1/2 rounded-full bg-sky-100/30 blur-[70px]" />
+        <div className="absolute -bottom-10 left-1/2 z-0 h-[180px] w-[500px] -translate-x-1/2 rounded-full bg-sky-300/20 blur-[100px]" />
 
         {/* ── Content ── */}
-        <div className="relative z-10 flex flex-col">
+        <div className="relative z-10">
           {/* Navbar */}
           <nav className="flex items-center justify-between px-6 py-5 md:px-10 md:py-6">
             <span className="text-[15px] font-medium tracking-tight text-white">
@@ -64,7 +62,7 @@ export default function Hero() {
           </nav>
 
           {/* Hero body */}
-          <div className="flex flex-col items-center justify-center gap-6 px-6 pb-20 pt-16 text-center md:gap-8 md:px-12 md:pb-24 md:pt-20">
+          <div className="flex flex-col items-center px-6 pt-10 pb-24 text-center md:px-12 md:pt-14 md:pb-28">
             {/* Badge */}
             <span className="inline-block rounded-full border border-white/30 bg-white/20 px-4 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-white backdrop-blur-sm">
               {content.badge}
@@ -102,7 +100,7 @@ export default function Hero() {
             </p>
 
             {/* Countdown */}
-            <div className="relative mt-10 flex flex-col items-center gap-3">
+            <div className="relative mt-10 flex flex-col items-center gap-3 md:mt-12">
               <p className="text-[11px] text-white/65 sm:text-xs">
                 <span className="font-medium text-white/85">
                   {content.priceText}
@@ -110,7 +108,6 @@ export default function Hero() {
                 {content.priceOld} · {content.countdownLabel}
               </p>
               <Countdown />
-              {/* Glow beneath countdown */}
               <div className="absolute -bottom-6 left-1/2 h-[40px] w-[70%] -translate-x-1/2 rounded-full bg-sky-300/15 blur-[25px]" />
             </div>
           </div>
