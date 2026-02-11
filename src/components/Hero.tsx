@@ -1,3 +1,5 @@
+"use client";
+
 import Countdown from "./Countdown";
 
 const WA_URL = `https://wa.me/51952648191?text=${encodeURIComponent(
@@ -100,12 +102,17 @@ export default function Hero() {
               >
                 {content.ctaPrimary}
               </a>
-              <a
-                href="#como-funciona"
+              <button
+                onClick={() => {
+                  const el = document.getElementById("como-funciona");
+                  if (!el) return;
+                  const top = el.getBoundingClientRect().top + window.scrollY - 80;
+                  window.scrollTo({ top, behavior: "smooth" });
+                }}
                 className="rounded-full border border-white/20 px-6 py-2.5 text-sm font-medium text-white/90 transition-all duration-200 ease-out hover:border-white/35 hover:bg-white/10"
               >
                 {content.ctaSecondary}
-              </a>
+              </button>
             </div>
 
             {/* Micro-trust */}
