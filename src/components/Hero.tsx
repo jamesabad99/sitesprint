@@ -17,7 +17,7 @@ const content = {
 export default function Hero() {
   return (
     <section className="w-full px-4 py-6 md:px-6 md:py-10">
-      <div className="relative mx-auto max-w-5xl overflow-hidden rounded-[2rem] shadow-lg shadow-sky-300/15">
+      <div className="relative mx-auto min-h-[620px] max-w-5xl overflow-hidden rounded-[2rem] shadow-lg shadow-sky-300/15 md:min-h-[720px]">
         {/* ── Background ── */}
         {/* Base: vibrant sky, saturated center */}
         <div
@@ -64,7 +64,7 @@ export default function Hero() {
           </nav>
 
           {/* Hero body */}
-          <div className="flex flex-col items-center px-6 pb-14 pt-10 text-center md:px-12 md:pb-16 md:pt-14 lg:pt-16">
+          <div className="flex flex-col items-center px-6 pb-20 pt-10 text-center md:px-12 md:pb-24 md:pt-14 lg:pt-16">
             {/* Badge */}
             <span className="inline-block rounded-full border border-white/30 bg-white/20 px-4 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-white backdrop-blur-sm">
               {content.badge}

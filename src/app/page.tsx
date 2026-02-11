@@ -3,9 +3,9 @@ import VideoCarousel from "@/components/VideoCarousel";
 
 const casos = [
   { src: "/videos/caso1.mp4", title: "NutraCore" },
-  { src: "/videos/caso2.mp4", title: "Caso 2" },
-  { src: "/videos/caso3.mp4", title: "Caso 3" },
-  { src: "/videos/caso4.mp4", title: "Caso 4" },
+  { src: "/videos/caso2.mp4", title: "Pendia" },
+  { src: "/videos/caso3.mp4", title: "Comira" },
+  { src: "/videos/caso4.mp4", title: "Finantu" },
 ];
 
 export default function Home() {
