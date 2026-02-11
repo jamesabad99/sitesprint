@@ -17,7 +17,7 @@ const content = {
 export default function Hero() {
   return (
     <section className="w-full px-4 py-6 md:px-6 md:py-10">
-      <div className="relative mx-auto min-h-[680px] max-w-5xl rounded-[2rem] shadow-lg shadow-sky-300/15 md:min-h-[800px]">
+      <div className="relative mx-auto w-full max-w-[1100px] overflow-hidden rounded-[32px] shadow-lg shadow-sky-300/15">
         {/* ── Background ── */}
         {/* Base: vibrant sky, saturated center */}
         <div
@@ -49,7 +49,7 @@ export default function Hero() {
         <div className="absolute -bottom-10 left-1/2 h-[180px] w-[500px] -translate-x-1/2 rounded-full bg-sky-300/20 blur-[100px]" />
 
         {/* ── Content ── */}
-        <div className="relative z-10">
+        <div className="relative z-10 flex min-h-[calc(100vh-160px)] flex-col">
           {/* Navbar */}
           <nav className="flex items-center justify-between px-6 py-5 md:px-10 md:py-6">
             <span className="text-[15px] font-medium tracking-tight text-white">
@@ -64,7 +64,7 @@ export default function Hero() {
           </nav>
 
           {/* Hero body */}
-          <div className="flex flex-col items-center px-6 pb-28 pt-10 text-center md:px-12 md:pb-36 md:pt-14 lg:pt-16">
+          <div className="flex flex-1 flex-col items-center justify-center px-6 pb-24 pt-16 text-center md:px-12 md:pb-28 md:pt-20 lg:pb-32">
             {/* Badge */}
             <span className="inline-block rounded-full border border-white/30 bg-white/20 px-4 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-white backdrop-blur-sm">
               {content.badge}
