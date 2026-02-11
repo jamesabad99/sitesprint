@@ -64,7 +64,7 @@ export default function Hero() {
           </nav>
 
           {/* Hero body */}
-          <div className="flex flex-1 flex-col items-center justify-center px-6 pb-24 pt-16 text-center md:px-12 md:pb-28 md:pt-20 lg:pb-32">
+          <div className="flex flex-1 flex-col items-center justify-center gap-6 px-6 pb-32 pt-16 text-center md:gap-8 md:px-12 md:pb-40 md:pt-20 lg:pb-44">
             {/* Badge */}
             <span className="inline-block rounded-full border border-white/30 bg-white/20 px-4 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-white backdrop-blur-sm">
               {content.badge}
@@ -102,7 +102,7 @@ export default function Hero() {
             </p>
 
             {/* Countdown */}
-            <div className="relative mt-10 flex flex-col items-center gap-3">
+            <div className="relative mt-12 mb-6 flex flex-col items-center gap-3">
               <p className="text-[11px] text-white/65 sm:text-xs">
                 <span className="font-medium text-white/85">
                   {content.priceText}
