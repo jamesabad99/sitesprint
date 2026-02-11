@@ -158,20 +158,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   };
 
   return (
-    <section
-      className="relative py-[60px] md:py-[90px]"
-      style={{ backgroundColor: "#05070C" }}
-    >
-      {/* Single subtle glow — no banding */}
-      <div
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-        style={{
-          width: 700,
-          height: 400,
-          background:
-            "radial-gradient(circle at center, rgba(255,255,255,0.04) 0%, transparent 55%)",
-        }}
-      />
+    <section className="relative py-[60px] md:py-[90px]">
       {/* Header */}
       <div className="relative mx-auto max-w-[1100px] px-4 text-center">
         <h2 className="text-[1.5rem] font-semibold tracking-tight text-white/90 md:text-[2.2rem]">

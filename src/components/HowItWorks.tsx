@@ -27,7 +27,6 @@ export default function HowItWorks() {
       id="como-funciona"
       className="relative px-4 md:px-6"
       style={{
-        background: "#05070C",
         paddingTop: 96,
         paddingBottom: 96,
       }}

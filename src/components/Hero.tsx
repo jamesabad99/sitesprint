@@ -25,8 +25,8 @@ export default function Hero() {
       style={{ overflow: "visible" }}
     >
       <div
-        className="relative mx-auto w-full max-w-[1200px] rounded-[32px] shadow-lg shadow-sky-300/15"
-        style={{ overflow: "visible" }}
+        className="relative mx-auto w-full max-w-[1200px] rounded-[32px]"
+        style={{ overflow: "visible", boxShadow: "0 10px 50px rgba(0,0,0,0.5)" }}
       >
         {/* ── Background (clipped to rounded corners) ── */}
         <div className="absolute inset-0 overflow-hidden rounded-[32px]">
@@ -52,9 +52,9 @@ export default function Hero() {
             }}
           />
         </div>
-        {/* ── Glow (outside clip, so not cut off) ── */}
-        <div className="absolute -top-10 left-1/2 z-0 h-[180px] w-[360px] -translate-x-1/2 rounded-full bg-sky-100/30 blur-[70px]" />
-        <div className="absolute -bottom-10 left-1/2 z-0 h-[180px] w-[500px] -translate-x-1/2 rounded-full bg-sky-300/20 blur-[100px]" />
+        {/* ── Glow (contained, subtle) ── */}
+        <div className="pointer-events-none absolute -top-4 left-1/2 z-0 h-[80px] w-[260px] -translate-x-1/2 rounded-full bg-sky-200/15 blur-[50px]" />
+        <div className="pointer-events-none absolute -bottom-4 left-1/2 z-0 h-[80px] w-[300px] -translate-x-1/2 rounded-full bg-sky-300/10 blur-[50px]" />
 
         {/* ── Content ── */}
         <div className="relative z-10">
