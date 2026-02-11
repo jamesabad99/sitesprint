@@ -22,6 +22,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
 
   const GAP = 24;
   const AUTO_MS = 4500;
+  const EASING = "cubic-bezier(.22,1,.36,1)";
 
   // Responsive card width
   useEffect(() => {
@@ -113,34 +114,66 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   // Center the active card
   const trackX = `calc(50% - ${cardWidth / 2}px - ${current * (cardWidth + GAP)}px)`;
 
-  const EASING = "cubic-bezier(.22,1,.36,1)";
-
-  const slideClasses = (i: number): string => {
+  const slideStyle = (i: number): React.CSSProperties => {
     const diff = Math.abs(i - current);
-    if (diff === 0) return "scale-100 opacity-100 z-20";
-    if (diff === 1) return "scale-[0.9] opacity-[0.6] z-10";
-    return "scale-[0.85] opacity-[0.3] z-[5]";
-  };
-
-  const frameShadow = (i: number): React.CSSProperties => {
-    const base = { transition: `box-shadow 600ms ${EASING}` };
-    if (i === current) {
+    if (diff === 0) {
       return {
-        ...base,
-        boxShadow:
-          "0 40px 100px rgba(0,0,0,0.20), 0 0 0 1px rgba(255,255,255,0.15)",
+        transform: "scale(1.02)",
+        opacity: 1,
+        filter: "blur(0px)",
+        zIndex: 20,
+        transition: `all 600ms ${EASING}`,
       };
     }
-    return { ...base, boxShadow: "0 8px 30px rgba(0,0,0,0.05)" };
+    if (diff === 1) {
+      return {
+        transform: "scale(0.93)",
+        opacity: 0.45,
+        filter: "blur(1px)",
+        zIndex: 10,
+        transition: `all 600ms ${EASING}`,
+      };
+    }
+    return {
+      transform: "scale(0.88)",
+      opacity: 0.25,
+      filter: "blur(2px)",
+      zIndex: 5,
+      transition: `all 600ms ${EASING}`,
+    };
+  };
+
+  const frameStyle = (i: number): React.CSSProperties => {
+    if (i === current) {
+      return {
+        boxShadow:
+          "0 25px 70px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.1)",
+        filter: "drop-shadow(0 0 18px rgba(120,200,255,0.12))",
+        transition: `all 600ms ${EASING}`,
+      };
+    }
+    return {
+      boxShadow: "0 10px 40px rgba(0,0,0,0.35)",
+      transition: `all 600ms ${EASING}`,
+    };
   };
 
   return (
-    <section className="py-[60px] md:py-[90px]">
+    <section
+      className="py-[60px] md:py-[90px]"
+      style={{
+        background:
+          "radial-gradient(circle at 50% 60%, rgba(255,255,255,0.06) 0%, rgba(0,0,0,0.92) 55%, #060B16 100%)",
+      }}
+    >
       {/* Header */}
       <div className="mx-auto max-w-[1100px] px-4 text-center">
-        <h2 className="text-[1.5rem] font-semibold tracking-tight text-[#0f172a] md:text-[2.2rem]">
+        <h2 className="text-[1.5rem] font-semibold tracking-tight text-white/90 md:text-[2.2rem]">
           Así se ve una web entregada en 48 horas.
         </h2>
+        <p className="mt-3 text-sm tracking-[0.04em] text-white/50">
+          Proyectos reales entregados a clientes.
+        </p>
       </div>
 
       {/* Carousel */}
@@ -155,9 +188,21 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
       >
-        {/* Edge gradients */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-30 w-10 bg-gradient-to-r from-background to-transparent md:w-24" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-30 w-10 bg-gradient-to-l from-background to-transparent md:w-24" />
+        {/* Edge gradients — blend into dark bg */}
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 z-30 w-10 md:w-24"
+          style={{
+            background:
+              "linear-gradient(to right, #060B16 0%, transparent 100%)",
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 z-30 w-10 md:w-24"
+          style={{
+            background:
+              "linear-gradient(to left, #060B16 0%, transparent 100%)",
+          }}
+        />
 
         {/* Track */}
         <div
@@ -172,20 +217,17 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
             <div
               key={i}
               onClick={() => i !== current && goTo(i)}
-              className={`flex-shrink-0 cursor-pointer will-change-transform ${slideClasses(i)}`}
-              style={{
-                width: `${cardWidth}px`,
-                transition: `all 600ms ${EASING}`,
-              }}
+              className="flex-shrink-0 cursor-pointer will-change-transform"
+              style={{ width: `${cardWidth}px`, ...slideStyle(i) }}
             >
               {/* Browser frame */}
               <div
                 className="relative overflow-hidden rounded-[16px] bg-white"
-                style={frameShadow(i)}
+                style={frameStyle(i)}
               >
                 {/* Glass highlight on active */}
                 {i === current && (
-                  <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[60px] bg-gradient-to-b from-white/20 to-transparent" />
+                  <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[60px] bg-gradient-to-b from-white/15 to-transparent" />
                 )}
 
                 {/* Top bar */}
@@ -222,14 +264,18 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
                         togglePause();
                       }}
                       aria-label={isPaused ? "Reproducir" : "Pausar"}
-                      className="absolute right-2.5 top-2.5 flex h-7 w-7 items-center justify-center rounded-full bg-black/30 text-white opacity-0 backdrop-blur-sm transition-opacity duration-300 hover:bg-black/50 group-hover:opacity-100"
+                      className="absolute right-2.5 top-2.5 flex h-7 w-7 items-center justify-center rounded-full text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100"
+                      style={{
+                        background: "rgba(255,255,255,0.08)",
+                        border: "1px solid rgba(255,255,255,0.12)",
+                      }}
                     >
                       {isPaused ? (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           fill="currentColor"
-                          className="h-3.5 w-3.5"
+                          className="h-3.5 w-3.5 opacity-90"
                         >
                           <path d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
                         </svg>
@@ -238,7 +284,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           fill="currentColor"
-                          className="h-3.5 w-3.5"
+                          className="h-3.5 w-3.5 opacity-90"
                         >
                           <path
                             fillRule="evenodd"
@@ -255,11 +301,21 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
           ))}
         </div>
 
-        {/* Arrows — glass pill, appear on hover */}
+        {/* Arrows — dark glass, appear on hover */}
         <button
           onClick={() => goTo(currentRef.current - 1)}
           aria-label="Anterior"
-          className="absolute left-[5%] top-1/2 z-40 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/70 text-slate-500 shadow-lg backdrop-blur-md opacity-0 transition-all duration-300 hover:bg-white hover:text-slate-800 group-hover:opacity-100 md:flex"
+          className="absolute left-[5%] top-1/2 z-40 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full text-white/90 opacity-0 backdrop-blur-md transition-all duration-300 group-hover:opacity-100 md:flex"
+          style={{
+            background: "rgba(255,255,255,0.08)",
+            border: "1px solid rgba(255,255,255,0.12)",
+          }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.background = "rgba(255,255,255,0.14)")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.background = "rgba(255,255,255,0.08)")
+          }
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -277,7 +333,17 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
         <button
           onClick={() => goTo(currentRef.current + 1)}
           aria-label="Siguiente"
-          className="absolute right-[5%] top-1/2 z-40 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/70 text-slate-500 shadow-lg backdrop-blur-md opacity-0 transition-all duration-300 hover:bg-white hover:text-slate-800 group-hover:opacity-100 md:flex"
+          className="absolute right-[5%] top-1/2 z-40 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full text-white/90 opacity-0 backdrop-blur-md transition-all duration-300 group-hover:opacity-100 md:flex"
+          style={{
+            background: "rgba(255,255,255,0.08)",
+            border: "1px solid rgba(255,255,255,0.12)",
+          }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.background = "rgba(255,255,255,0.14)")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.background = "rgba(255,255,255,0.08)")
+          }
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -295,16 +361,16 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
       </div>
 
       {/* Dots */}
-      <div className="mt-5 flex items-center justify-center gap-2">
+      <div className="mt-5 flex items-center justify-center gap-2.5">
         {videos.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
             aria-label={`Ir al slide ${i + 1}`}
-            className={`h-2 rounded-full transition-all duration-300 ${
+            className={`rounded-full transition-all duration-300 ${
               i === current
-                ? "w-6 bg-slate-800"
-                : "w-2 bg-slate-300/40 hover:bg-slate-400/60"
+                ? "h-2.5 w-7 bg-white/90"
+                : "h-2 w-2 bg-white/25 hover:bg-white/40"
             }`}
           />
         ))}
