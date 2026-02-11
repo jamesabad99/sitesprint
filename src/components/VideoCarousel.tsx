@@ -147,27 +147,33 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
     if (i === current) {
       return {
         boxShadow:
-          "0 25px 70px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.1)",
-        filter: "drop-shadow(0 0 18px rgba(120,200,255,0.12))",
+          "0 25px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)",
         transition: `all 600ms ${EASING}`,
       };
     }
     return {
-      boxShadow: "0 10px 40px rgba(0,0,0,0.35)",
+      boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
       transition: `all 600ms ${EASING}`,
     };
   };
 
   return (
     <section
-      className="py-[60px] md:py-[90px]"
-      style={{
-        background:
-          "radial-gradient(circle at 50% 60%, rgba(255,255,255,0.06) 0%, rgba(0,0,0,0.92) 55%, #060B16 100%)",
-      }}
+      className="relative py-[60px] md:py-[90px]"
+      style={{ backgroundColor: "#05070C" }}
     >
+      {/* Single subtle glow — no banding */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+        style={{
+          width: 700,
+          height: 400,
+          background:
+            "radial-gradient(circle at center, rgba(255,255,255,0.04) 0%, transparent 55%)",
+        }}
+      />
       {/* Header */}
-      <div className="mx-auto max-w-[1100px] px-4 text-center">
+      <div className="relative mx-auto max-w-[1100px] px-4 text-center">
         <h2 className="text-[1.5rem] font-semibold tracking-tight text-white/90 md:text-[2.2rem]">
           Así se ve una web entregada en 48 horas.
         </h2>
@@ -193,14 +199,14 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
           className="pointer-events-none absolute inset-y-0 left-0 z-30 w-10 md:w-24"
           style={{
             background:
-              "linear-gradient(to right, #060B16 0%, transparent 100%)",
+              "linear-gradient(to right, #05070C 0%, transparent 100%)",
           }}
         />
         <div
           className="pointer-events-none absolute inset-y-0 right-0 z-30 w-10 md:w-24"
           style={{
             background:
-              "linear-gradient(to left, #060B16 0%, transparent 100%)",
+              "linear-gradient(to left, #05070C 0%, transparent 100%)",
           }}
         />
 
