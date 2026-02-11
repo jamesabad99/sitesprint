@@ -1,5 +1,9 @@
 import Countdown from "./Countdown";
 
+const WA_URL = `https://wa.me/51952648191?text=${encodeURIComponent(
+  "Hola 👋\nQuiero aprovechar el precio de lanzamiento y reservar mi cupo para la web profesional en 48 horas.\n\nMi negocio es:\nActualmente vendo por: (Instagram / WhatsApp / tienda física / otro)\n\n¿Cuáles son los siguientes pasos para empezar?"
+)}`;
+
 const content = {
   brand: "SiteSprint",
   badge: "LANZAMIENTO",
@@ -60,7 +64,9 @@ export default function Hero() {
               {content.brand}
             </span>
             <a
-              href="#contacto"
+              href={WA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-white/85 px-4 py-1.5 text-xs font-medium text-sky-700 backdrop-blur-sm transition-colors hover:bg-white"
             >
               {content.navCta}
@@ -87,7 +93,9 @@ export default function Hero() {
             {/* CTAs */}
             <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
               <a
-                href="#contacto"
+                href={WA_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-full bg-white px-7 py-3 text-sm font-semibold text-sky-800 shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(0,0,0,0.15)]"
               >
                 {content.ctaPrimary}
