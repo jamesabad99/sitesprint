@@ -21,7 +21,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   const isDragging = useRef(false);
 
   const GAP = 24;
-  const AUTO_MS = 7000;
+  const AUTO_MS = 4500;
 
   // Responsive card width
   useEffect(() => {
@@ -113,31 +113,29 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   // Center the active card
   const trackX = `calc(50% - ${cardWidth / 2}px - ${current * (cardWidth + GAP)}px)`;
 
+  const EASING = "cubic-bezier(.22,1,.36,1)";
+
   const slideClasses = (i: number): string => {
     const diff = Math.abs(i - current);
     if (diff === 0) return "scale-100 opacity-100 z-20";
     if (diff === 1) return "scale-[0.9] opacity-[0.6] z-10";
-    return "scale-[0.85] opacity-[0.35] z-[5]";
-  };
-
-  const slideFilter = (i: number): React.CSSProperties => {
-    const diff = Math.abs(i - current);
-    if (diff === 0) return { filter: "blur(0px)" };
-    if (diff === 1) return { filter: "blur(0.5px)" };
-    return { filter: "blur(1.5px)" };
+    return "scale-[0.85] opacity-[0.3] z-[5]";
   };
 
   const frameShadow = (i: number): React.CSSProperties => {
+    const base = { transition: `box-shadow 600ms ${EASING}` };
     if (i === current) {
       return {
-        boxShadow: "0 30px 80px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.18)",
+        ...base,
+        boxShadow:
+          "0 40px 100px rgba(0,0,0,0.20), 0 0 0 1px rgba(255,255,255,0.15)",
       };
     }
-    return { boxShadow: "0 8px 30px rgba(0,0,0,0.06)" };
+    return { ...base, boxShadow: "0 8px 30px rgba(0,0,0,0.05)" };
   };
 
   return (
-    <section className="bg-[#f8fafc] py-[60px] md:py-[90px]">
+    <section className="py-[60px] md:py-[90px]">
       {/* Header */}
       <div className="mx-auto max-w-[1100px] px-4 text-center">
         <h2 className="text-[1.5rem] font-semibold tracking-tight text-[#0f172a] md:text-[2.2rem]">
@@ -158,24 +156,31 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
         onPointerCancel={onPointerUp}
       >
         {/* Edge gradients */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-30 w-10 bg-gradient-to-r from-[#f8fafc] to-transparent md:w-24" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-30 w-10 bg-gradient-to-l from-[#f8fafc] to-transparent md:w-24" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-30 w-10 bg-gradient-to-r from-background to-transparent md:w-24" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-30 w-10 bg-gradient-to-l from-background to-transparent md:w-24" />
 
         {/* Track */}
         <div
-          className="flex py-8 transition-transform duration-700 ease-in-out"
-          style={{ gap: `${GAP}px`, transform: `translateX(${trackX})` }}
+          className="flex py-8"
+          style={{
+            gap: `${GAP}px`,
+            transform: `translateX(${trackX})`,
+            transition: `transform 600ms ${EASING}`,
+          }}
         >
           {videos.map((video, i) => (
             <div
               key={i}
               onClick={() => i !== current && goTo(i)}
-              className={`flex-shrink-0 cursor-pointer transition-all duration-700 ease-in-out will-change-transform ${slideClasses(i)}`}
-              style={{ width: `${cardWidth}px`, ...slideFilter(i) }}
+              className={`flex-shrink-0 cursor-pointer will-change-transform ${slideClasses(i)}`}
+              style={{
+                width: `${cardWidth}px`,
+                transition: `all 600ms ${EASING}`,
+              }}
             >
               {/* Browser frame */}
               <div
-                className="relative overflow-hidden rounded-[16px] bg-white transition-shadow duration-700"
+                className="relative overflow-hidden rounded-[16px] bg-white"
                 style={frameShadow(i)}
               >
                 {/* Glass highlight on active */}
