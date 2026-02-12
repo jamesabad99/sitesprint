@@ -1,112 +1,117 @@
 const steps = [
   {
-    number: "01",
     title: "Confirmación y reserva",
     description:
       "Asegura tu cupo a través de WhatsApp. Confirmamos disponibilidad y definimos el alcance inicial del proyecto.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
+        <path
+          d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10Z"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
   },
   {
-    number: "02",
     title: "Definición estratégica",
     description:
       "Recopilamos información clave de tu marca: identidad visual, propuesta de valor, referencias y objetivos comerciales.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="12" cy="12" r="2" fill="currentColor" />
+      </svg>
+    ),
   },
   {
-    number: "03",
     title: "Desarrollo y entrega",
     description:
       "Diseñamos y desarrollamos tu sitio web con enfoque en conversión. Entrega en 48 horas + una ronda de ajustes estratégicos.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
+        <path
+          d="m13 2 7 7-7 7M11 22l-7-7 7-7"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
   },
 ];
+
+const WA_URL = `https://wa.me/51952648191?text=${encodeURIComponent(
+  "Hola 👋\nQuiero aprovechar el precio de lanzamiento y reservar mi cupo para la web profesional en 48 horas.\n\nMi negocio es:\nActualmente vendo por: (Instagram / WhatsApp / tienda física / otro)\n\n¿Cuáles son los siguientes pasos para empezar?"
+)}`;
 
 export default function HowItWorks() {
   return (
     <section
       id="como-funciona"
-      className="relative px-4 py-24 md:px-6 md:py-32 lg:py-40"
+      className="px-4 py-24 md:px-6 md:py-32 lg:py-40"
+      style={{ background: "#ffffff" }}
     >
-      {/* Divider top */}
-      <div
-        className="absolute inset-x-0 top-0 h-[1px]"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%)",
-        }}
-      />
-
-      <div className="mx-auto max-w-[1100px]">
-        <div className="grid grid-cols-1 gap-14 md:grid-cols-[1fr_1.5fr] md:gap-20 lg:gap-28">
-          {/* Left — title block */}
-          <div className="md:sticky md:top-32 md:self-start">
-            <h2 className="text-[2rem] font-bold tracking-tight text-white md:text-[2.8rem] lg:text-[3.2rem] lg:leading-[1.08]">
-              Cómo
+      <div className="mx-auto max-w-[1200px]">
+        {/* ── Header: 2 columns ── */}
+        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          {/* Left */}
+          <div>
+            <span className="text-[12px] font-medium uppercase tracking-[0.2em] text-[#1a1a1a]/50">
+              &bull; Cómo funciona
+            </span>
+            <h2 className="mt-4 text-[2.2rem] font-bold leading-[1.08] tracking-tight text-[#1a1a1a] md:text-[3rem] lg:text-[3.5rem]">
+              Proceso simple,
               <br />
-              funciona
+              resultados reales
             </h2>
-            <p className="mt-5 max-w-[300px] text-base leading-[1.7] text-white/50">
+            <p className="mt-5 max-w-[480px] text-[15px] leading-[1.7] text-[#1a1a1a]/50 md:text-base">
               Un proceso optimizado en tres etapas. Enfoque estratégico,
-              ejecución ágil.
-            </p>
-            <p className="mt-3 max-w-[300px] text-[13px] leading-[1.6] text-white/35">
-              Sin reuniones eternas. Sin procesos innecesarios.
+              ejecución ágil. Sin reuniones eternas.
             </p>
           </div>
 
-          {/* Right — timeline */}
-          <div className="relative">
-            {/* Vertical line — subtle blue gradient */}
+          {/* Right — pill button */}
+          <div className="flex-shrink-0">
+            <a
+              href={WA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-full bg-[#1a1a1a] px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.1em] text-white transition-all duration-200 hover:bg-[#333]"
+            >
+              Reservar cupo
+            </a>
+          </div>
+        </div>
+
+        {/* ── Cards grid ── */}
+        <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3 md:mt-16">
+          {steps.map((step) => (
             <div
-              className="absolute left-[19px] top-2 z-0 hidden h-[calc(100%-16px)] w-[1px] md:block"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.08) 100%)",
-              }}
-            />
+              key={step.title}
+              className="flex flex-col rounded-[20px] px-7 pb-8 pt-7 md:px-8 md:pb-10 md:pt-8"
+              style={{ background: "#f0f0ec" }}
+            >
+              {/* Icon */}
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#1a1a1a] text-white">
+                {step.icon}
+              </div>
 
-            <div className="flex flex-col gap-12 md:gap-16">
-              {steps.map((step, i) => (
-                <div key={step.number} className="relative flex gap-6 md:gap-8">
-                  {/* Number circle */}
-                  <div className="relative z-10 flex flex-shrink-0 flex-col items-center">
-                    <div
-                      className="flex h-10 w-10 items-center justify-center rounded-full text-[13px] font-semibold text-white"
-                      style={{
-                        background: "rgba(59,130,246,0.15)",
-                        border: "1px solid rgba(59,130,246,0.25)",
-                        boxShadow: "0 0 12px rgba(59,130,246,0.15)",
-                      }}
-                    >
-                      {step.number}
-                    </div>
-                    {i < steps.length - 1 && (
-                      <div
-                        className="mt-3 h-full w-[1px] md:hidden"
-                        style={{ background: "rgba(59,130,246,0.15)" }}
-                      />
-                    )}
-                  </div>
-
-                  {/* Content card */}
-                  <div
-                    className="-mt-1 flex-1 rounded-2xl px-7 py-7 md:px-8 md:py-8"
-                    style={{
-                      background:
-                        "linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%)",
-                      border: "1px solid rgba(59,130,246,0.1)",
-                      boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
-                    }}
-                  >
-                    <h3 className="text-[1.12rem] font-semibold text-white md:text-[1.2rem]">
-                      {step.title}
-                    </h3>
-                    <p className="mt-3 text-[14px] leading-[1.8] text-white/55">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+              {/* Spacer to push title down */}
+              <div className="mt-auto pt-16 md:pt-20">
+                <h3 className="text-[1.15rem] font-semibold text-[#1a1a1a] md:text-[1.25rem]">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-[14px] leading-[1.75] text-[#1a1a1a]/50">
+                  {step.description}
+                </p>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
