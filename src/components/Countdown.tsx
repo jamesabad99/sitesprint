@@ -14,11 +14,10 @@ interface CountdownProps {
 }
 
 export default function Countdown({ targetDate }: CountdownProps) {
+  // Fixed deadline: Feb 19, 2026 23:59:59 Lima time (UTC-5)
   const [target] = useState<Date>(() => {
     if (targetDate) return targetDate;
-    const d = new Date();
-    d.setDate(d.getDate() + 7);
-    return d;
+    return new Date("2026-02-20T04:59:59Z");
   });
 
   const calculateTimeLeft = (): TimeLeft => {
