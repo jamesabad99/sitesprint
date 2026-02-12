@@ -26,8 +26,7 @@ export default function HowItWorks() {
       className="px-4 py-24 md:px-6 md:py-32 lg:py-40"
     >
       <div className="mx-auto max-w-[1100px]">
-        {/* 2-column layout */}
-        <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_1.4fr] md:gap-20 lg:gap-28">
+        <div className="grid grid-cols-1 gap-14 md:grid-cols-[1fr_1.5fr] md:gap-20 lg:gap-28">
           {/* Left — title block */}
           <div className="md:sticky md:top-32 md:self-start">
             <h2 className="text-[2rem] font-bold tracking-tight text-white md:text-[2.8rem] lg:text-[3.2rem] lg:leading-[1.08]">
@@ -35,55 +34,62 @@ export default function HowItWorks() {
               <br />
               funciona
             </h2>
-            <p className="mt-5 max-w-[280px] text-[15px] leading-[1.7] text-white/50">
+            <p className="mt-5 max-w-[300px] text-base leading-[1.7] text-white/50">
               Un proceso optimizado en tres etapas. Enfoque estratégico,
               ejecución ágil.
             </p>
+            <p className="mt-3 max-w-[300px] text-[13px] leading-[1.6] text-white/35">
+              Sin reuniones eternas. Sin procesos innecesarios.
+            </p>
           </div>
 
-          {/* Right — timeline steps */}
+          {/* Right — timeline */}
           <div className="relative">
-            {/* Vertical line */}
+            {/* Vertical line — subtle blue gradient */}
             <div
-              className="absolute left-[19px] top-2 hidden h-[calc(100%-16px)] w-[1px] md:block"
-              style={{ background: "rgba(255,255,255,0.08)" }}
+              className="absolute left-[19px] top-2 z-0 hidden h-[calc(100%-16px)] w-[1px] md:block"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(30,120,190,0.25) 0%, rgba(30,120,190,0.08) 100%)",
+              }}
             />
 
-            <div className="flex flex-col gap-10 md:gap-14">
+            <div className="flex flex-col gap-12 md:gap-16">
               {steps.map((step, i) => (
                 <div key={step.number} className="relative flex gap-6 md:gap-8">
-                  {/* Number circle + connector */}
+                  {/* Number circle */}
                   <div className="relative z-10 flex flex-shrink-0 flex-col items-center">
                     <div
                       className="flex h-10 w-10 items-center justify-center rounded-full text-[13px] font-semibold text-white"
                       style={{
-                        background: "rgba(255,255,255,0.06)",
-                        border: "1px solid rgba(255,255,255,0.1)",
+                        background: "rgba(20,90,160,0.4)",
+                        border: "1px solid rgba(30,120,190,0.3)",
+                        boxShadow: "0 0 12px rgba(30,120,190,0.15)",
                       }}
                     >
                       {step.number}
                     </div>
-                    {/* Mobile connector line */}
                     {i < steps.length - 1 && (
                       <div
                         className="mt-3 h-full w-[1px] md:hidden"
-                        style={{ background: "rgba(255,255,255,0.08)" }}
+                        style={{ background: "rgba(30,120,190,0.15)" }}
                       />
                     )}
                   </div>
 
                   {/* Content card */}
                   <div
-                    className="-mt-1 flex-1 rounded-2xl px-6 py-6 md:px-7 md:py-7"
+                    className="-mt-1 flex-1 rounded-[20px] px-7 py-7 md:px-8 md:py-8"
                     style={{
-                      background: "rgba(255,255,255,0.04)",
-                      boxShadow: "0 2px 16px rgba(0,0,0,0.15)",
+                      background:
+                        "linear-gradient(160deg, rgba(10,50,90,0.3) 0%, rgba(8,35,65,0.2) 100%)",
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
                     }}
                   >
-                    <h3 className="text-[1.05rem] font-semibold text-white md:text-[1.12rem]">
+                    <h3 className="text-[1.12rem] font-semibold text-white md:text-[1.2rem]">
                       {step.title}
                     </h3>
-                    <p className="mt-2.5 text-[14px] leading-[1.75] text-white/55">
+                    <p className="mt-3 text-[14px] leading-[1.8] text-white/55">
                       {step.description}
                     </p>
                   </div>
