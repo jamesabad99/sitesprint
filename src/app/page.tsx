@@ -4,6 +4,7 @@ import HowItWorks from "@/components/HowItWorks";
 import IsForYou from "@/components/IsForYou";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import Preloader from "@/components/Preloader";
 
 const casos = [
   { src: "/videos/caso1.mp4", title: "Advisora" },
@@ -14,13 +15,15 @@ const casos = [
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <VideoCarousel videos={casos} />
-      <HowItWorks />
-      <IsForYou />
-      <FinalCTA />
-      <Footer />
-    </main>
+    <Preloader>
+      <main>
+        <Hero />
+        <VideoCarousel videos={casos} />
+        <HowItWorks />
+        <IsForYou />
+        <FinalCTA />
+        <Footer />
+      </main>
+    </Preloader>
   );
 }
