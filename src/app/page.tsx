@@ -6,8 +6,8 @@ import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
 const casos = [
-  { src: "/videos/caso1.mp4", title: "NutraCore" },
-  { src: "/videos/caso2.mp4", title: "Pendia" },
+  { src: "/videos/caso1.mp4", title: "Advisora" },
+  { src: "/videos/caso2.mp4", title: "Pipely" },
   { src: "/videos/caso3.mp4", title: "Comira" },
   { src: "/videos/caso4.mp4", title: "Finantu" },
 ];
