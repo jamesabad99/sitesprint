@@ -96,6 +96,25 @@ export default function ContactForm() {
               />
             </div>
 
+            {/* Phone */}
+            <div>
+              <label htmlFor="phone" className="mb-1.5 block text-[12px] font-medium uppercase tracking-[0.15em] text-white/40">
+                Teléfono
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                placeholder="+51 999 999 999"
+                className="w-full rounded-xl px-4 py-3 text-[14px] text-white placeholder-white/25 outline-none transition-all duration-200 focus:border-blue-400/40 focus:ring-1 focus:ring-blue-400/20"
+                style={{
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}
+              />
+            </div>
+
             {/* Email */}
             <div>
               <label htmlFor="email" className="mb-1.5 block text-[12px] font-medium uppercase tracking-[0.15em] text-white/40">
