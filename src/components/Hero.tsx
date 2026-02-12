@@ -182,7 +182,11 @@ export default function Hero() {
               <span className="h-[6px] w-[6px] rounded-full bg-[#27c93f]/60" />
               <span className="ml-2 text-[9px] text-white/20">Advisora</span>
             </div>
-            <div className="h-[120px] bg-gradient-to-br from-[#0a1628] to-[#162240]" />
+            <div className="relative h-[120px] overflow-hidden bg-gradient-to-br from-[#0a1628] to-[#162240]">
+              <video muted loop autoPlay playsInline className="absolute inset-0 h-full w-full object-cover object-top opacity-30 blur-[1px]">
+                <source src="/videos/caso1.mp4" type="video/mp4" />
+              </video>
+            </div>
           </div>
 
           {/* Center card */}
@@ -196,7 +200,11 @@ export default function Hero() {
               <span className="h-[7px] w-[7px] rounded-full bg-[#27c93f]/70" />
               <span className="ml-2 text-[10px] text-white/25">Pipely</span>
             </div>
-            <div className="h-[130px] bg-gradient-to-br from-[#0f172a] to-[#1e293b]" />
+            <div className="relative h-[130px] overflow-hidden bg-gradient-to-br from-[#0f172a] to-[#1e293b]">
+              <video muted loop autoPlay playsInline className="absolute inset-0 h-full w-full object-cover object-top opacity-30 blur-[1px]">
+                <source src="/videos/caso2.mp4" type="video/mp4" />
+              </video>
+            </div>
           </div>
 
           {/* Right card */}
@@ -210,7 +218,11 @@ export default function Hero() {
               <span className="h-[6px] w-[6px] rounded-full bg-[#27c93f]/60" />
               <span className="ml-2 text-[9px] text-white/20">Comira</span>
             </div>
-            <div className="h-[120px] bg-gradient-to-br from-[#0c1220] to-[#1a2744]" />
+            <div className="relative h-[120px] overflow-hidden bg-gradient-to-br from-[#0c1220] to-[#1a2744]">
+              <video muted loop autoPlay playsInline className="absolute inset-0 h-full w-full object-cover object-top opacity-30 blur-[1px]">
+                <source src="/videos/caso3.mp4" type="video/mp4" />
+              </video>
+            </div>
           </div>
         </div>
       </div>
