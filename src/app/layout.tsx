@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     locale: "es_LA",
   },
   other: {
-    "theme-color": "#ffffff",
+    "theme-color": "#050505",
   },
 };
 

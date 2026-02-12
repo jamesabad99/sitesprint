@@ -76,7 +76,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            background: "#ffffff",
+            background: "#050505",
             opacity: phase === "exiting" ? 0 : 1,
             transform: phase === "exiting" ? "scale(1.02)" : "scale(1)",
             transition: "opacity 0.6s ease, transform 0.6s ease",
@@ -90,7 +90,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
               fontWeight: 500,
               letterSpacing: "0.15em",
               textTransform: "uppercase",
-              color: "rgba(26,26,26,0.35)",
+              color: "rgba(255,255,255,0.35)",
               marginBottom: "16px",
             }}
           >
@@ -103,7 +103,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
               fontSize: "clamp(2rem, 5vw, 3.5rem)",
               fontWeight: 600,
               letterSpacing: "-0.03em",
-              color: "#1a1a1a",
+              color: "#ffffff",
               fontVariantNumeric: "tabular-nums",
               lineHeight: 1,
             }}
@@ -117,7 +117,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
               marginTop: "28px",
               width: "min(200px, 50vw)",
               height: "2px",
-              background: "rgba(26,26,26,0.08)",
+              background: "rgba(255,255,255,0.08)",
               borderRadius: "1px",
               overflow: "hidden",
             }}
@@ -126,7 +126,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
               style={{
                 height: "100%",
                 width: `${progress}%`,
-                background: "rgba(26,26,26,0.5)",
+                background: "rgba(255,255,255,0.5)",
                 borderRadius: "1px",
                 transition: "width 0.05s linear",
               }}

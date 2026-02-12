@@ -23,122 +23,78 @@ const content = {
 export default function Hero() {
   return (
     <section
-      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden px-4 py-12 md:px-6 md:py-16"
+      className="flex min-h-screen w-full flex-col px-4 py-6 md:px-6 md:py-8"
+      style={{ background: "#050505" }}
     >
-      {/* Ambient blue glow behind card */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[700px] rounded-full bg-blue-500/5 blur-[120px]" />
+      {/* Navbar */}
+      <nav className="mx-auto flex w-full max-w-[1200px] items-center justify-between">
+        <span className="text-[15px] font-bold tracking-tight text-white">
+          {content.brand}
+        </span>
+        <a
+          href={WA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-full bg-white px-5 py-2 text-xs font-medium text-[#1a1a1a] transition-colors hover:bg-white/90"
+        >
+          {content.navCta}
+        </a>
+      </nav>
 
-      <div
-        className="relative mx-auto w-full max-w-[1200px] rounded-[32px]"
-        style={{
-          overflow: "visible",
-          boxShadow:
-            "0 10px 50px rgba(0,0,0,0.5), 0 0 80px rgba(59,130,246,0.08)",
-          border: "1px solid rgba(255,255,255,0.06)",
-        }}
-      >
-        {/* ── Background (clipped to rounded corners) ── */}
-        <div className="absolute inset-0 overflow-hidden rounded-[32px]">
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, #b8ddf4 0%, #5fb5e5 12%, #1a78b8 30%, #0a4f8a 48%, #0d5a96 58%, #2e8ec8 72%, #68b5de 86%, #8ec8ea 100%)",
+      {/* Hero body */}
+      <div className="flex flex-1 flex-col items-center justify-center px-4 text-center">
+        {/* Badge */}
+        <span className="inline-block rounded-full border border-white/15 bg-white/5 px-4 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-white/60">
+          {content.badge}
+        </span>
+
+        {/* Heading */}
+        <h1 className="mx-auto mt-8 max-w-xs text-[1.7rem] font-bold leading-[1.12] tracking-tight text-white sm:max-w-md md:max-w-2xl md:text-[3.2rem] md:leading-[1.08]">
+          {content.heading}
+        </h1>
+
+        {/* Subtext */}
+        <p className="mx-auto mt-5 max-w-[280px] text-[14px] leading-relaxed text-white/50 sm:max-w-sm md:text-[16px]">
+          {content.subtext}
+        </p>
+
+        {/* CTAs */}
+        <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
+          <a
+            href={WA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#1a1a1a] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-white/90"
+          >
+            {content.ctaPrimary}
+          </a>
+          <button
+            onClick={() => {
+              const el = document.getElementById("como-funciona");
+              if (!el) return;
+              const top = el.getBoundingClientRect().top + window.scrollY - 80;
+              window.scrollTo({ top, behavior: "smooth" });
             }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(ellipse 50% 40% at 50% 38%, rgba(6,50,120,0.55) 0%, rgba(10,65,140,0.20) 50%, transparent 75%)",
-            }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(ellipse 150% 100% at 50% 50%, transparent 35%, rgba(130,200,240,0.25) 65%, rgba(160,218,245,0.40) 100%)",
-            }}
-          />
+            className="rounded-full border border-white/15 px-6 py-2.5 text-sm font-medium text-white/70 transition-all duration-200 ease-out hover:border-white/30 hover:text-white"
+          >
+            {content.ctaSecondary}
+          </button>
         </div>
-        {/* ── Glow (contained, subtle) ── */}
-        <div className="pointer-events-none absolute -top-4 left-1/2 z-0 h-[80px] w-[260px] -translate-x-1/2 rounded-full bg-sky-200/15 blur-[50px]" />
-        <div className="pointer-events-none absolute -bottom-4 left-1/2 z-0 h-[80px] w-[300px] -translate-x-1/2 rounded-full bg-sky-300/10 blur-[50px]" />
 
-        {/* ── Content ── */}
-        <div className="relative z-10">
-          {/* Navbar */}
-          <nav className="flex items-center justify-between px-6 py-5 md:px-10 md:py-6">
-            <span className="text-[15px] font-medium tracking-tight text-white">
-              {content.brand}
-            </span>
-            <a
-              href={WA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-white/85 px-4 py-1.5 text-xs font-medium text-sky-700 backdrop-blur-sm transition-colors hover:bg-white"
-            >
-              {content.navCta}
-            </a>
-          </nav>
+        {/* Micro-trust */}
+        <p className="mt-5 text-[11px] tracking-wide text-white/35 sm:text-[12px]">
+          {content.trust}
+        </p>
 
-          {/* Hero body */}
-          <div className="flex flex-col items-center px-6 pt-12 pb-28 text-center md:px-12 md:pt-16 md:pb-36">
-            {/* Badge */}
-            <span className="inline-block rounded-full border border-white/30 bg-white/20 px-4 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-white backdrop-blur-sm">
-              {content.badge}
-            </span>
-
-            {/* Heading */}
-            <h1 className="mx-auto mt-8 max-w-xs text-[1.7rem] font-semibold leading-[1.12] tracking-tight text-white sm:max-w-md md:max-w-lg md:text-[2.6rem] md:leading-[1.1]">
-              {content.heading}
-            </h1>
-
-            {/* Subtext */}
-            <p className="mx-auto mt-4 max-w-[260px] text-[13px] leading-relaxed text-white/80 sm:max-w-xs md:text-[15px]">
-              {content.subtext}
-            </p>
-
-            {/* CTAs */}
-            <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
-              <a
-                href={WA_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-white px-7 py-3 text-sm font-semibold text-sky-800 shadow-[0_4px_20px_rgba(56,152,236,0.25)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(56,152,236,0.35)]"
-              >
-                {content.ctaPrimary}
-              </a>
-              <button
-                onClick={() => {
-                  const el = document.getElementById("como-funciona");
-                  if (!el) return;
-                  const top = el.getBoundingClientRect().top + window.scrollY - 80;
-                  window.scrollTo({ top, behavior: "smooth" });
-                }}
-                className="rounded-full border border-white/20 px-6 py-2.5 text-sm font-medium text-white/90 transition-all duration-200 ease-out hover:border-white/35 hover:bg-white/10"
-              >
-                {content.ctaSecondary}
-              </button>
-            </div>
-
-            {/* Micro-trust */}
-            <p className="mt-5 text-[11px] tracking-wide text-white/55 sm:text-[12px]">
-              {content.trust}
-            </p>
-
-            {/* Countdown */}
-            <div className="relative mt-10 flex flex-col items-center gap-3 md:mt-12">
-              <p className="text-[11px] text-white/65 sm:text-xs">
-                <span className="font-medium text-white/85">
-                  {content.priceText}
-                </span>{" "}
-                {content.priceOld} · {content.countdownLabel}
-              </p>
-              <Countdown />
-              <div className="absolute -bottom-6 left-1/2 h-[40px] w-[70%] -translate-x-1/2 rounded-full bg-sky-300/15 blur-[25px]" />
-            </div>
-          </div>
+        {/* Countdown */}
+        <div className="mt-10 flex flex-col items-center gap-3 md:mt-12">
+          <p className="text-[11px] text-white/45 sm:text-xs">
+            <span className="font-medium text-white/70">
+              {content.priceText}
+            </span>{" "}
+            {content.priceOld} · {content.countdownLabel}
+          </p>
+          <Countdown />
         </div>
       </div>
     </section>

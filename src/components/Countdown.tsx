@@ -61,10 +61,8 @@ export default function Countdown({ targetDate }: CountdownProps) {
       className="w-full max-w-[280px] rounded-xl sm:max-w-[520px]"
       style={{
         padding: "10px 12px",
-        background: "rgba(255,255,255,0.06)",
-        border: "1px solid rgba(255,255,255,0.06)",
-        backdropFilter: "blur(10px)",
-        WebkitBackdropFilter: "blur(10px)",
+        background: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(255,255,255,0.08)",
       }}
     >
       <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-center gap-x-1 sm:inline-flex sm:gap-2.5">
@@ -74,15 +72,15 @@ export default function Countdown({ targetDate }: CountdownProps) {
             <div
               className="flex flex-col items-center justify-center py-1 sm:h-[78px] sm:w-[84px] md:h-[82px] md:w-[88px]"
               style={{
-                background: "rgba(255,255,255,0.07)",
-                border: "1px solid rgba(255,255,255,0.12)",
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.08)",
                 borderRadius: "10px",
               }}
             >
-              <span className="text-[1.6rem] tabular-nums text-[#ffffff] sm:text-[2rem] md:text-[2.2rem]" style={{ fontWeight: 700, letterSpacing: "-0.5px", textShadow: "0 2px 6px rgba(0,0,0,0.18)" }}>
+              <span className="text-[1.6rem] tabular-nums text-white sm:text-[2rem] md:text-[2.2rem]" style={{ fontWeight: 700, letterSpacing: "-0.5px" }}>
                 {mounted ? String(unit.value).padStart(2, "0") : "--"}
               </span>
-              <span className="mt-0.5 text-[6.5px] font-normal text-white/75 sm:mt-1 sm:text-[7px] md:text-[7.5px]" style={{ letterSpacing: "1px" }}>
+              <span className="mt-0.5 text-[6.5px] font-normal text-white/45 sm:mt-1 sm:text-[7px] md:text-[7.5px]" style={{ letterSpacing: "1px" }}>
                 {unit.label}
               </span>
             </div>
