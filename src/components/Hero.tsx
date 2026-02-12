@@ -9,8 +9,8 @@ const WA_URL = `https://wa.me/51952648191?text=${encodeURIComponent(
 const content = {
   brand: "SiteSprint",
   badge: "LANZAMIENTO",
-  heading: "Tu web profesional lista en 48 horas. Hecha para vender desde el primer día.",
-  subtext: "Diseñada para convertir. Sin procesos eternos.",
+  heading: "Tu web profesional lista en 48 horas.",
+  subtext: "Hecha para vender desde el primer día.",
   trust: "Diseño estratégico · 1 ronda de cambios incluida · Optimizada para móvil",
   ctaPrimary: "Reservar cupo",
   ctaSecondary: "Ver cómo funciona",
@@ -49,12 +49,12 @@ export default function Hero() {
         </span>
 
         {/* Heading */}
-        <h1 className="mx-auto mt-8 max-w-xs text-[1.7rem] font-bold leading-[1.12] tracking-tight text-white sm:max-w-md md:max-w-2xl md:text-[3.2rem] md:leading-[1.08]">
+        <h1 className="mx-auto mt-8 max-w-sm text-[2.2rem] font-bold leading-[1.08] tracking-tight text-white sm:max-w-lg md:max-w-3xl md:text-[4.2rem] md:leading-[1.05]">
           {content.heading}
         </h1>
 
         {/* Subtext */}
-        <p className="mx-auto mt-5 max-w-[280px] text-[14px] leading-relaxed text-white/50 sm:max-w-sm md:text-[16px]">
+        <p className="mx-auto mt-5 max-w-[320px] text-[15px] leading-relaxed text-white/50 sm:max-w-md md:text-[18px]">
           {content.subtext}
         </p>
 
