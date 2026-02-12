@@ -35,7 +35,7 @@ export default function IsForYou() {
 
   return (
     <section
-      className="px-4 py-24 md:px-6 md:py-32 lg:py-40"
+      className="px-5 py-16 md:px-8 md:py-20"
       style={{ background: "#ffffff" }}
     >
       <div className="mx-auto max-w-[1200px]">
@@ -44,7 +44,7 @@ export default function IsForYou() {
           <span className="text-[12px] font-medium uppercase tracking-[0.2em] text-[#1a1a1a]/50">
             &bull; Preguntas frecuentes
           </span>
-          <h2 className="mt-4 text-[2.2rem] font-bold leading-[1.08] tracking-tight text-[#1a1a1a] md:text-[3rem] lg:text-[3.5rem]">
+          <h2 className="mt-4 text-[1.8rem] font-bold leading-[1.1] tracking-tight text-[#1a1a1a] md:text-[2.5rem] lg:text-[2.8rem]">
             Es para tu negocio?
           </h2>
           <p className="mx-auto mt-5 max-w-[560px] text-[15px] leading-[1.7] text-[#1a1a1a]/50 md:text-base">
@@ -54,7 +54,7 @@ export default function IsForYou() {
         </div>
 
         {/* ── Accordion ── */}
-        <div className="mx-auto mt-14 flex max-w-[960px] flex-col gap-3 md:mt-16">
+        <div className="mx-auto mt-10 flex max-w-[960px] flex-col gap-2.5 md:mt-12">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (

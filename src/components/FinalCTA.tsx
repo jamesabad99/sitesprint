@@ -5,7 +5,7 @@ const WA_URL = `https://wa.me/51952648191?text=${encodeURIComponent(
 export default function FinalCTA() {
   return (
     <section
-      className="px-4 py-20 md:px-6 md:py-28"
+      className="px-5 py-16 md:px-8 md:py-20"
       style={{ background: "#ffffff" }}
     >
       {/* Card */}

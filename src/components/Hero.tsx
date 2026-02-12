@@ -23,7 +23,7 @@ const content = {
 export default function Hero() {
   return (
     <section
-      className="flex min-h-screen w-full flex-col px-4 py-6 md:px-6 md:py-8"
+      className="flex min-h-[100svh] w-full flex-col px-5 py-5 md:px-8 md:py-6"
       style={{ background: "#050505" }}
     >
       {/* Navbar */}
@@ -49,17 +49,17 @@ export default function Hero() {
         </span>
 
         {/* Heading */}
-        <h1 className="mx-auto mt-8 max-w-sm text-[2.2rem] font-bold leading-[1.08] tracking-tight text-white sm:max-w-lg md:max-w-3xl md:text-[4.2rem] md:leading-[1.05]">
+        <h1 className="mx-auto mt-6 max-w-sm text-[2.2rem] font-bold leading-[1.08] tracking-tight text-white sm:max-w-lg md:max-w-3xl md:text-[4.2rem] md:leading-[1.05]">
           {content.heading}
         </h1>
 
         {/* Subtext */}
-        <p className="mx-auto mt-5 max-w-[320px] text-[15px] leading-relaxed text-white/50 sm:max-w-md md:text-[18px]">
+        <p className="mx-auto mt-4 max-w-[320px] text-[15px] leading-relaxed text-white/50 sm:max-w-md md:text-[18px]">
           {content.subtext}
         </p>
 
         {/* CTAs */}
-        <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
           <a
             href={WA_URL}
             target="_blank"
@@ -82,12 +82,12 @@ export default function Hero() {
         </div>
 
         {/* Micro-trust */}
-        <p className="mt-5 text-[11px] tracking-wide text-white/35 sm:text-[12px]">
+        <p className="mt-4 text-[11px] tracking-wide text-white/35 sm:text-[12px]">
           {content.trust}
         </p>
 
         {/* Countdown */}
-        <div className="mt-10 flex flex-col items-center gap-3 md:mt-12">
+        <div className="mt-8 flex flex-col items-center gap-2.5 md:mt-10">
           <p className="text-[11px] text-white/45 sm:text-xs">
             <span className="font-medium text-white/70">
               {content.priceText}

@@ -5,7 +5,7 @@ const WA_URL = `https://wa.me/51952648191?text=${encodeURIComponent(
 export default function Footer() {
   return (
     <footer
-      className="overflow-hidden px-4 pb-0 pt-16 md:px-6 md:pt-20"
+      className="overflow-hidden px-5 pb-0 pt-14 md:px-8 md:pt-16"
       style={{ background: "#050505" }}
     >
       <div className="mx-auto max-w-[1200px]">
@@ -99,7 +99,7 @@ export default function Footer() {
       </div>
 
       {/* ── Giant brand name — full width ── */}
-      <div className="relative mt-16 md:mt-20">
+      <div className="relative mt-12 md:mt-16">
         <div
           className="select-none whitespace-nowrap text-center font-bold leading-[0.8] tracking-tighter text-white"
           style={{

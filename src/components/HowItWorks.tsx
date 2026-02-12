@@ -53,7 +53,7 @@ export default function HowItWorks() {
   return (
     <section
       id="como-funciona"
-      className="px-4 py-24 md:px-6 md:py-32 lg:py-40"
+      className="px-5 py-16 md:px-8 md:py-20"
       style={{ background: "#ffffff" }}
     >
       <div className="mx-auto max-w-[1200px]">
@@ -64,7 +64,7 @@ export default function HowItWorks() {
             <span className="text-[12px] font-medium uppercase tracking-[0.2em] text-[#1a1a1a]/50">
               &bull; Cómo funciona
             </span>
-            <h2 className="mt-4 text-[2.2rem] font-bold leading-[1.08] tracking-tight text-[#1a1a1a] md:text-[3rem] lg:text-[3.5rem]">
+            <h2 className="mt-4 text-[1.8rem] font-bold leading-[1.1] tracking-tight text-[#1a1a1a] md:text-[2.5rem] lg:text-[2.8rem]">
               Proceso simple,
               <br />
               resultados reales
@@ -89,7 +89,7 @@ export default function HowItWorks() {
         </div>
 
         {/* ── Cards grid ── */}
-        <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3 md:mt-16">
+        <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 md:mt-12">
           {steps.map((step) => (
             <div
               key={step.title}

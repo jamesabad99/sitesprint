@@ -158,10 +158,10 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   };
 
   return (
-    <section className="relative py-[60px] md:py-[90px]" style={{ background: "#050505" }}>
+    <section className="relative py-12 md:py-16" style={{ background: "#050505" }}>
       {/* Header */}
       <div className="relative mx-auto max-w-[1100px] px-4 text-center">
-        <h2 className="text-[1.5rem] font-semibold tracking-tight text-white md:text-[2.2rem]">
+        <h2 className="text-[1.5rem] font-bold tracking-tight text-white md:text-[2.2rem]">
           Así se ve una web entregada en 48 horas.
         </h2>
         <p className="mt-3 text-sm tracking-[0.04em] text-white/45">
@@ -172,7 +172,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
       {/* Carousel */}
       <div
         ref={containerRef}
-        className="group relative mx-auto mt-10 max-w-[1200px] select-none overflow-hidden"
+        className="group relative mx-auto mt-8 max-w-[1200px] select-none overflow-hidden"
         style={{ touchAction: "pan-y" }}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
