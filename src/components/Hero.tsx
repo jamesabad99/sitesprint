@@ -7,7 +7,7 @@ const WA_URL = `https://api.whatsapp.com/send?phone=51952648191&text=${encodeURI
 )}`;
 
 const content = {
-  brand: "Weblia",
+  brand: "SiteSprint",
   badge: "Precio de lanzamiento",
   navCta: "Reservar cupo",
   trust: "Diseño estratégico · 1 ronda de cambios incluida · Optimizada para móvil",
