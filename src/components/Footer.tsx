@@ -99,12 +99,11 @@ export default function Footer() {
       </div>
 
       {/* ── Giant brand name — full width ── */}
-      <div className="relative mt-12 flex justify-center md:mt-16">
+      <div className="relative mt-12 md:mt-16" style={{ height: "clamp(4rem, 20vw, 20rem)" }}>
         <div
-          className="select-none whitespace-nowrap font-bold leading-[0.8] tracking-tighter text-white"
+          className="absolute left-1/2 top-0 -translate-x-1/2 select-none whitespace-nowrap font-bold leading-[0.8] tracking-tighter text-white"
           style={{
             fontSize: "clamp(5rem, 25vw, 25rem)",
-            marginBottom: "-0.18em",
           }}
         >
           SiteSprint
