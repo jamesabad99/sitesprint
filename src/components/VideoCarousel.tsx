@@ -186,14 +186,14 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
           className="pointer-events-none absolute inset-y-0 left-0 z-30 w-10 md:w-24"
           style={{
             background:
-              "linear-gradient(to right, #05070C 0%, transparent 100%)",
+              "linear-gradient(to right, #000000 0%, transparent 100%)",
           }}
         />
         <div
           className="pointer-events-none absolute inset-y-0 right-0 z-30 w-10 md:w-24"
           style={{
             background:
-              "linear-gradient(to left, #05070C 0%, transparent 100%)",
+              "linear-gradient(to left, #000000 0%, transparent 100%)",
           }}
         />
 
