@@ -96,17 +96,18 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ── Giant brand name ── */}
-        <div className="relative mt-16 md:mt-20">
-          <div
-            className="select-none text-center font-bold leading-[0.8] tracking-tighter text-[#1a1a1a]"
-            style={{
-              fontSize: "clamp(5rem, 18vw, 16rem)",
-              marginBottom: "-0.18em",
-            }}
-          >
-            SiteSprint
-          </div>
+      </div>
+
+      {/* ── Giant brand name — full width ── */}
+      <div className="relative mt-16 md:mt-20">
+        <div
+          className="select-none whitespace-nowrap text-center font-bold leading-[0.8] tracking-tighter text-[#1a1a1a]"
+          style={{
+            fontSize: "clamp(5rem, 25vw, 25rem)",
+            marginBottom: "-0.18em",
+          }}
+        >
+          SiteSprint
         </div>
       </div>
     </footer>
