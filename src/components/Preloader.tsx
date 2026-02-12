@@ -100,7 +100,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
           {/* Percentage */}
           <span
             style={{
-              fontSize: "clamp(3rem, 8vw, 5.5rem)",
+              fontSize: "clamp(2rem, 5vw, 3.5rem)",
               fontWeight: 600,
               letterSpacing: "-0.03em",
               color: "#ffffff",
