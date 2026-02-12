@@ -6,7 +6,7 @@ export default function FinalCTA() {
   return (
     <section
       className="px-5 py-16 md:px-8 md:py-20"
-      style={{ background: "#ffffff" }}
+      style={{ background: "#050505" }}
     >
       {/* Card */}
       <div

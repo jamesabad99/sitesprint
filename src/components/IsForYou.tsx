@@ -42,7 +42,7 @@ export default function IsForYou() {
   return (
     <section
       className="relative overflow-hidden px-5 py-16 md:px-8 md:py-20"
-      style={{ background: "#ffffff" }}
+      style={{ background: "#050505" }}
     >
       <div className="mx-auto max-w-[1200px]">
         {/* ── Two column layout ── */}
@@ -109,8 +109,8 @@ export default function IsForYou() {
                     onClick={() => setOpenIndex(isOpen ? -1 : i)}
                     className="group w-full text-left transition-all duration-300"
                     style={{
-                      background: isOpen ? "#1a1a1a" : "#fafaf9",
-                      border: isOpen ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(26,26,26,0.06)",
+                      background: isOpen ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.02)",
+                      border: isOpen ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(255,255,255,0.04)",
                       borderRadius: isOpen ? "16px" : "14px",
                       padding: isOpen ? "20px 22px 22px" : "16px 22px",
                     }}
@@ -120,8 +120,8 @@ export default function IsForYou() {
                       <span
                         className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg text-[11px] font-bold tabular-nums"
                         style={{
-                          background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(26,26,26,0.05)",
-                          color: isOpen ? "rgba(255,255,255,0.5)" : "rgba(26,26,26,0.3)",
+                          background: isOpen ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.04)",
+                          color: isOpen ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.25)",
                         }}
                       >
                         {String(i + 1).padStart(2, "0")}
@@ -130,7 +130,7 @@ export default function IsForYou() {
                       {/* Question */}
                       <span
                         className="flex-1 text-[14px] font-semibold md:text-[15px]"
-                        style={{ color: isOpen ? "#ffffff" : "#1a1a1a" }}
+                        style={{ color: isOpen ? "#ffffff" : "rgba(255,255,255,0.7)" }}
                       >
                         {faq.question}
                       </span>
@@ -139,8 +139,8 @@ export default function IsForYou() {
                       <span
                         className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-[14px] transition-all duration-300"
                         style={{
-                          color: isOpen ? "rgba(255,255,255,0.4)" : "rgba(26,26,26,0.25)",
-                          background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(26,26,26,0.04)",
+                          color: isOpen ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.2)",
+                          background: isOpen ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.03)",
                           transform: isOpen ? "rotate(0deg)" : "rotate(0deg)",
                         }}
                       >
