@@ -88,7 +88,7 @@ export default function ContactForm() {
                 name="name"
                 required
                 placeholder="Tu nombre"
-                className="w-full rounded-xl px-4 py-3 text-[14px] text-white placeholder-white/25 outline-none transition-all duration-200 focus:border-blue-400/40 focus:ring-1 focus:ring-blue-400/20"
+                className="w-full rounded-xl px-4 py-3 text-[16px] text-white placeholder-white/25 outline-none transition-all duration-200 focus:border-blue-400/40 focus:ring-1 focus:ring-blue-400/20 md:text-[14px]"
                 style={{
                   background: "rgba(255,255,255,0.04)",
                   border: "1px solid rgba(255,255,255,0.08)",
@@ -107,7 +107,7 @@ export default function ContactForm() {
                 name="phone"
                 required
                 placeholder="+51 999 999 999"
-                className="w-full rounded-xl px-4 py-3 text-[14px] text-white placeholder-white/25 outline-none transition-all duration-200 focus:border-blue-400/40 focus:ring-1 focus:ring-blue-400/20"
+                className="w-full rounded-xl px-4 py-3 text-[16px] text-white placeholder-white/25 outline-none transition-all duration-200 focus:border-blue-400/40 focus:ring-1 focus:ring-blue-400/20 md:text-[14px]"
                 style={{
                   background: "rgba(255,255,255,0.04)",
                   border: "1px solid rgba(255,255,255,0.08)",
@@ -126,7 +126,7 @@ export default function ContactForm() {
                 name="email"
                 required
                 placeholder="tu@correo.com"
-                className="w-full rounded-xl px-4 py-3 text-[14px] text-white placeholder-white/25 outline-none transition-all duration-200 focus:border-blue-400/40 focus:ring-1 focus:ring-blue-400/20"
+                className="w-full rounded-xl px-4 py-3 text-[16px] text-white placeholder-white/25 outline-none transition-all duration-200 focus:border-blue-400/40 focus:ring-1 focus:ring-blue-400/20 md:text-[14px]"
                 style={{
                   background: "rgba(255,255,255,0.04)",
                   border: "1px solid rgba(255,255,255,0.08)",
@@ -144,7 +144,7 @@ export default function ContactForm() {
                 name="message"
                 rows={4}
                 placeholder="Cuéntanos sobre tu negocio y qué necesitas..."
-                className="w-full resize-none rounded-xl px-4 py-3 text-[14px] text-white placeholder-white/25 outline-none transition-all duration-200 focus:border-blue-400/40 focus:ring-1 focus:ring-blue-400/20"
+                className="w-full resize-none rounded-xl px-4 py-3 text-[16px] text-white placeholder-white/25 outline-none transition-all duration-200 focus:border-blue-400/40 focus:ring-1 focus:ring-blue-400/20 md:text-[14px]"
                 style={{
                   background: "rgba(255,255,255,0.04)",
                   border: "1px solid rgba(255,255,255,0.08)",
