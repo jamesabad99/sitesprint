@@ -12,7 +12,7 @@ function CheckIcon() {
       fill="none"
       className="mt-0.5 h-5 w-5 flex-shrink-0"
     >
-      <circle cx="10" cy="10" r="10" fill="rgba(56,152,236,0.12)" />
+      <circle cx="10" cy="10" r="10" fill="rgba(59,130,246,0.12)" />
       <path
         d="M6.5 10.5L9 13l5-6"
         stroke="#38bdf8"
@@ -26,10 +26,22 @@ function CheckIcon() {
 
 export default function IsForYou() {
   return (
-    <section className="px-4 py-20 md:px-6 md:py-28 lg:py-32">
+    <section className="relative px-4 py-20 md:px-6 md:py-28 lg:py-32">
+      {/* Divider top */}
+      <div
+        className="absolute inset-x-0 top-0 h-[1px]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%)",
+        }}
+      />
+
+      {/* Ambient glow */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-full bg-blue-500/5 blur-[100px]" />
+
       {/* ── Glass card wrapper ── */}
       <div
-        className="relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-[36px]"
+        className="relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-[32px]"
         style={{
           background:
             "linear-gradient(170deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%)",
@@ -74,8 +86,8 @@ export default function IsForYou() {
                   className="flex items-start gap-4 rounded-2xl px-6 py-5"
                   style={{
                     background:
-                      "linear-gradient(160deg, rgba(56,152,236,0.06) 0%, rgba(56,152,236,0.015) 100%)",
-                    border: "1px solid rgba(56,152,236,0.1)",
+                      "linear-gradient(160deg, rgba(59,130,246,0.06) 0%, rgba(59,130,246,0.015) 100%)",
+                    border: "1px solid rgba(59,130,246,0.1)",
                   }}
                 >
                   <CheckIcon />

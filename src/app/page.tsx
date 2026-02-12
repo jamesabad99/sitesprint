@@ -2,6 +2,8 @@ import Hero from "@/components/Hero";
 import VideoCarousel from "@/components/VideoCarousel";
 import HowItWorks from "@/components/HowItWorks";
 import IsForYou from "@/components/IsForYou";
+import FinalCTA from "@/components/FinalCTA";
+import Footer from "@/components/Footer";
 
 const casos = [
   { src: "/videos/caso1.mp4", title: "NutraCore" },
@@ -17,6 +19,8 @@ export default function Home() {
       <VideoCarousel videos={casos} />
       <HowItWorks />
       <IsForYou />
+      <FinalCTA />
+      <Footer />
     </main>
   );
 }

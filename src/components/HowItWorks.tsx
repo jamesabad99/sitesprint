@@ -23,8 +23,17 @@ export default function HowItWorks() {
   return (
     <section
       id="como-funciona"
-      className="px-4 py-24 md:px-6 md:py-32 lg:py-40"
+      className="relative px-4 py-24 md:px-6 md:py-32 lg:py-40"
     >
+      {/* Divider top */}
+      <div
+        className="absolute inset-x-0 top-0 h-[1px]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%)",
+        }}
+      />
+
       <div className="mx-auto max-w-[1100px]">
         <div className="grid grid-cols-1 gap-14 md:grid-cols-[1fr_1.5fr] md:gap-20 lg:gap-28">
           {/* Left — title block */}
@@ -50,7 +59,7 @@ export default function HowItWorks() {
               className="absolute left-[19px] top-2 z-0 hidden h-[calc(100%-16px)] w-[1px] md:block"
               style={{
                 background:
-                  "linear-gradient(180deg, rgba(30,120,190,0.25) 0%, rgba(30,120,190,0.08) 100%)",
+                  "linear-gradient(180deg, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.08) 100%)",
               }}
             />
 
@@ -62,9 +71,9 @@ export default function HowItWorks() {
                     <div
                       className="flex h-10 w-10 items-center justify-center rounded-full text-[13px] font-semibold text-white"
                       style={{
-                        background: "rgba(20,90,160,0.4)",
-                        border: "1px solid rgba(30,120,190,0.3)",
-                        boxShadow: "0 0 12px rgba(30,120,190,0.15)",
+                        background: "rgba(59,130,246,0.15)",
+                        border: "1px solid rgba(59,130,246,0.25)",
+                        boxShadow: "0 0 12px rgba(59,130,246,0.15)",
                       }}
                     >
                       {step.number}
@@ -72,17 +81,18 @@ export default function HowItWorks() {
                     {i < steps.length - 1 && (
                       <div
                         className="mt-3 h-full w-[1px] md:hidden"
-                        style={{ background: "rgba(30,120,190,0.15)" }}
+                        style={{ background: "rgba(59,130,246,0.15)" }}
                       />
                     )}
                   </div>
 
                   {/* Content card */}
                   <div
-                    className="-mt-1 flex-1 rounded-[20px] px-7 py-7 md:px-8 md:py-8"
+                    className="-mt-1 flex-1 rounded-2xl px-7 py-7 md:px-8 md:py-8"
                     style={{
                       background:
-                        "linear-gradient(160deg, rgba(10,50,90,0.3) 0%, rgba(8,35,65,0.2) 100%)",
+                        "linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%)",
+                      border: "1px solid rgba(59,130,246,0.1)",
                       boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
                     }}
                   >

@@ -147,7 +147,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
     if (i === current) {
       return {
         boxShadow:
-          "0 25px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)",
+          "0 25px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08), 0 0 30px rgba(59,130,246,0.1)",
         transition: `all 600ms ${EASING}`,
       };
     }
@@ -161,7 +161,15 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
     <section className="relative py-[60px] md:py-[90px]">
       {/* Header */}
       <div className="relative mx-auto max-w-[1100px] px-4 text-center">
-        <h2 className="text-[1.5rem] font-semibold tracking-tight text-white/90 md:text-[2.2rem]">
+        <h2
+          className="text-[1.5rem] font-semibold tracking-tight md:text-[2.2rem]"
+          style={{
+            background: "linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.6) 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
           Así se ve una web entregada en 48 horas.
         </h2>
         <p className="mt-3 text-sm tracking-[0.04em] text-white/50">
@@ -186,14 +194,14 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
           className="pointer-events-none absolute inset-y-0 left-0 z-30 w-10 md:w-24"
           style={{
             background:
-              "linear-gradient(to right, #000000 0%, transparent 100%)",
+              "linear-gradient(to right, #050505 0%, transparent 100%)",
           }}
         />
         <div
           className="pointer-events-none absolute inset-y-0 right-0 z-30 w-10 md:w-24"
           style={{
             background:
-              "linear-gradient(to left, #000000 0%, transparent 100%)",
+              "linear-gradient(to left, #050505 0%, transparent 100%)",
           }}
         />
 
@@ -215,7 +223,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
             >
               {/* Browser frame */}
               <div
-                className="relative overflow-hidden rounded-[16px] bg-white"
+                className="relative overflow-hidden rounded-[16px] bg-[#1a1a1a]"
                 style={frameStyle(i)}
               >
                 {/* Glass highlight on active */}
@@ -224,12 +232,12 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
                 )}
 
                 {/* Top bar */}
-                <div className="flex h-[32px] items-center gap-[5px] bg-[#f1f3f5] px-3.5">
+                <div className="flex h-[32px] items-center gap-[5px] bg-[#1a1a1a] px-3.5">
                   <span className="h-[8px] w-[8px] rounded-full bg-[#ff5f57]" />
                   <span className="h-[8px] w-[8px] rounded-full bg-[#ffbd2e]" />
                   <span className="h-[8px] w-[8px] rounded-full bg-[#27c93f]" />
                   {video.title && (
-                    <span className="ml-2 text-[11px] text-slate-400">
+                    <span className="ml-2 text-[11px] text-white/40">
                       {video.title}
                     </span>
                   )}
@@ -362,7 +370,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
             aria-label={`Ir al slide ${i + 1}`}
             className={`rounded-full transition-all duration-300 ${
               i === current
-                ? "h-2.5 w-7 bg-white/90"
+                ? "h-2.5 w-7 bg-blue-400"
                 : "h-2 w-2 bg-white/25 hover:bg-white/40"
             }`}
           />
