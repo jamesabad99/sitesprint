@@ -4,36 +4,17 @@ const WA_URL = `https://wa.me/51952648191?text=${encodeURIComponent(
 
 export default function FinalCTA() {
   return (
-    <section className="relative px-4 py-20 md:px-6 md:py-28">
-      {/* Divider top */}
-      <div
-        className="absolute inset-x-0 top-0 h-[1px]"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%)",
-        }}
-      />
-
-      {/* Glass card */}
+    <section
+      className="px-4 py-20 md:px-6 md:py-28"
+      style={{ background: "#ffffff" }}
+    >
+      {/* Card */}
       <div
         className="relative mx-auto w-full max-w-[800px] overflow-hidden rounded-[32px]"
         style={{
-          background:
-            "linear-gradient(170deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%)",
-          border: "1px solid rgba(255,255,255,0.08)",
-          boxShadow:
-            "0 20px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06)",
+          background: "#1a1a1a",
         }}
       >
-        {/* Top edge highlight */}
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-[1px]"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.12) 50%, transparent 90%)",
-          }}
-        />
-
         <div className="relative z-10 px-6 py-14 text-center sm:px-10 md:px-16 md:py-18">
           <h2 className="text-[1.6rem] font-bold tracking-tight text-white md:text-[2.2rem]">
             Listo para tener tu web profesional?
@@ -52,7 +33,7 @@ export default function FinalCTA() {
             href={WA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2.5 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-sky-800 shadow-[0_4px_20px_rgba(56,152,236,0.25)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(56,152,236,0.35)]"
+            className="mt-8 inline-flex items-center gap-2.5 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-[#1a1a1a] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#f0f0ec]"
           >
             {/* WhatsApp icon */}
             <svg

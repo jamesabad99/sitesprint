@@ -26,7 +26,7 @@ export default function Hero() {
       className="relative flex min-h-screen w-full items-center justify-center overflow-hidden px-4 py-12 md:px-6 md:py-16"
     >
       {/* Ambient blue glow behind card */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[700px] rounded-full bg-blue-500/8 blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[700px] rounded-full bg-blue-500/5 blur-[120px]" />
 
       <div
         className="relative mx-auto w-full max-w-[1200px] rounded-[32px]"
