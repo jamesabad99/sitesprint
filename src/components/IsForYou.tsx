@@ -1,118 +1,116 @@
-const benefits = [
-  "Negocios que venden por Instagram o WhatsApp y quieren verse más profesionales.",
-  "Servicios que necesitan generar mayor confianza online.",
-  "Emprendedores que buscan una web clara, estructurada y lista en pocos días.",
-  "Marcas que quieren dejar de depender exclusivamente de redes sociales.",
+"use client";
+
+import { useState } from "react";
+
+const faqs = [
+  {
+    question: "Para qué tipo de negocios es este servicio?",
+    answer:
+      "Negocios que venden por Instagram o WhatsApp y quieren verse más profesionales. Servicios que necesitan generar mayor confianza online. Emprendedores que buscan una web clara, estructurada y lista en pocos días.",
+  },
+  {
+    question: "Qué incluye el precio de $250?",
+    answer:
+      "Diseño y desarrollo completo de tu sitio web profesional, optimizado para móvil, con enfoque en conversión. Incluye una ronda de ajustes estratégicos después de la entrega.",
+  },
+  {
+    question: "Cuánto tiempo toma tener mi web lista?",
+    answer:
+      "Tu web estará lista en 48 horas desde que confirmamos el alcance y recibimos la información de tu marca. Sin procesos eternos ni reuniones innecesarias.",
+  },
+  {
+    question: "Necesito tener todo el contenido listo?",
+    answer:
+      "No necesariamente. Te guiamos en el proceso de definición estratégica para recopilar la información clave: identidad visual, propuesta de valor, referencias y objetivos comerciales.",
+  },
+  {
+    question: "Y si mi proyecto es más complejo?",
+    answer:
+      "Este formato está pensado para proyectos ágiles y enfocados en resultados. Si necesitas un desarrollo altamente complejo o corporativo, podemos evaluarlo por separado.",
+  },
 ];
 
-function CheckIcon() {
-  return (
-    <svg
-      viewBox="0 0 20 20"
-      fill="none"
-      className="mt-0.5 h-5 w-5 flex-shrink-0"
-    >
-      <circle cx="10" cy="10" r="10" fill="rgba(59,130,246,0.12)" />
-      <path
-        d="M6.5 10.5L9 13l5-6"
-        stroke="#38bdf8"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export default function IsForYou() {
+  const [openIndex, setOpenIndex] = useState(0);
+
   return (
-    <section className="relative px-4 py-20 md:px-6 md:py-28 lg:py-32">
-      {/* Divider top */}
-      <div
-        className="absolute inset-x-0 top-0 h-[1px]"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%)",
-        }}
-      />
+    <section
+      className="px-4 py-24 md:px-6 md:py-32 lg:py-40"
+      style={{ background: "#ffffff" }}
+    >
+      <div className="mx-auto max-w-[1200px]">
+        {/* ── Header ── */}
+        <div className="text-center">
+          <span className="text-[12px] font-medium uppercase tracking-[0.2em] text-[#1a1a1a]/50">
+            &bull; Preguntas frecuentes
+          </span>
+          <h2 className="mt-4 text-[2.2rem] font-bold leading-[1.08] tracking-tight text-[#1a1a1a] md:text-[3rem] lg:text-[3.5rem]">
+            Es para tu negocio?
+          </h2>
+          <p className="mx-auto mt-5 max-w-[560px] text-[15px] leading-[1.7] text-[#1a1a1a]/50 md:text-base">
+            Todo lo que necesitas saber sobre nuestro servicio de diseño web
+            express — desde el proceso hasta la entrega.
+          </p>
+        </div>
 
-      {/* Ambient glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-full bg-blue-500/5 blur-[100px]" />
+        {/* ── Accordion ── */}
+        <div className="mx-auto mt-14 flex max-w-[960px] flex-col gap-3 md:mt-16">
+          {faqs.map((faq, i) => {
+            const isOpen = openIndex === i;
+            return (
+              <button
+                key={i}
+                onClick={() => setOpenIndex(isOpen ? -1 : i)}
+                className="w-full text-left transition-all duration-300"
+                style={{
+                  background: isOpen ? "#1a1a1a" : "#f0f0ec",
+                  borderRadius: isOpen ? "20px" : "16px",
+                  padding: isOpen ? "24px 28px 28px" : "22px 28px",
+                }}
+              >
+                <div className="flex items-center gap-4">
+                  {/* Number */}
+                  <span
+                    className="text-[13px] font-medium tabular-nums"
+                    style={{ color: isOpen ? "rgba(255,255,255,0.5)" : "rgba(26,26,26,0.35)" }}
+                  >
+                    {String(i + 1).padStart(3, "0")}
+                  </span>
 
-      {/* ── Glass card wrapper ── */}
-      <div
-        className="relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-[32px]"
-        style={{
-          background:
-            "linear-gradient(170deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%)",
-          border: "1px solid rgba(255,255,255,0.08)",
-          boxShadow:
-            "0 20px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06)",
-        }}
-      >
-        {/* Top edge highlight */}
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-[1px]"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.12) 50%, transparent 90%)",
-          }}
-        />
+                  {/* Question */}
+                  <span
+                    className="flex-1 text-[15px] font-semibold md:text-base"
+                    style={{ color: isOpen ? "#ffffff" : "#1a1a1a" }}
+                  >
+                    {faq.question}
+                  </span>
 
-        {/* Content */}
-        <div className="relative z-10 px-6 py-12 sm:px-10 md:px-14 md:py-16 lg:px-20 lg:py-20">
-          {/* Header */}
-          <div className="text-center">
-            <h2 className="text-[1.75rem] font-bold tracking-tight text-white md:text-[2.25rem] lg:text-[2.75rem]">
-              ¿Es para tu negocio?
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-white/55 md:text-base">
-              Este servicio está diseñado para negocios que quieren construir
-              una presencia digital profesional, clara y enfocada en resultados.
-            </p>
-          </div>
-
-          {/* Section label */}
-          <div className="mx-auto mt-12 max-w-[680px] md:mt-14">
-            <h3 className="text-center text-[1rem] font-semibold text-sky-300 md:text-[1.05rem]">
-              Este servicio es ideal para:
-            </h3>
-
-            {/* Benefit cards */}
-            <div className="mt-6 flex flex-col gap-3.5">
-              {benefits.map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-4 rounded-2xl px-6 py-5"
-                  style={{
-                    background:
-                      "linear-gradient(160deg, rgba(59,130,246,0.06) 0%, rgba(59,130,246,0.015) 100%)",
-                    border: "1px solid rgba(59,130,246,0.1)",
-                  }}
-                >
-                  <CheckIcon />
-                  <span className="text-[14.5px] leading-[1.65] text-white/70">
-                    {item}
+                  {/* Toggle icon */}
+                  <span
+                    className="flex h-7 w-7 flex-shrink-0 items-center justify-center text-[18px] font-light"
+                    style={{ color: isOpen ? "rgba(255,255,255,0.5)" : "rgba(26,26,26,0.35)" }}
+                  >
+                    {isOpen ? "\u2212" : "+"}
                   </span>
                 </div>
-              ))}
-            </div>
 
-            {/* Soft note */}
-            <div
-              className="mt-8 rounded-2xl px-6 py-5 text-center"
-              style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.06)",
-              }}
-            >
-              <p className="text-[13.5px] leading-[1.7] text-white/40">
-                Este formato está pensado para proyectos ágiles y enfocados en
-                resultados. Si necesitas un desarrollo altamente complejo o
-                corporativo, podemos evaluarlo por separado.
-              </p>
-            </div>
-          </div>
+                {/* Answer */}
+                <div
+                  className="overflow-hidden transition-all duration-300"
+                  style={{
+                    maxHeight: isOpen ? "200px" : "0px",
+                    opacity: isOpen ? 1 : 0,
+                    marginTop: isOpen ? "16px" : "0px",
+                    paddingLeft: "52px",
+                  }}
+                >
+                  <p className="text-[14px] leading-[1.75] text-white/60">
+                    {faq.answer}
+                  </p>
+                </div>
+              </button>
+            );
+          })}
         </div>
       </div>
     </section>
