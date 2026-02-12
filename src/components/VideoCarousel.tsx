@@ -160,11 +160,15 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   return (
     <section className="relative py-12 md:py-16" style={{ background: "#050505" }}>
       {/* Header */}
-      <div className="relative mx-auto max-w-[1100px] px-4 text-center">
-        <h2 className="text-[1.5rem] font-bold tracking-tight text-white md:text-[2.2rem]">
-          Así se ve una web entregada en 48 horas.
+      <div className="relative mx-auto max-w-[1100px] px-5 text-center md:px-8">
+        <span className="text-[12px] font-medium uppercase tracking-[0.2em] text-white/30">
+          Portafolio
+        </span>
+        <h2 className="mt-3 text-[1.5rem] font-bold tracking-tight text-white md:text-[2.2rem]">
+          Así se ve una web entregada en{" "}
+          <em className="not-italic bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">48 horas.</em>
         </h2>
-        <p className="mt-3 text-sm tracking-[0.04em] text-white/45">
+        <p className="mt-2.5 text-[13px] tracking-wide text-white/35">
           Proyectos reales entregados a clientes.
         </p>
       </div>

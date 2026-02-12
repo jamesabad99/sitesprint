@@ -39,22 +39,34 @@ export default function IsForYou() {
       style={{ background: "#ffffff" }}
     >
       <div className="mx-auto max-w-[1200px]">
+        {/* ── Section divider ── */}
+        <div className="mb-10 flex items-center justify-center md:mb-12">
+          <div className="h-px flex-1 bg-[#1a1a1a]/10" />
+          <div className="mx-4 flex h-8 w-8 items-center justify-center rounded-full border border-[#1a1a1a]/10">
+            <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3 text-[#1a1a1a]/30">
+              <path d="M8 0l2.2 5.2L16 6l-4 3.8 1 5.7L8 12.5l-5 3 1-5.7L0 6l5.8-.8z" />
+            </svg>
+          </div>
+          <div className="h-px flex-1 bg-[#1a1a1a]/10" />
+        </div>
+
         {/* ── Header ── */}
         <div className="text-center">
-          <span className="text-[12px] font-medium uppercase tracking-[0.2em] text-[#1a1a1a]/50">
-            &bull; Preguntas frecuentes
+          <span className="text-[12px] font-medium uppercase tracking-[0.2em] text-[#1a1a1a]/40">
+            Preguntas frecuentes
           </span>
-          <h2 className="mt-4 text-[1.8rem] font-bold leading-[1.1] tracking-tight text-[#1a1a1a] md:text-[2.5rem] lg:text-[2.8rem]">
-            Es para tu negocio?
+          <h2 className="mt-3 text-[1.8rem] font-bold leading-[1.1] tracking-tight text-[#1a1a1a] md:text-[2.5rem]">
+            Es para tu{" "}
+            <em className="not-italic text-[#1a1a1a]/40">negocio?</em>
           </h2>
-          <p className="mx-auto mt-5 max-w-[560px] text-[15px] leading-[1.7] text-[#1a1a1a]/50 md:text-base">
+          <p className="mx-auto mt-4 max-w-[500px] text-[14px] leading-[1.7] text-[#1a1a1a]/45">
             Todo lo que necesitas saber sobre nuestro servicio de diseño web
             express — desde el proceso hasta la entrega.
           </p>
         </div>
 
         {/* ── Accordion ── */}
-        <div className="mx-auto mt-10 flex max-w-[960px] flex-col gap-2.5 md:mt-12">
+        <div className="mx-auto mt-10 flex max-w-[860px] flex-col gap-2.5">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
@@ -63,23 +75,24 @@ export default function IsForYou() {
                 onClick={() => setOpenIndex(isOpen ? -1 : i)}
                 className="w-full text-left transition-all duration-300"
                 style={{
-                  background: isOpen ? "#1a1a1a" : "#f0f0ec",
-                  borderRadius: isOpen ? "20px" : "16px",
-                  padding: isOpen ? "24px 28px 28px" : "22px 28px",
+                  background: isOpen ? "#1a1a1a" : "#fafaf9",
+                  border: isOpen ? "1px solid #1a1a1a" : "1px solid rgba(26,26,26,0.08)",
+                  borderRadius: isOpen ? "16px" : "14px",
+                  padding: isOpen ? "22px 24px 24px" : "18px 24px",
                 }}
               >
                 <div className="flex items-center gap-4">
                   {/* Number */}
                   <span
-                    className="text-[13px] font-medium tabular-nums"
-                    style={{ color: isOpen ? "rgba(255,255,255,0.5)" : "rgba(26,26,26,0.35)" }}
+                    className="text-[12px] font-semibold tabular-nums"
+                    style={{ color: isOpen ? "rgba(255,255,255,0.35)" : "rgba(26,26,26,0.2)" }}
                   >
-                    {String(i + 1).padStart(3, "0")}
+                    {String(i + 1).padStart(2, "0")}
                   </span>
 
                   {/* Question */}
                   <span
-                    className="flex-1 text-[15px] font-semibold md:text-base"
+                    className="flex-1 text-[14px] font-semibold md:text-[15px]"
                     style={{ color: isOpen ? "#ffffff" : "#1a1a1a" }}
                   >
                     {faq.question}
@@ -87,8 +100,11 @@ export default function IsForYou() {
 
                   {/* Toggle icon */}
                   <span
-                    className="flex h-7 w-7 flex-shrink-0 items-center justify-center text-[18px] font-light"
-                    style={{ color: isOpen ? "rgba(255,255,255,0.5)" : "rgba(26,26,26,0.35)" }}
+                    className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-[16px] font-light transition-all duration-300"
+                    style={{
+                      color: isOpen ? "rgba(255,255,255,0.4)" : "rgba(26,26,26,0.25)",
+                      background: isOpen ? "rgba(255,255,255,0.08)" : "rgba(26,26,26,0.05)",
+                    }}
                   >
                     {isOpen ? "\u2212" : "+"}
                   </span>
@@ -100,11 +116,11 @@ export default function IsForYou() {
                   style={{
                     maxHeight: isOpen ? "200px" : "0px",
                     opacity: isOpen ? 1 : 0,
-                    marginTop: isOpen ? "16px" : "0px",
-                    paddingLeft: "52px",
+                    marginTop: isOpen ? "14px" : "0px",
+                    paddingLeft: "40px",
                   }}
                 >
-                  <p className="text-[14px] leading-[1.75] text-white/60">
+                  <p className="text-[13px] leading-[1.75] text-white/50">
                     {faq.answer}
                   </p>
                 </div>
