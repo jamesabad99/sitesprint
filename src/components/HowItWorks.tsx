@@ -3,7 +3,8 @@ const steps = [
     num: "01",
     title: "Confirmación y reserva",
     description:
-      "Asegura tu cupo a través de WhatsApp. Confirmamos disponibilidad y definimos el alcance inicial del proyecto.",
+      "Asegura tu cupo a través de WhatsApp. Confirmamos disponibilidad y definimos el alcance inicial.",
+    accent: "from-blue-400 to-blue-500",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
         <path
@@ -20,7 +21,8 @@ const steps = [
     num: "02",
     title: "Definición estratégica",
     description:
-      "Recopilamos información clave de tu marca: identidad visual, propuesta de valor, referencias y objetivos comerciales.",
+      "Recopilamos tu identidad visual, propuesta de valor, referencias y objetivos comerciales.",
+    accent: "from-purple-400 to-purple-500",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
         <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
@@ -33,7 +35,8 @@ const steps = [
     num: "03",
     title: "Desarrollo y entrega",
     description:
-      "Diseñamos y desarrollamos tu sitio web con enfoque en conversión. Entrega en 48 horas + una ronda de ajustes estratégicos.",
+      "Diseñamos tu web con enfoque en conversión. Entrega en 48h + una ronda de ajustes.",
+    accent: "from-emerald-400 to-emerald-500",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
         <path
@@ -56,83 +59,92 @@ export default function HowItWorks() {
   return (
     <section
       id="como-funciona"
-      className="px-5 py-16 md:px-8 md:py-20"
-      style={{ background: "#ffffff" }}
+      className="relative overflow-hidden px-5 py-16 md:px-8 md:py-20"
+      style={{ background: "#050505" }}
     >
-      <div className="mx-auto max-w-[1200px]">
-        {/* ── Section divider star ── */}
-        <div className="mb-10 flex items-center justify-center md:mb-12">
-          <div className="h-px flex-1 bg-[#1a1a1a]/10" />
-          <div className="mx-4 flex h-8 w-8 items-center justify-center rounded-full border border-[#1a1a1a]/10">
-            <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3 text-[#1a1a1a]/30">
+      {/* Background dot grid */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.2]"
+        style={{
+          backgroundImage: "radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-[1200px]">
+        {/* ── Header ── */}
+        <div className="text-center">
+          <span className="inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.2em] text-white/30">
+            <svg viewBox="0 0 16 16" fill="currentColor" className="h-2.5 w-2.5 text-blue-400/50">
               <path d="M8 0l2.2 5.2L16 6l-4 3.8 1 5.7L8 12.5l-5 3 1-5.7L0 6l5.8-.8z" />
             </svg>
-          </div>
-          <div className="h-px flex-1 bg-[#1a1a1a]/10" />
+            Cómo funciona
+          </span>
+          <h2 className="mt-4 text-[1.8rem] font-bold leading-[1.1] tracking-tight text-white md:text-[2.8rem]">
+            Tres pasos para tu{" "}
+            <em className="not-italic bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">web profesional</em>
+          </h2>
+          <p className="mx-auto mt-4 max-w-[440px] text-[14px] leading-[1.7] text-white/35">
+            Un proceso optimizado. Enfoque estratégico, ejecución ágil. Sin reuniones eternas.
+          </p>
         </div>
 
-        {/* ── Header: 2 columns ── */}
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          {/* Left */}
-          <div>
-            <span className="text-[12px] font-medium uppercase tracking-[0.2em] text-[#1a1a1a]/40">
-              Cómo funciona
-            </span>
-            <h2 className="mt-3 text-[1.8rem] font-bold leading-[1.1] tracking-tight text-[#1a1a1a] md:text-[2.5rem]">
-              Proceso simple,{" "}
-              <em className="not-italic text-[#1a1a1a]/40">resultados reales</em>
-            </h2>
-            <p className="mt-4 max-w-[440px] text-[14px] leading-[1.7] text-[#1a1a1a]/45">
-              Un proceso optimizado en tres etapas. Enfoque estratégico,
-              ejecución ágil. Sin reuniones eternas.
-            </p>
-          </div>
-
-          {/* Right — pill button */}
-          <div className="flex-shrink-0">
-            <a
-              href={WA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[#1a1a1a] px-6 py-3 text-[13px] font-semibold text-white transition-all duration-200 hover:bg-[#333]"
-            >
-              Reservar cupo
-              <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
-                <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        {/* ── Cards grid ── */}
-        <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
+        {/* ── Cards ── */}
+        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
           {steps.map((step) => (
             <div
               key={step.title}
-              className="group flex flex-col rounded-2xl border border-[#1a1a1a]/8 p-6 transition-all duration-300 hover:border-[#1a1a1a]/15 hover:shadow-[0_4px_20px_rgba(0,0,0,0.04)] md:p-7"
-              style={{ background: "#fafaf9" }}
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.06] p-6 transition-all duration-300 hover:border-white/[0.12] md:p-7"
+              style={{ background: "rgba(255,255,255,0.02)" }}
             >
-              {/* Top row: icon + number */}
-              <div className="flex items-center justify-between">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1a1a1a] text-white">
+              {/* Gradient accent top line */}
+              <div className={`absolute left-0 top-0 h-[2px] w-full bg-gradient-to-r ${step.accent} opacity-40 transition-opacity duration-300 group-hover:opacity-80`} />
+
+              {/* Top row: icon + big number */}
+              <div className="flex items-start justify-between">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] text-white/70">
                   {step.icon}
                 </div>
-                <span className="text-[13px] font-semibold tabular-nums text-[#1a1a1a]/15">
+                <span className={`bg-gradient-to-b ${step.accent} bg-clip-text text-[2.5rem] font-bold leading-none text-transparent opacity-20`}>
                   {step.num}
                 </span>
               </div>
 
               {/* Content */}
-              <div className="mt-auto pt-14 md:pt-16">
-                <h3 className="text-[1.05rem] font-semibold text-[#1a1a1a] md:text-[1.1rem]">
+              <div className="mt-auto pt-10 md:pt-14">
+                <h3 className="text-[1rem] font-semibold text-white md:text-[1.05rem]">
                   {step.title}
                 </h3>
-                <p className="mt-2.5 text-[13px] leading-[1.7] text-[#1a1a1a]/45">
+                <p className="mt-2.5 text-[13px] leading-[1.7] text-white/35">
                   {step.description}
                 </p>
               </div>
+
+              {/* Hover glow */}
+              <div
+                className="pointer-events-none absolute -bottom-10 -right-10 h-[150px] w-[150px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                style={{
+                  background: `radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%)`,
+                  filter: "blur(30px)",
+                }}
+              />
             </div>
           ))}
+        </div>
+
+        {/* ── CTA ── */}
+        <div className="mt-10 text-center">
+          <a
+            href={WA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#1a1a1a] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(255,255,255,0.1)]"
+          >
+            Empezar ahora
+            <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
+              <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
