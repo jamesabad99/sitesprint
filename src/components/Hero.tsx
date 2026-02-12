@@ -21,11 +21,75 @@ const content = {
 export default function Hero() {
   return (
     <section
-      className="relative flex min-h-[100svh] w-full flex-col px-5 py-5 md:px-8 md:py-6"
+      className="relative flex min-h-[100svh] w-full flex-col overflow-hidden px-5 py-5 md:px-8 md:py-6"
       style={{ background: "#050505" }}
     >
-      {/* Navbar */}
-      <nav className="mx-auto flex w-full max-w-[1200px] items-center justify-between">
+      {/* ── Background layers ── */}
+
+      {/* Dot grid pattern */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.35]"
+        style={{
+          backgroundImage: "radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
+
+      {/* Gradient orbs */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-[35%] -translate-x-1/2 -translate-y-1/2"
+        style={{
+          width: "700px",
+          height: "500px",
+          background: "radial-gradient(ellipse, rgba(59,130,246,0.08) 0%, transparent 65%)",
+          filter: "blur(60px)",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute -left-[10%] top-[20%]"
+        style={{
+          width: "400px",
+          height: "400px",
+          background: "radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 70%)",
+          filter: "blur(80px)",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute -right-[5%] top-[60%]"
+        style={{
+          width: "350px",
+          height: "350px",
+          background: "radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 70%)",
+          filter: "blur(60px)",
+        }}
+      />
+
+      {/* Floating decorative stars */}
+      <svg viewBox="0 0 16 16" fill="currentColor" className="pointer-events-none absolute left-[12%] top-[22%] h-2.5 w-2.5 text-blue-400/20">
+        <path d="M8 0l2.2 5.2L16 6l-4 3.8 1 5.7L8 12.5l-5 3 1-5.7L0 6l5.8-.8z" />
+      </svg>
+      <svg viewBox="0 0 16 16" fill="currentColor" className="pointer-events-none absolute right-[15%] top-[18%] h-3 w-3 text-blue-400/15">
+        <path d="M8 0l2.2 5.2L16 6l-4 3.8 1 5.7L8 12.5l-5 3 1-5.7L0 6l5.8-.8z" />
+      </svg>
+      <svg viewBox="0 0 16 16" fill="currentColor" className="pointer-events-none absolute left-[8%] top-[65%] h-2 w-2 text-purple-400/20">
+        <path d="M8 0l2.2 5.2L16 6l-4 3.8 1 5.7L8 12.5l-5 3 1-5.7L0 6l5.8-.8z" />
+      </svg>
+      <svg viewBox="0 0 16 16" fill="currentColor" className="pointer-events-none absolute right-[10%] top-[70%] h-2.5 w-2.5 text-blue-300/15">
+        <path d="M8 0l2.2 5.2L16 6l-4 3.8 1 5.7L8 12.5l-5 3 1-5.7L0 6l5.8-.8z" />
+      </svg>
+
+      {/* Gradient lines */}
+      <div
+        className="pointer-events-none absolute left-0 top-[30%] h-px w-full opacity-20"
+        style={{ background: "linear-gradient(to right, transparent, rgba(59,130,246,0.3), transparent)" }}
+      />
+      <div
+        className="pointer-events-none absolute left-0 top-[70%] h-px w-full opacity-10"
+        style={{ background: "linear-gradient(to right, transparent, rgba(139,92,246,0.3), transparent)" }}
+      />
+
+      {/* ── Navbar ── */}
+      <nav className="relative z-20 mx-auto flex w-full max-w-[1200px] items-center justify-between">
         <span className="text-[15px] font-bold tracking-tight text-white">
           {content.brand}
         </span>
@@ -39,17 +103,17 @@ export default function Hero() {
         </a>
       </nav>
 
-      {/* Hero body */}
-      <div className="flex flex-1 flex-col items-center justify-center px-4 text-center">
+      {/* ── Hero body ── */}
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 text-center">
         {/* Badge with star */}
-        <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-[11px] font-medium tracking-[0.08em] text-white/50">
+        <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-[11px] font-medium tracking-[0.08em] text-white/50 backdrop-blur-sm">
           <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3 text-blue-400">
             <path d="M8 0l2.2 5.2L16 6l-4 3.8 1 5.7L8 12.5l-5 3 1-5.7L0 6l5.8-.8z" />
           </svg>
           {content.badge}
         </span>
 
-        {/* Heading with italic emphasis */}
+        {/* Heading with gradient emphasis */}
         <h1 className="mx-auto mt-6 max-w-xs text-[2.4rem] font-bold leading-[1.06] tracking-tight text-white sm:max-w-lg md:max-w-3xl md:text-[4.5rem] md:leading-[1.04]">
           Tu web profesional
           <br className="hidden sm:block" />
@@ -104,15 +168,57 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Decorative gradient orb */}
+      {/* ── Floating browser mockups ── */}
+      <div className="pointer-events-none absolute bottom-0 left-1/2 z-[5] hidden w-full max-w-[1100px] -translate-x-1/2 md:block">
+        <div className="relative h-[160px]">
+          {/* Left card */}
+          <div
+            className="absolute bottom-0 left-[5%] w-[280px] overflow-hidden rounded-t-xl border border-b-0 border-white/[0.06]"
+            style={{ transform: "rotate(-6deg) translateY(40px)" }}
+          >
+            <div className="flex h-[22px] items-center gap-[4px] bg-white/[0.04] px-3">
+              <span className="h-[6px] w-[6px] rounded-full bg-[#ff5f57]/60" />
+              <span className="h-[6px] w-[6px] rounded-full bg-[#ffbd2e]/60" />
+              <span className="h-[6px] w-[6px] rounded-full bg-[#27c93f]/60" />
+              <span className="ml-2 text-[9px] text-white/20">Advisora</span>
+            </div>
+            <div className="h-[120px] bg-gradient-to-br from-[#0a1628] to-[#162240]" />
+          </div>
+
+          {/* Center card */}
+          <div
+            className="absolute bottom-0 left-1/2 w-[320px] -translate-x-1/2 overflow-hidden rounded-t-xl border border-b-0 border-white/[0.08]"
+            style={{ transform: "translateX(-50%) translateY(20px)" }}
+          >
+            <div className="flex h-[24px] items-center gap-[4px] bg-white/[0.05] px-3">
+              <span className="h-[7px] w-[7px] rounded-full bg-[#ff5f57]/70" />
+              <span className="h-[7px] w-[7px] rounded-full bg-[#ffbd2e]/70" />
+              <span className="h-[7px] w-[7px] rounded-full bg-[#27c93f]/70" />
+              <span className="ml-2 text-[10px] text-white/25">Pipely</span>
+            </div>
+            <div className="h-[130px] bg-gradient-to-br from-[#0f172a] to-[#1e293b]" />
+          </div>
+
+          {/* Right card */}
+          <div
+            className="absolute bottom-0 right-[5%] w-[280px] overflow-hidden rounded-t-xl border border-b-0 border-white/[0.06]"
+            style={{ transform: "rotate(6deg) translateY(40px)" }}
+          >
+            <div className="flex h-[22px] items-center gap-[4px] bg-white/[0.04] px-3">
+              <span className="h-[6px] w-[6px] rounded-full bg-[#ff5f57]/60" />
+              <span className="h-[6px] w-[6px] rounded-full bg-[#ffbd2e]/60" />
+              <span className="h-[6px] w-[6px] rounded-full bg-[#27c93f]/60" />
+              <span className="ml-2 text-[9px] text-white/20">Comira</span>
+            </div>
+            <div className="h-[120px] bg-gradient-to-br from-[#0c1220] to-[#1a2744]" />
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom fade */}
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-        style={{
-          width: "600px",
-          height: "600px",
-          background: "radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%)",
-          filter: "blur(60px)",
-        }}
+        className="pointer-events-none absolute bottom-0 left-0 z-[6] h-16 w-full"
+        style={{ background: "linear-gradient(to top, #050505, transparent)" }}
       />
     </section>
   );
