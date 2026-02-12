@@ -137,12 +137,11 @@ export default function ContactForm() {
             {/* Message */}
             <div>
               <label htmlFor="message" className="mb-1.5 block text-[12px] font-medium uppercase tracking-[0.15em] text-white/40">
-                Mensaje
+                Mensaje <span className="normal-case tracking-normal text-white/20">(opcional)</span>
               </label>
               <textarea
                 id="message"
                 name="message"
-                required
                 rows={4}
                 placeholder="Cuéntanos sobre tu negocio y qué necesitas..."
                 className="w-full resize-none rounded-xl px-4 py-3 text-[14px] text-white placeholder-white/25 outline-none transition-all duration-200 focus:border-blue-400/40 focus:ring-1 focus:ring-blue-400/20"
