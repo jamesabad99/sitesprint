@@ -2,7 +2,7 @@
 
 import Countdown from "./Countdown";
 
-const WA_URL = `https://wa.me/51952648191?text=${encodeURIComponent(
+const WA_URL = `https://api.whatsapp.com/send?phone=51952648191&text=${encodeURIComponent(
   "Hola 👋\nQuiero aprovechar el precio de lanzamiento y reservar mi cupo para la web profesional en 48 horas.\n\nMi negocio es:\nActualmente vendo por: (Instagram / WhatsApp / tienda física / otro)\n\n¿Cuáles son los siguientes pasos para empezar?"
 )}`;
 
