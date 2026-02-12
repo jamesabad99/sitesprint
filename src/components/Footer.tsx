@@ -14,7 +14,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <span className="text-[17px] font-bold tracking-tight text-white">
-              SiteSprint
+              Weblia
             </span>
             <p className="mt-3 max-w-[200px] text-[13px] leading-[1.6] text-white/45">
               Tu web profesional en 48 horas. Diseñada para convertir.
@@ -107,7 +107,7 @@ export default function Footer() {
             marginBottom: "-0.18em",
           }}
         >
-          SiteSprint
+          Weblia
         </div>
       </div>
     </footer>
