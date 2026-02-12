@@ -3,6 +3,7 @@ import VideoCarousel from "@/components/VideoCarousel";
 import HowItWorks from "@/components/HowItWorks";
 import IsForYou from "@/components/IsForYou";
 import FinalCTA from "@/components/FinalCTA";
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 
@@ -22,6 +23,7 @@ export default function Home() {
         <HowItWorks />
         <IsForYou />
         <FinalCTA />
+        <ContactForm />
         <Footer />
       </main>
     </Preloader>
