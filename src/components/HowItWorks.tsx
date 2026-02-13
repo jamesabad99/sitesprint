@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 const WA_URL = `https://api.whatsapp.com/send?phone=51952648191&text=${encodeURIComponent(
   "Hola 👋\nQuiero aprovechar el precio de lanzamiento y reservar mi cupo para la web profesional en 48 horas.\n\nMi negocio es:\nActualmente vendo por: (Instagram / WhatsApp / tienda física / otro)\n\n¿Cuáles son los siguientes pasos para empezar?"
 )}`;
@@ -10,7 +14,8 @@ const steps = [
       "Escríbenos por WhatsApp, confirmamos disponibilidad y definimos el alcance de tu proyecto.",
     detail: "5 min",
     gradient: "from-blue-500 to-cyan-400",
-    glowColor: "rgba(59,130,246,0.15)",
+    glowColor: "rgba(59,130,246,0.12)",
+    borderColor: "rgba(59,130,246,0.15)",
   },
   {
     num: "02",
@@ -19,7 +24,8 @@ const steps = [
       "Recopilamos tu identidad visual, propuesta de valor, referencias y objetivos comerciales.",
     detail: "1 hora",
     gradient: "from-purple-500 to-blue-400",
-    glowColor: "rgba(139,92,246,0.15)",
+    glowColor: "rgba(139,92,246,0.12)",
+    borderColor: "rgba(139,92,246,0.15)",
   },
   {
     num: "03",
@@ -28,11 +34,42 @@ const steps = [
       "Diseñamos y desarrollamos tu web con enfoque en conversión. Incluye una ronda de ajustes.",
     detail: "48 hrs",
     gradient: "from-emerald-400 to-cyan-400",
-    glowColor: "rgba(52,211,153,0.15)",
+    glowColor: "rgba(52,211,153,0.12)",
+    borderColor: "rgba(52,211,153,0.15)",
   },
 ];
 
 export default function HowItWorks() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState<boolean[]>([false, false, false]);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Stagger each card: 0ms, 300ms, 600ms
+          steps.forEach((_, i) => {
+            setTimeout(() => {
+              setVisible((prev) => {
+                const next = [...prev];
+                next[i] = true;
+                return next;
+              });
+            }, i * 350);
+          });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="como-funciona"
@@ -44,14 +81,14 @@ export default function HowItWorks() {
         className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
         style={{
           width: "800px",
-          height: "600px",
+          height: "800px",
           background:
             "radial-gradient(ellipse, rgba(59,130,246,0.04) 0%, transparent 70%)",
           filter: "blur(80px)",
         }}
       />
 
-      <div className="relative mx-auto max-w-[1100px]">
+      <div className="relative mx-auto max-w-[620px]">
         {/* ── Header ── */}
         <div className="text-center">
           <span className="inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.2em] text-white/30">
@@ -73,104 +110,98 @@ export default function HowItWorks() {
           </h2>
         </div>
 
-        {/* ── Cards grid ── */}
-        <div className="mt-14 grid gap-4 md:mt-18 md:grid-cols-3 md:gap-5">
-          {steps.map((step) => (
+        {/* ── Stacked cards ── */}
+        <div ref={sectionRef} className="relative mt-14 flex flex-col gap-5 md:mt-18">
+          {steps.map((step, i) => (
             <div
               key={step.num}
-              className="group relative overflow-hidden rounded-3xl p-[1px]"
+              className="transition-all duration-700 ease-out"
+              style={{
+                opacity: visible[i] ? 1 : 0,
+                transform: visible[i]
+                  ? "translateY(0) scale(1)"
+                  : "translateY(60px) scale(0.95)",
+                transitionDelay: visible[i] ? "0ms" : "0ms",
+              }}
             >
-              {/* Animated gradient border on hover */}
               <div
-                className="absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                style={{
-                  background: `conic-gradient(from 180deg, transparent, ${step.glowColor}, transparent 40%)`,
-                }}
-              />
-
-              {/* Card body */}
-              <div
-                className="relative flex h-full flex-col rounded-3xl px-7 pb-7 pt-8 md:px-6 md:pb-8 md:pt-10"
-                style={{
-                  background:
-                    "linear-gradient(165deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.015) 100%)",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                }}
+                className="group relative overflow-hidden rounded-2xl p-[1px]"
               >
-                {/* Big gradient number — watermark */}
-                <span
-                  className={`pointer-events-none absolute -right-3 -top-6 select-none bg-gradient-to-br ${step.gradient} bg-clip-text text-[8rem] font-black leading-none text-transparent opacity-[0.07] md:-right-2 md:-top-4 md:text-[9rem]`}
+                {/* Gradient border glow on hover */}
+                <div
+                  className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{
+                    background: `conic-gradient(from 180deg, transparent, ${step.glowColor}, transparent 40%)`,
+                  }}
+                />
+
+                {/* Card */}
+                <div
+                  className="relative flex items-start gap-5 rounded-2xl px-6 py-6 md:gap-7 md:px-8 md:py-7"
+                  style={{
+                    background:
+                      "linear-gradient(165deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
+                    border: `1px solid ${step.borderColor}`,
+                  }}
                 >
-                  {step.num}
-                </span>
-
-                {/* Glow orb behind number */}
-                <div
-                  className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
-                  style={{ background: step.glowColor }}
-                />
-
-                {/* Time pill */}
-                <div className="mb-5 flex items-center gap-3">
+                  {/* Big gradient number — watermark */}
                   <span
-                    className={`inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r ${step.gradient} px-3 py-1`}
+                    className={`pointer-events-none absolute -right-2 -top-5 select-none bg-gradient-to-br ${step.gradient} bg-clip-text text-[7rem] font-black leading-none text-transparent opacity-[0.06] md:text-[8rem]`}
                   >
-                    <span className="text-[10px] font-bold tracking-wider text-white">
-                      {step.detail}
-                    </span>
+                    {step.num}
                   </span>
+
+                  {/* Glow orb */}
                   <div
-                    className="h-px flex-1"
-                    style={{
-                      background:
-                        "linear-gradient(to right, rgba(255,255,255,0.1), transparent)",
-                    }}
+                    className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+                    style={{ background: step.glowColor }}
                   />
+
+                  {/* Left: Number + gradient accent */}
+                  <div className="flex flex-col items-center gap-2 pt-1">
+                    <div
+                      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${step.gradient} text-[15px] font-bold text-white shadow-lg`}
+                      style={{
+                        boxShadow: `0 8px 24px ${step.glowColor}`,
+                      }}
+                    >
+                      {step.num}
+                    </div>
+                    {/* Connecting line (not on last card) */}
+                    {i < steps.length - 1 && (
+                      <div
+                        className="hidden h-8 w-px md:block"
+                        style={{
+                          background: `linear-gradient(to bottom, ${step.borderColor}, transparent)`,
+                        }}
+                      />
+                    )}
+                  </div>
+
+                  {/* Right: Content */}
+                  <div className="flex-1 pt-0.5">
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-[1.1rem] font-bold text-white md:text-[1.2rem]">
+                        {step.title}
+                      </h3>
+                      <span
+                        className={`inline-flex rounded-full bg-gradient-to-r ${step.gradient} px-2.5 py-0.5 text-[10px] font-bold tracking-wide text-white`}
+                      >
+                        {step.detail}
+                      </span>
+                    </div>
+                    <p className="mt-2.5 max-w-[380px] text-[13.5px] leading-[1.75] text-white/40">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-
-                {/* Title */}
-                <h3 className="text-[1.2rem] font-bold leading-tight text-white md:text-[1.3rem]">
-                  {step.title}
-                </h3>
-
-                {/* Description */}
-                <p className="mt-3 flex-1 text-[13.5px] leading-[1.75] text-white/40">
-                  {step.description}
-                </p>
-
-                {/* Bottom accent line */}
-                <div
-                  className={`mt-6 h-[2px] w-12 rounded-full bg-gradient-to-r ${step.gradient} opacity-30 transition-all duration-500 group-hover:w-20 group-hover:opacity-60`}
-                />
               </div>
             </div>
           ))}
         </div>
 
-        {/* ── Connecting arrows between cards — desktop only ── */}
-        <div className="pointer-events-none absolute left-0 right-0 top-[58%] hidden items-center justify-center md:flex">
-          <div className="flex w-full max-w-[1100px] items-center justify-around px-[18%]">
-            {[0, 1].map((i) => (
-              <svg
-                key={i}
-                viewBox="0 0 40 16"
-                fill="none"
-                className="h-3 w-8 text-white/10"
-              >
-                <path
-                  d="M0 8h36m0 0l-6-5.5m6 5.5l-6 5.5"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            ))}
-          </div>
-        </div>
-
         {/* ── CTA ── */}
-        <div className="mt-14 text-center">
+        <div className="mt-12 text-center">
           <a
             href={WA_URL}
             target="_blank"
