@@ -94,15 +94,24 @@ export default function Hero() {
           {content.brand}
         </span>
         <div className="hidden items-center gap-6 md:flex">
-          <a href="#portafolio" className="text-[13px] text-white/50 transition-colors hover:text-white">
-            Portafolio
-          </a>
-          <a href="#como-funciona" className="text-[13px] text-white/50 transition-colors hover:text-white">
-            Cómo funciona
-          </a>
-          <a href="#contacto" className="text-[13px] text-white/50 transition-colors hover:text-white">
-            Contacto
-          </a>
+          {[
+            { href: "#portafolio", label: "Portafolio" },
+            { href: "#como-funciona", label: "Cómo funciona" },
+            { href: "#contacto", label: "Contacto" },
+          ].map((link) => (
+            <button
+              key={link.href}
+              onClick={() => {
+                const el = document.querySelector(link.href);
+                if (!el) return;
+                const top = el.getBoundingClientRect().top + window.scrollY - 80;
+                window.scrollTo({ top, behavior: "smooth" });
+              }}
+              className="text-[13px] text-white/50 transition-colors hover:text-white"
+            >
+              {link.label}
+            </button>
+          ))}
         </div>
         <a
           href={WA_URL}
