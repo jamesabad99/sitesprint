@@ -6,65 +6,26 @@ const WA_URL = `https://api.whatsapp.com/send?phone=51952648191&text=${encodeURI
 
 const steps = [
   {
+    num: "01",
     title: "Conversamos",
     description:
       "Nos escribes por WhatsApp, entendemos tu negocio y definimos juntos qué necesita tu web para vender.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="h-full w-full">
-        <rect x="4" y="8" width="40" height="28" rx="6" stroke="url(#g1)" strokeWidth="2" />
-        <path d="M12 32l-4 6v-6" stroke="url(#g1)" strokeWidth="2" strokeLinejoin="round" />
-        <circle cx="18" cy="22" r="2" fill="url(#g1)" />
-        <circle cx="24" cy="22" r="2" fill="url(#g1)" />
-        <circle cx="30" cy="22" r="2" fill="url(#g1)" />
-        <defs>
-          <linearGradient id="g1" x1="4" y1="8" x2="44" y2="36">
-            <stop stopColor="#3b82f6" />
-            <stop offset="1" stopColor="#06b6d4" />
-          </linearGradient>
-        </defs>
-      </svg>
-    ),
     color1: "#3b82f6",
     color2: "#06b6d4",
   },
   {
+    num: "02",
     title: "Diseñamos",
     description:
       "Creamos tu web desde cero con tu identidad visual, optimizada para convertir visitantes en clientes.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="h-full w-full">
-        <rect x="6" y="6" width="36" height="36" rx="4" stroke="url(#g2)" strokeWidth="2" />
-        <rect x="12" y="12" width="10" height="10" rx="2" fill="url(#g2)" opacity="0.3" />
-        <rect x="12" y="26" width="24" height="3" rx="1.5" fill="url(#g2)" opacity="0.4" />
-        <rect x="12" y="33" width="16" height="3" rx="1.5" fill="url(#g2)" opacity="0.2" />
-        <circle cx="34" cy="16" r="5" stroke="url(#g2)" strokeWidth="2" />
-        <defs>
-          <linearGradient id="g2" x1="6" y1="6" x2="42" y2="42">
-            <stop stopColor="#8b5cf6" />
-            <stop offset="1" stopColor="#ec4899" />
-          </linearGradient>
-        </defs>
-      </svg>
-    ),
     color1: "#8b5cf6",
     color2: "#ec4899",
   },
   {
+    num: "03",
     title: "Lanzamos",
     description:
       "Entregamos tu web lista para vender. Incluye una ronda de ajustes para que quede perfecta.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="h-full w-full">
-        <path d="M24 4l4 12h12l-10 7 4 12-10-7-10 7 4-12L8 16h12z" stroke="url(#g3)" strokeWidth="2" strokeLinejoin="round" />
-        <circle cx="24" cy="24" r="6" fill="url(#g3)" opacity="0.2" />
-        <defs>
-          <linearGradient id="g3" x1="8" y1="4" x2="40" y2="44">
-            <stop stopColor="#10b981" />
-            <stop offset="1" stopColor="#06b6d4" />
-          </linearGradient>
-        </defs>
-      </svg>
-    ),
     color1: "#10b981",
     color2: "#06b6d4",
   },
@@ -128,6 +89,20 @@ export default function HowItWorks() {
                   background: `radial-gradient(circle, ${step.color2}, transparent 70%)`,
                 }}
               />
+
+              {/* Big gradient number — background watermark */}
+              <div
+                className="pointer-events-none absolute -right-4 -top-8 select-none text-[10rem] font-black leading-none md:-right-2 md:-top-6 md:text-[12rem]"
+                style={{
+                  backgroundImage: `linear-gradient(135deg, ${step.color1}, ${step.color2})`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  opacity: 0.06,
+                }}
+              >
+                {step.num}
+              </div>
 
               {/* Content */}
               <div className="relative px-8 py-10 md:px-12 md:py-14">
