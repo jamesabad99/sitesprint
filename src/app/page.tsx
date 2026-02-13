@@ -12,6 +12,8 @@ const casos = [
   { src: "/videos/caso2.mp4", title: "Pipely" },
   { src: "/videos/caso3.mp4", title: "Comira" },
   { src: "/videos/caso4.mp4", title: "Finantu" },
+  { src: "/videos/caso5.mp4", title: "Currentis" },
+  { src: "/videos/caso6.mp4", title: "Luxe Studio" },
 ];
 
 export default function Home() {
