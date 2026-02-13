@@ -189,7 +189,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   };
 
   return (
-    <section className="relative py-12 md:py-16" style={{ background: "#050505" }}>
+    <section id="portafolio" className="relative py-12 md:py-16" style={{ background: "#050505" }}>
       {/* Header */}
       <div className="relative mx-auto max-w-[1100px] px-5 text-center md:px-8">
         <span className="text-[12px] font-medium uppercase tracking-[0.2em] text-white/30">

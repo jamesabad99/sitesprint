@@ -32,6 +32,7 @@ export default function ContactForm() {
 
   return (
     <section
+      id="contacto"
       className="px-5 py-16 md:px-8 md:py-20"
       style={{ background: "#050505" }}
     >

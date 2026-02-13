@@ -93,11 +93,30 @@ export default function Hero() {
         <span className="text-[15px] font-bold tracking-tight text-white">
           {content.brand}
         </span>
+        <div className="hidden items-center gap-6 md:flex">
+          <a href="#portafolio" className="text-[13px] text-white/50 transition-colors hover:text-white">
+            Portafolio
+          </a>
+          <a href="#como-funciona" className="text-[13px] text-white/50 transition-colors hover:text-white">
+            Cómo funciona
+          </a>
+          <a href="#contacto" className="text-[13px] text-white/50 transition-colors hover:text-white">
+            Contacto
+          </a>
+          <a
+            href={WA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-white px-5 py-2 text-xs font-medium text-[#1a1a1a] transition-colors hover:bg-white/90"
+          >
+            {content.navCta}
+          </a>
+        </div>
         <a
           href={WA_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full bg-white px-5 py-2 text-xs font-medium text-[#1a1a1a] transition-colors hover:bg-white/90"
+          className="rounded-full bg-white px-5 py-2 text-xs font-medium text-[#1a1a1a] transition-colors hover:bg-white/90 md:hidden"
         >
           {content.navCta}
         </a>
