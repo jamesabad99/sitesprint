@@ -7,27 +7,33 @@ const WA_URL = `https://api.whatsapp.com/send?phone=51952648191&text=${encodeURI
 const steps = [
   {
     num: "01",
-    title: "Conversamos",
+    title: "Reserva tu cupo",
     description:
-      "Nos escribes por WhatsApp, entendemos tu negocio y definimos juntos qué necesita tu web para vender.",
-    color1: "#3b82f6",
-    color2: "#06b6d4",
+      "Escríbenos por WhatsApp, confirmamos disponibilidad y definimos el alcance de tu proyecto.",
+    gradient: "linear-gradient(135deg, #3b82f6, #06b6d4)",
+    bgGlow: "radial-gradient(circle at 30% 50%, rgba(59,130,246,0.12) 0%, transparent 60%)",
+    borderColor: "rgba(59,130,246,0.2)",
+    accentColor: "#3b82f6",
   },
   {
     num: "02",
-    title: "Diseñamos",
+    title: "Definimos tu marca",
     description:
-      "Creamos tu web desde cero con tu identidad visual, optimizada para convertir visitantes en clientes.",
-    color1: "#8b5cf6",
-    color2: "#ec4899",
+      "Recopilamos tu identidad visual, propuesta de valor, referencias y objetivos comerciales.",
+    gradient: "linear-gradient(135deg, #8b5cf6, #6366f1)",
+    bgGlow: "radial-gradient(circle at 30% 50%, rgba(139,92,246,0.12) 0%, transparent 60%)",
+    borderColor: "rgba(139,92,246,0.2)",
+    accentColor: "#8b5cf6",
   },
   {
     num: "03",
-    title: "Lanzamos",
+    title: "Entregamos tu web",
     description:
-      "Entregamos tu web lista para vender. Incluye una ronda de ajustes para que quede perfecta.",
-    color1: "#10b981",
-    color2: "#06b6d4",
+      "Diseñamos y desarrollamos tu web con enfoque en conversión. Incluye una ronda de ajustes.",
+    gradient: "linear-gradient(135deg, #10b981, #06b6d4)",
+    bgGlow: "radial-gradient(circle at 30% 50%, rgba(16,185,129,0.12) 0%, transparent 60%)",
+    borderColor: "rgba(16,185,129,0.2)",
+    accentColor: "#10b981",
   },
 ];
 
@@ -39,7 +45,7 @@ export default function HowItWorks() {
       style={{ background: "#050505" }}
     >
       {/* ── Header ── */}
-      <div className="pb-12 pt-20 text-center md:pb-16 md:pt-28">
+      <div className="pb-10 pt-20 text-center md:pb-14 md:pt-28">
         <span className="inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.2em] text-white/30">
           <svg
             viewBox="0 0 16 16"
@@ -60,41 +66,32 @@ export default function HowItWorks() {
       </div>
 
       {/* ── Sticky card stack ── */}
-      <div className="relative mx-auto max-w-[780px]">
+      <div className="relative mx-auto max-w-[700px]">
         {steps.map((step, i) => (
           <div
-            key={step.title}
-            className="sticky pb-6"
-            style={{ top: `${70 + i * 24}px`, zIndex: (i + 1) * 10 }}
+            key={step.num}
+            className="sticky pb-5"
+            style={{ top: `${80 + i * 20}px`, zIndex: (i + 1) * 10 }}
           >
             <div
-              className="group relative overflow-hidden rounded-[28px] transition-shadow duration-500"
+              className="group relative overflow-hidden rounded-3xl transition-shadow duration-500 hover:shadow-2xl"
               style={{
-                background: "#0c0c0c",
-                border: `1px solid rgba(255,255,255,0.06)`,
-                boxShadow: `0 24px 80px rgba(0,0,0,0.6)`,
+                background: "#0a0a0a",
+                border: `1px solid ${step.borderColor}`,
+                boxShadow: `0 20px 60px rgba(0,0,0,0.5), 0 0 0 0.5px ${step.borderColor}`,
               }}
             >
-              {/* Ambient glow — top right */}
+              {/* Background glow */}
               <div
-                className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full opacity-20 blur-3xl transition-opacity duration-700 group-hover:opacity-40"
-                style={{
-                  background: `radial-gradient(circle, ${step.color1}, transparent 70%)`,
-                }}
-              />
-              {/* Ambient glow — bottom left */}
-              <div
-                className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full opacity-10 blur-3xl transition-opacity duration-700 group-hover:opacity-25"
-                style={{
-                  background: `radial-gradient(circle, ${step.color2}, transparent 70%)`,
-                }}
+                className="pointer-events-none absolute inset-0"
+                style={{ background: step.bgGlow }}
               />
 
-              {/* Big gradient number — background watermark */}
+              {/* Big gradient number — watermark */}
               <div
                 className="pointer-events-none absolute -right-4 -top-8 select-none text-[10rem] font-black leading-none md:-right-2 md:-top-6 md:text-[12rem]"
                 style={{
-                  backgroundImage: `linear-gradient(135deg, ${step.color1}, ${step.color2})`,
+                  backgroundImage: step.gradient,
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -105,30 +102,34 @@ export default function HowItWorks() {
               </div>
 
               {/* Content */}
-              <div className="relative px-8 py-10 md:px-12 md:py-14">
-                <h3 className="text-[1.5rem] font-bold tracking-tight text-white md:text-[1.75rem]">
+              <div className="relative px-8 py-10 md:px-10 md:py-12">
+                {/* Number badge */}
+                <div
+                  className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl text-[17px] font-bold text-white"
+                  style={{
+                    background: step.gradient,
+                    boxShadow: `0 8px 30px ${step.borderColor}`,
+                  }}
+                >
+                  {step.num}
+                </div>
+
+                {/* Title */}
+                <h3 className="text-[1.4rem] font-bold leading-tight text-white md:text-[1.6rem]">
                   {step.title}
                 </h3>
-                <p className="mt-4 max-w-[480px] text-[15px] leading-[1.8] text-white/40 md:text-[15.5px]">
+
+                {/* Description */}
+                <p className="mt-4 max-w-[440px] text-[15px] leading-[1.8] text-white/45">
                   {step.description}
                 </p>
 
-                {/* Decorative gradient ring — desktop only */}
+                {/* Bottom accent line */}
                 <div
-                  className="pointer-events-none absolute right-10 top-1/2 hidden h-32 w-32 -translate-y-1/2 rounded-full opacity-[0.05] md:block"
-                  style={{
-                    background: `conic-gradient(from 0deg, ${step.color1}, ${step.color2}, ${step.color1})`,
-                  }}
+                  className="mt-8 h-[3px] w-14 rounded-full transition-all duration-500 group-hover:w-24"
+                  style={{ background: step.gradient }}
                 />
               </div>
-
-              {/* Bottom gradient accent */}
-              <div
-                className="h-[2px] w-full opacity-20 transition-opacity duration-500 group-hover:opacity-50"
-                style={{
-                  background: `linear-gradient(to right, transparent, ${step.color1}, ${step.color2}, transparent)`,
-                }}
-              />
             </div>
           </div>
         ))}
