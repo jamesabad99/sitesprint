@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="p4g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="#050505"/>
+  <pattern id="dots4" width="40" height="40" patternUnits="userSpaceOnUse">
+    <circle cx="20" cy="20" r="0.8" fill="white" opacity="0.1"/>
+  </pattern>
+  <rect width="1080" height="1080" fill="url(#dots4)"/>
+  <!-- Glow -->
+  <circle cx="540" cy="540" r="300" fill="#8b5cf6" opacity="0.05"/>
+  <!-- Main text -->
+  <text x="540" y="380" text-anchor="middle" font-family="system-ui,sans-serif" font-size="80" font-weight="900" fill="white" letter-spacing="-3">Tu web en</text>
+  <text x="540" y="490" text-anchor="middle" font-family="system-ui,sans-serif" font-size="120" font-weight="900" fill="url(#p4g)" letter-spacing="-4">48 horas</text>
+  <!-- Steps -->
+  <text x="540" y="620" text-anchor="middle" font-family="system-ui,sans-serif" font-size="26" font-weight="500" fill="white" opacity="0.35">Conversamos → Diseñamos → Lanzamos</text>
+  <!-- Divider -->
+  <rect x="460" y="670" width="160" height="2" rx="1" fill="url(#p4g)" opacity="0.4"/>
+  <!-- Subtext -->
+  <text x="540" y="730" text-anchor="middle" font-family="system-ui,sans-serif" font-size="24" font-weight="400" fill="white" opacity="0.3">Mira cómo funciona ↓</text>
+  <!-- Brand -->
+  <text x="540" y="1020" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" font-weight="600" fill="white" opacity="0.2" letter-spacing="6">SITESPRINT</text>
+</svg>

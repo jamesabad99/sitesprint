@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="p8g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="#050505"/>
+  <!-- Code-like decorative lines -->
+  <text x="100" y="300" font-family="monospace" font-size="16" fill="white" opacity="0.06">&lt;div className="hero"&gt;</text>
+  <text x="130" y="330" font-family="monospace" font-size="16" fill="white" opacity="0.05">&lt;h1&gt;Tu web profesional&lt;/h1&gt;</text>
+  <text x="130" y="360" font-family="monospace" font-size="16" fill="white" opacity="0.04">&lt;p&gt;Lista en 48 horas&lt;/p&gt;</text>
+  <text x="100" y="390" font-family="monospace" font-size="16" fill="white" opacity="0.03">&lt;/div&gt;</text>
+  <text x="700" y="700" font-family="monospace" font-size="16" fill="white" opacity="0.05">background: #050505;</text>
+  <text x="700" y="730" font-family="monospace" font-size="16" fill="white" opacity="0.04">color: white;</text>
+  <text x="700" y="760" font-family="monospace" font-size="16" fill="white" opacity="0.03">font-weight: 800;</text>
+  <!-- Glow -->
+  <circle cx="540" cy="500" r="200" fill="#a855f7" opacity="0.05"/>
+  <!-- Main text -->
+  <text x="540" y="470" text-anchor="middle" font-family="system-ui,sans-serif" font-size="64" font-weight="800" fill="white">Behind the</text>
+  <text x="540" y="560" text-anchor="middle" font-family="system-ui,sans-serif" font-size="64" font-weight="800" fill="url(#p8g)">scenes</text>
+  <!-- Sub -->
+  <text x="540" y="640" text-anchor="middle" font-family="system-ui,sans-serif" font-size="26" font-weight="400" fill="white" opacity="0.35">Así creamos tu web desde cero</text>
+  <!-- Brand -->
+  <text x="540" y="1020" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" font-weight="600" fill="white" opacity="0.2" letter-spacing="6">SITESPRINT</text>
+</svg>

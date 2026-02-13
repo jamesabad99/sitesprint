@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="p9g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="p9bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#p9bg)"/>
+  <!-- Glow -->
+  <circle cx="540" cy="480" r="300" fill="#3b82f6" opacity="0.06"/>
+  <!-- Badge -->
+  <rect x="390" y="180" width="300" height="44" rx="22" fill="url(#p9g)" opacity="0.15" stroke="url(#p9g)" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="540" y="210" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" font-weight="600" fill="url(#p9g)">PRECIO DE LANZAMIENTO</text>
+  <!-- Price -->
+  <text x="540" y="430" text-anchor="middle" font-family="system-ui,sans-serif" font-size="180" font-weight="900" fill="white" letter-spacing="-8">$250</text>
+  <!-- Old price -->
+  <text x="540" y="500" text-anchor="middle" font-family="system-ui,sans-serif" font-size="32" font-weight="400" fill="white" opacity="0.25"><tspan text-decoration="line-through">$300</tspan></text>
+  <!-- Divider -->
+  <rect x="440" y="540" width="200" height="2" rx="1" fill="url(#p9g)" opacity="0.4"/>
+  <!-- What's included -->
+  <text x="540" y="610" text-anchor="middle" font-family="system-ui,sans-serif" font-size="24" font-weight="500" fill="white" opacity="0.5">Web profesional en 48 horas</text>
+  <text x="540" y="660" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="400" fill="white" opacity="0.3">Diseño estratégico · Optimizada para móvil</text>
+  <text x="540" y="700" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="400" fill="white" opacity="0.3">1 ronda de cambios incluida</text>
+  <!-- CTA -->
+  <rect x="340" y="780" width="400" height="60" rx="30" fill="url(#p9g)"/>
+  <text x="540" y="818" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="white">Reserva tu cupo →</text>
+  <!-- Urgency -->
+  <text x="540" y="900" text-anchor="middle" font-family="system-ui,sans-serif" font-size="20" font-weight="400" fill="white" opacity="0.25">Cupos limitados</text>
+  <!-- Brand -->
+  <text x="540" y="1020" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" font-weight="600" fill="white" opacity="0.2" letter-spacing="6">SITESPRINT</text>
+</svg>
