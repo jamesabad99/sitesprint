@@ -8,12 +8,24 @@ interface Video {
 }
 
 export default function VideoCarousel({ videos }: { videos: Video[] }) {
-  const [current, setCurrent] = useState(0);
+  const CLONE_COUNT = 2;
+  const total = videos.length;
+
+  // Extended slides: [clone last 2] + [real] + [clone first 2]
+  const extended = [
+    ...videos.slice(-CLONE_COUNT),
+    ...videos,
+    ...videos.slice(0, CLONE_COUNT),
+  ];
+
+  const startIndex = CLONE_COUNT;
+  const [pos, setPos] = useState(startIndex);
   const [isPaused, setIsPaused] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [cardWidth, setCardWidth] = useState(760);
+  const [animate, setAnimate] = useState(true);
 
-  const currentRef = useRef(0);
+  const posRef = useRef(startIndex);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const dragStartX = useRef(0);
@@ -23,6 +35,9 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   const GAP = 24;
   const AUTO_MS = 4500;
   const EASING = "cubic-bezier(.22,1,.36,1)";
+
+  // Real index from extended position
+  const realIndex = ((pos - CLONE_COUNT) % total + total) % total;
 
   // Responsive card width
   useEffect(() => {
@@ -37,53 +52,70 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   }, []);
 
   const goTo = useCallback(
-    (index: number) => {
-      const prev = currentRef.current;
-      const next = ((index % videos.length) + videos.length) % videos.length;
-      if (prev === next) return;
+    (newPos: number) => {
+      const prev = posRef.current;
+      if (prev === newPos) return;
 
-      const prevVideo = videoRefs.current[prev];
+      // Pause previous video
+      const prevReal = ((prev - CLONE_COUNT) % total + total) % total;
+      const prevVideo = videoRefs.current[prevReal];
       if (prevVideo) {
         prevVideo.pause();
         prevVideo.currentTime = 0;
       }
 
-      currentRef.current = next;
-      setCurrent(next);
+      setAnimate(true);
+      posRef.current = newPos;
+      setPos(newPos);
       setIsPaused(false);
 
-      const nextVideo = videoRefs.current[next];
+      // Play next video
+      const nextReal = ((newPos - CLONE_COUNT) % total + total) % total;
+      const nextVideo = videoRefs.current[nextReal];
       if (nextVideo) nextVideo.play().catch(() => {});
     },
-    [videos.length]
+    [total]
   );
+
+  // Snap back when reaching clones
+  useEffect(() => {
+    if (pos < CLONE_COUNT || pos >= CLONE_COUNT + total) {
+      const timeout = setTimeout(() => {
+        setAnimate(false);
+        const snapped = ((pos - CLONE_COUNT) % total + total) % total + CLONE_COUNT;
+        posRef.current = snapped;
+        setPos(snapped);
+      }, 620);
+      return () => clearTimeout(timeout);
+    }
+  }, [pos, total]);
 
   // Autoplay first on mount
   useEffect(() => {
     videoRefs.current[0]?.play().catch(() => {});
   }, []);
 
-  // Auto-advance (pauses on hover)
+  // Auto-advance
   useEffect(() => {
     if (isHovering) return;
     const timer = setInterval(() => {
-      goTo(currentRef.current + 1);
+      goTo(posRef.current + 1);
     }, AUTO_MS);
     return () => clearInterval(timer);
-  }, [current, isHovering, goTo]);
+  }, [pos, isHovering, goTo]);
 
   // Keyboard
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") goTo(currentRef.current - 1);
-      if (e.key === "ArrowRight") goTo(currentRef.current + 1);
+      if (e.key === "ArrowLeft") goTo(posRef.current - 1);
+      if (e.key === "ArrowRight") goTo(posRef.current + 1);
     };
     window.addEventListener("keydown", h);
     return () => window.removeEventListener("keydown", h);
   }, [goTo]);
 
   const togglePause = () => {
-    const v = videoRefs.current[current];
+    const v = videoRefs.current[realIndex];
     if (!v) return;
     if (v.paused) {
       v.play().catch(() => {});
@@ -107,22 +139,22 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   const onPointerUp = () => {
     if (!isDragging.current) return;
     isDragging.current = false;
-    if (dragDelta.current > 40) goTo(currentRef.current - 1);
-    else if (dragDelta.current < -40) goTo(currentRef.current + 1);
+    if (dragDelta.current > 40) goTo(posRef.current - 1);
+    else if (dragDelta.current < -40) goTo(posRef.current + 1);
   };
 
   // Center the active card
-  const trackX = `calc(50% - ${cardWidth / 2}px - ${current * (cardWidth + GAP)}px)`;
+  const trackX = `calc(50% - ${cardWidth / 2}px - ${pos * (cardWidth + GAP)}px)`;
 
-  const slideStyle = (i: number): React.CSSProperties => {
-    const diff = Math.abs(i - current);
+  const slideStyle = (extIdx: number): React.CSSProperties => {
+    const diff = Math.abs(extIdx - pos);
     if (diff === 0) {
       return {
         transform: "scale(1.02)",
         opacity: 1,
         filter: "blur(0px)",
         zIndex: 20,
-        transition: `all 600ms ${EASING}`,
+        transition: animate ? `all 600ms ${EASING}` : "none",
       };
     }
     if (diff === 1) {
@@ -131,7 +163,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
         opacity: 0.45,
         filter: "blur(1px)",
         zIndex: 10,
-        transition: `all 600ms ${EASING}`,
+        transition: animate ? `all 600ms ${EASING}` : "none",
       };
     }
     return {
@@ -139,21 +171,20 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
       opacity: 0.25,
       filter: "blur(2px)",
       zIndex: 5,
-      transition: `all 600ms ${EASING}`,
+      transition: animate ? `all 600ms ${EASING}` : "none",
     };
   };
 
-  const frameStyle = (i: number): React.CSSProperties => {
-    if (i === current) {
+  const frameStyle = (extIdx: number): React.CSSProperties => {
+    if (extIdx === pos) {
       return {
-        boxShadow:
-          "0 25px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.06)",
-        transition: `all 600ms ${EASING}`,
+        boxShadow: "0 25px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.06)",
+        transition: animate ? `all 600ms ${EASING}` : "none",
       };
     }
     return {
       boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-      transition: `all 600ms ${EASING}`,
+      transition: animate ? `all 600ms ${EASING}` : "none",
     };
   };
 
@@ -185,20 +216,14 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
       >
-        {/* Edge gradients — blend into dark bg */}
+        {/* Edge gradients */}
         <div
           className="pointer-events-none absolute inset-y-0 left-0 z-30 w-10 md:w-24"
-          style={{
-            background:
-              "linear-gradient(to right, #050505 0%, transparent 100%)",
-          }}
+          style={{ background: "linear-gradient(to right, #050505 0%, transparent 100%)" }}
         />
         <div
           className="pointer-events-none absolute inset-y-0 right-0 z-30 w-10 md:w-24"
-          style={{
-            background:
-              "linear-gradient(to left, #050505 0%, transparent 100%)",
-          }}
+          style={{ background: "linear-gradient(to left, #050505 0%, transparent 100%)" }}
         />
 
         {/* Track */}
@@ -207,126 +232,103 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
           style={{
             gap: `${GAP}px`,
             transform: `translateX(${trackX})`,
-            transition: `transform 600ms ${EASING}`,
+            transition: animate ? `transform 600ms ${EASING}` : "none",
           }}
         >
-          {videos.map((video, i) => (
-            <div
-              key={i}
-              onClick={() => i !== current && goTo(i)}
-              className="flex-shrink-0 cursor-pointer will-change-transform"
-              style={{ width: `${cardWidth}px`, ...slideStyle(i) }}
-            >
-              {/* Browser frame */}
+          {extended.map((video, extIdx) => {
+            const videoRealIdx = ((extIdx - CLONE_COUNT) % total + total) % total;
+            return (
               <div
-                className="relative overflow-hidden rounded-[16px] bg-[#1a1a1a]"
-                style={frameStyle(i)}
+                key={extIdx}
+                onClick={() => extIdx !== pos && goTo(extIdx)}
+                className="flex-shrink-0 cursor-pointer will-change-transform"
+                style={{ width: `${cardWidth}px`, ...slideStyle(extIdx) }}
               >
-                {/* Top bar */}
-                <div className="flex h-[32px] items-center gap-[5px] bg-[#111111] px-3.5">
-                  <span className="h-[8px] w-[8px] rounded-full bg-[#ff5f57]" />
-                  <span className="h-[8px] w-[8px] rounded-full bg-[#ffbd2e]" />
-                  <span className="h-[8px] w-[8px] rounded-full bg-[#27c93f]" />
-                  {video.title && (
-                    <span className="ml-2 text-[11px] text-white/40">
-                      {video.title}
-                    </span>
-                  )}
-                </div>
+                {/* Browser frame */}
+                <div
+                  className="relative overflow-hidden rounded-[16px] bg-[#1a1a1a]"
+                  style={frameStyle(extIdx)}
+                >
+                  {/* Top bar */}
+                  <div className="flex h-[32px] items-center gap-[5px] bg-[#111111] px-3.5">
+                    <span className="h-[8px] w-[8px] rounded-full bg-[#ff5f57]" />
+                    <span className="h-[8px] w-[8px] rounded-full bg-[#ffbd2e]" />
+                    <span className="h-[8px] w-[8px] rounded-full bg-[#27c93f]" />
+                    {video.title && (
+                      <span className="ml-2 text-[11px] text-white/40">
+                        {video.title}
+                      </span>
+                    )}
+                  </div>
 
-                {/* Video */}
-                <div className="relative overflow-hidden">
-                  <video
-                    ref={(el) => {
-                      videoRefs.current[i] = el;
-                    }}
-                    muted
-                    loop
-                    playsInline
-                    className="block w-full"
-                  >
-                    <source src={video.src} type="video/mp4" />
-                  </video>
-
-                  {/* Play / Pause — visible on hover */}
-                  {i === current && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        togglePause();
+                  {/* Video */}
+                  <div className="relative overflow-hidden">
+                    <video
+                      ref={(el) => {
+                        if (extIdx >= CLONE_COUNT && extIdx < CLONE_COUNT + total) {
+                          videoRefs.current[videoRealIdx] = el;
+                        }
                       }}
-                      aria-label={isPaused ? "Reproducir" : "Pausar"}
-                      className="absolute right-2.5 top-2.5 flex h-7 w-7 items-center justify-center rounded-full text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100"
-                      style={{
-                        background: "rgba(0,0,0,0.4)",
-                        border: "1px solid rgba(255,255,255,0.15)",
-                      }}
+                      muted
+                      loop
+                      playsInline
+                      className="block w-full"
                     >
-                      {isPaused ? (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="h-3.5 w-3.5 opacity-90"
-                        >
-                          <path d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
-                        </svg>
-                      ) : (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="h-3.5 w-3.5 opacity-90"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M6.75 5.25a.75.75 0 0 1 .75.75v12a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Zm10.5 0a.75.75 0 0 1 .75.75v12a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      )}
-                    </button>
-                  )}
+                      <source src={video.src} type="video/mp4" />
+                    </video>
+
+                    {/* Play / Pause */}
+                    {extIdx === pos && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          togglePause();
+                        }}
+                        aria-label={isPaused ? "Reproducir" : "Pausar"}
+                        className="absolute right-2.5 top-2.5 flex h-7 w-7 items-center justify-center rounded-full text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100"
+                        style={{
+                          background: "rgba(0,0,0,0.4)",
+                          border: "1px solid rgba(255,255,255,0.15)",
+                        }}
+                      >
+                        {isPaused ? (
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5 opacity-90">
+                            <path d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+                          </svg>
+                        ) : (
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5 opacity-90">
+                            <path fillRule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75.75v12a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Zm10.5 0a.75.75 0 0 1 .75.75v12a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z" clipRule="evenodd" />
+                          </svg>
+                        )}
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Arrows */}
         <button
-          onClick={() => goTo(currentRef.current - 1)}
+          onClick={() => goTo(posRef.current - 1)}
           aria-label="Anterior"
           className="absolute left-[5%] top-1/2 z-40 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full text-white/70 opacity-0 backdrop-blur-md transition-all duration-300 group-hover:opacity-100 md:flex"
-          style={{
-            background: "rgba(255,255,255,0.08)",
-            border: "1px solid rgba(255,255,255,0.1)",
-          }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.background = "rgba(255,255,255,0.15)")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.background = "rgba(255,255,255,0.08)")
-          }
+          style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.1)" }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.15)")}
+          onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
             <path fillRule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clipRule="evenodd" />
           </svg>
         </button>
         <button
-          onClick={() => goTo(currentRef.current + 1)}
+          onClick={() => goTo(posRef.current + 1)}
           aria-label="Siguiente"
           className="absolute right-[5%] top-1/2 z-40 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full text-white/70 opacity-0 backdrop-blur-md transition-all duration-300 group-hover:opacity-100 md:flex"
-          style={{
-            background: "rgba(255,255,255,0.08)",
-            border: "1px solid rgba(255,255,255,0.1)",
-          }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.background = "rgba(255,255,255,0.15)")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.background = "rgba(255,255,255,0.08)")
-          }
+          style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.1)" }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.15)")}
+          onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
             <path fillRule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 1 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
@@ -339,10 +341,10 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
         {videos.map((_, i) => (
           <button
             key={i}
-            onClick={() => goTo(i)}
+            onClick={() => goTo(i + CLONE_COUNT)}
             aria-label={`Ir al slide ${i + 1}`}
             className={`rounded-full transition-all duration-300 ${
-              i === current
+              i === realIndex
                 ? "h-2.5 w-7 bg-white"
                 : "h-2 w-2 bg-white/20 hover:bg-white/40"
             }`}
