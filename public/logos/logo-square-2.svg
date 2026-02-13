@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="40%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <filter id="ts">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <!-- Vibrant gradient background -->
+  <rect width="800" height="800" fill="url(#bg2)"/>
+  <!-- Decorative elements -->
+  <circle cx="200" cy="200" r="250" fill="white" opacity="0.05"/>
+  <circle cx="600" cy="600" r="300" fill="white" opacity="0.04"/>
+  <!-- Text with shadow -->
+  <g filter="url(#ts)">
+    <text x="400" y="340" text-anchor="middle" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-size="155" font-weight="900" fill="white" letter-spacing="-5">Site</text>
+    <text x="400" y="510" text-anchor="middle" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-size="155" font-weight="900" fill="white" letter-spacing="-5">Sprint</text>
+  </g>
+  <!-- Lightning accent -->
+  <path d="M395 545l-12 30h20l-8 35 30-40h-18l15-25z" fill="white" opacity="0.8"/>
+  <!-- Tagline -->
+  <text x="400" y="640" text-anchor="middle" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-size="28" font-weight="500" fill="white" opacity="0.7" letter-spacing="6">WEBS PROFESIONALES</text>
+</svg>

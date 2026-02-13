@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#0c4a6e"/>
+    </linearGradient>
+    <linearGradient id="txt1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="50%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="800" fill="url(#bg1)"/>
+  <!-- Decorative circles -->
+  <circle cx="650" cy="150" r="200" fill="#3b82f6" opacity="0.06"/>
+  <circle cx="150" cy="650" r="180" fill="#8b5cf6" opacity="0.05"/>
+  <circle cx="700" cy="600" r="120" fill="#06b6d4" opacity="0.04"/>
+  <!-- Text: Site -->
+  <text x="400" y="340" text-anchor="middle" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-size="160" font-weight="900" fill="white" letter-spacing="-6">Site</text>
+  <!-- Text: Sprint with gradient -->
+  <text x="400" y="510" text-anchor="middle" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-size="160" font-weight="900" fill="url(#txt1)" letter-spacing="-6">Sprint</text>
+  <!-- Tagline -->
+  <text x="400" y="600" text-anchor="middle" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-size="32" font-weight="500" fill="white" opacity="0.35" letter-spacing="8">TU WEB EN 48 HORAS</text>
+  <!-- Accent line -->
+  <rect x="310" y="620" width="180" height="3" rx="1.5" fill="url(#txt1)" opacity="0.5"/>
+</svg>
