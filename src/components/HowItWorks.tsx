@@ -129,32 +129,18 @@ export default function HowItWorks() {
                 }}
               />
 
-              {/* Content layout */}
-              <div className="relative flex flex-col gap-6 px-8 py-10 md:flex-row md:items-center md:gap-10 md:px-12 md:py-14">
-                {/* Icon area */}
-                <div
-                  className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl p-4 md:h-24 md:w-24 md:p-5"
-                  style={{
-                    background: `linear-gradient(135deg, ${step.color1}15, ${step.color2}10)`,
-                    border: `1px solid ${step.color1}25`,
-                  }}
-                >
-                  {step.icon}
-                </div>
-
-                {/* Text */}
-                <div className="flex-1">
-                  <h3 className="text-[1.5rem] font-bold tracking-tight text-white md:text-[1.75rem]">
-                    {step.title}
-                  </h3>
-                  <p className="mt-3 max-w-[420px] text-[15px] leading-[1.8] text-white/40 md:text-[15.5px]">
-                    {step.description}
-                  </p>
-                </div>
+              {/* Content */}
+              <div className="relative px-8 py-10 md:px-12 md:py-14">
+                <h3 className="text-[1.5rem] font-bold tracking-tight text-white md:text-[1.75rem]">
+                  {step.title}
+                </h3>
+                <p className="mt-4 max-w-[480px] text-[15px] leading-[1.8] text-white/40 md:text-[15.5px]">
+                  {step.description}
+                </p>
 
                 {/* Decorative gradient ring — desktop only */}
                 <div
-                  className="pointer-events-none absolute right-10 top-1/2 hidden h-28 w-28 -translate-y-1/2 rounded-full opacity-[0.04] md:block"
+                  className="pointer-events-none absolute right-10 top-1/2 hidden h-32 w-32 -translate-y-1/2 rounded-full opacity-[0.05] md:block"
                   style={{
                     background: `conic-gradient(from 0deg, ${step.color1}, ${step.color2}, ${step.color1})`,
                   }}
