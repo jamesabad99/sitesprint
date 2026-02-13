@@ -103,20 +103,12 @@ export default function Hero() {
           <a href="#contacto" className="text-[13px] text-white/50 transition-colors hover:text-white">
             Contacto
           </a>
-          <a
-            href={WA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-white px-5 py-2 text-xs font-medium text-[#1a1a1a] transition-colors hover:bg-white/90"
-          >
-            {content.navCta}
-          </a>
         </div>
         <a
           href={WA_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full bg-white px-5 py-2 text-xs font-medium text-[#1a1a1a] transition-colors hover:bg-white/90 md:hidden"
+          className="rounded-full bg-white px-5 py-2 text-xs font-medium text-[#1a1a1a] transition-colors hover:bg-white/90"
         >
           {content.navCta}
         </a>
