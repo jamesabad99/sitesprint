@@ -1,159 +1,151 @@
-"use client";
+const steps = [
+  {
+    num: "01",
+    title: "Confirmación y reserva",
+    description:
+      "Asegura tu cupo a través de WhatsApp. Confirmamos disponibilidad y definimos el alcance inicial.",
+    accent: "from-blue-400 to-blue-500",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
+        <path
+          d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
+  },
+  {
+    num: "02",
+    title: "Definición estratégica",
+    description:
+      "Recopilamos tu identidad visual, propuesta de valor, referencias y objetivos comerciales.",
+    accent: "from-purple-400 to-purple-500",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="12" cy="12" r="2" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    num: "03",
+    title: "Desarrollo y entrega",
+    description:
+      "Diseñamos tu web con enfoque en conversión. Entrega en 48h + una ronda de ajustes.",
+    accent: "from-emerald-400 to-emerald-500",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
+        <path
+          d="m13 2 7 7-7 7M11 22l-7-7 7-7"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
+  },
+];
 
 const WA_URL = `https://api.whatsapp.com/send?phone=51952648191&text=${encodeURIComponent(
   "Hola 👋\nQuiero aprovechar el precio de lanzamiento y reservar mi cupo para la web profesional en 48 horas.\n\nMi negocio es:\nActualmente vendo por: (Instagram / WhatsApp / tienda física / otro)\n\n¿Cuáles son los siguientes pasos para empezar?"
 )}`;
 
-const steps = [
-  {
-    num: "01",
-    title: "Reserva tu cupo",
-    description:
-      "Escríbenos por WhatsApp, confirmamos disponibilidad y definimos el alcance de tu proyecto.",
-    gradient: "linear-gradient(135deg, #3b82f6, #06b6d4)",
-    bgGlow: "radial-gradient(circle at 30% 50%, rgba(59,130,246,0.12) 0%, transparent 60%)",
-    borderColor: "rgba(59,130,246,0.2)",
-    accentColor: "#3b82f6",
-  },
-  {
-    num: "02",
-    title: "Definimos tu marca",
-    description:
-      "Recopilamos tu identidad visual, propuesta de valor, referencias y objetivos comerciales.",
-    gradient: "linear-gradient(135deg, #8b5cf6, #6366f1)",
-    bgGlow: "radial-gradient(circle at 30% 50%, rgba(139,92,246,0.12) 0%, transparent 60%)",
-    borderColor: "rgba(139,92,246,0.2)",
-    accentColor: "#8b5cf6",
-  },
-  {
-    num: "03",
-    title: "Entregamos tu web",
-    description:
-      "Diseñamos y desarrollamos tu web con enfoque en conversión. Incluye una ronda de ajustes.",
-    gradient: "linear-gradient(135deg, #10b981, #06b6d4)",
-    bgGlow: "radial-gradient(circle at 30% 50%, rgba(16,185,129,0.12) 0%, transparent 60%)",
-    borderColor: "rgba(16,185,129,0.2)",
-    accentColor: "#10b981",
-  },
-];
-
 export default function HowItWorks() {
   return (
     <section
       id="como-funciona"
-      className="relative px-5 md:px-8"
+      className="relative overflow-hidden px-5 py-16 md:px-8 md:py-20"
       style={{ background: "#050505" }}
     >
-      {/* ── Header ── */}
-      <div className="pb-10 pt-20 text-center md:pb-14 md:pt-28">
-        <span className="inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.2em] text-white/30">
-          <svg
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            className="h-2.5 w-2.5 text-blue-400/50"
-          >
-            <path d="M8 0l2.2 5.2L16 6l-4 3.8 1 5.7L8 12.5l-5 3 1-5.7L0 6l5.8-.8z" />
-          </svg>
-          Proceso
-        </span>
-        <h2 className="mt-4 text-[1.8rem] font-bold leading-[1.1] tracking-tight text-white md:text-[2.8rem]">
-          De idea a{" "}
-          <em className="not-italic bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            web lista
-          </em>{" "}
-          en 3 pasos
-        </h2>
-      </div>
+      {/* Background dot grid */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.2]"
+        style={{
+          backgroundImage: "radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
 
-      {/* ── Sticky card stack ── */}
-      <div className="relative mx-auto max-w-[700px]">
-        {steps.map((step, i) => (
-          <div
-            key={step.num}
-            className="sticky pb-5"
-            style={{ top: `${80 + i * 20}px`, zIndex: (i + 1) * 10 }}
-          >
+      <div className="relative mx-auto max-w-[1200px]">
+        {/* ── Header ── */}
+        <div className="text-center">
+          <span className="inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.2em] text-white/30">
+            <svg viewBox="0 0 16 16" fill="currentColor" className="h-2.5 w-2.5 text-blue-400/50">
+              <path d="M8 0l2.2 5.2L16 6l-4 3.8 1 5.7L8 12.5l-5 3 1-5.7L0 6l5.8-.8z" />
+            </svg>
+            Cómo funciona
+          </span>
+          <h2 className="mt-4 text-[1.8rem] font-bold leading-[1.1] tracking-tight text-white md:text-[2.8rem]">
+            Tres pasos para tu{" "}
+            <em className="not-italic bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">web profesional</em>
+          </h2>
+          <p className="mx-auto mt-4 max-w-[440px] text-[14px] leading-[1.7] text-white/35">
+            Un proceso optimizado. Enfoque estratégico, ejecución ágil. Sin reuniones eternas.
+          </p>
+        </div>
+
+        {/* ── Cards ── */}
+        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
+          {steps.map((step) => (
             <div
-              className="group relative overflow-hidden rounded-3xl transition-shadow duration-500 hover:shadow-2xl"
-              style={{
-                background: "#0a0a0a",
-                border: `1px solid ${step.borderColor}`,
-                boxShadow: `0 20px 60px rgba(0,0,0,0.5), 0 0 0 0.5px ${step.borderColor}`,
-              }}
+              key={step.title}
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.06] p-6 transition-all duration-300 hover:border-white/[0.12] md:p-7"
+              style={{ background: "rgba(255,255,255,0.02)" }}
             >
-              {/* Background glow */}
-              <div
-                className="pointer-events-none absolute inset-0"
-                style={{ background: step.bgGlow }}
-              />
+              {/* Gradient accent top line */}
+              <div className={`absolute left-0 top-0 h-[2px] w-full bg-gradient-to-r ${step.accent} opacity-40 transition-opacity duration-300 group-hover:opacity-80`} />
 
-              {/* Big gradient number — watermark */}
-              <div
-                className="pointer-events-none absolute -right-4 -top-8 select-none text-[10rem] font-black leading-none md:-right-2 md:-top-6 md:text-[12rem]"
-                style={{
-                  backgroundImage: step.gradient,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  opacity: 0.06,
-                }}
-              >
-                {step.num}
+              {/* Top row: icon + big number */}
+              <div className="flex items-start justify-between">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] text-white/70">
+                  {step.icon}
+                </div>
+                <span className={`bg-gradient-to-b ${step.accent} bg-clip-text text-[2.5rem] font-bold leading-none text-transparent opacity-20`}>
+                  {step.num}
+                </span>
               </div>
 
               {/* Content */}
-              <div className="relative px-8 py-10 md:px-10 md:py-12">
-                {/* Number badge */}
-                <div
-                  className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl text-[17px] font-bold text-white"
-                  style={{
-                    background: step.gradient,
-                    boxShadow: `0 8px 30px ${step.borderColor}`,
-                  }}
-                >
-                  {step.num}
-                </div>
-
-                {/* Title */}
-                <h3 className="text-[1.4rem] font-bold leading-tight text-white md:text-[1.6rem]">
+              <div className="mt-auto pt-10 md:pt-14">
+                <h3 className="text-[1rem] font-semibold text-white md:text-[1.05rem]">
                   {step.title}
                 </h3>
-
-                {/* Description */}
-                <p className="mt-4 max-w-[440px] text-[15px] leading-[1.8] text-white/45">
+                <p className="mt-2.5 text-[13px] leading-[1.7] text-white/35">
                   {step.description}
                 </p>
-
-                {/* Bottom accent line */}
-                <div
-                  className="mt-8 h-[3px] w-14 rounded-full transition-all duration-500 group-hover:w-24"
-                  style={{ background: step.gradient }}
-                />
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
 
-      {/* ── CTA ── */}
-      <div className="pb-20 pt-10 text-center md:pb-28 md:pt-14">
-        <a
-          href={WA_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#1a1a1a] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(255,255,255,0.1)]"
-        >
-          Empezar ahora
-          <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
-            <path
-              d="M3 8h10m0 0L9 4m4 4L9 12"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </a>
+              {/* Hover glow */}
+              <div
+                className="pointer-events-none absolute -bottom-10 -right-10 h-[150px] w-[150px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                style={{
+                  background: `radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%)`,
+                  filter: "blur(30px)",
+                }}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* ── CTA ── */}
+        <div className="mt-10 text-center">
+          <a
+            href={WA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#1a1a1a] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(255,255,255,0.1)]"
+          >
+            Empezar ahora
+            <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
+              <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
   );
