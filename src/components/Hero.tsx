@@ -41,7 +41,9 @@ export default function Hero() {
           href={WA_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden rounded-full bg-slate-900 px-5 py-2 text-xs font-medium text-white transition-colors hover:bg-slate-800 md:flex"
+          className="rounded-full bg-slate-900 px-5 py-2 text-xs font-medium text-white transition-colors hover:bg-slate-800"
+          style={{ display: "none" }}
+          data-desktop-only
         >
           Conversemos
         </a>

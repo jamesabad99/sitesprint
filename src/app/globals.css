@@ -90,6 +90,9 @@ body {
     top: 1.5em;
     right: 2em;
   }
+  [data-desktop-only] {
+    display: flex !important;
+  }
 }
 
 .nav-hamburger__bg {
