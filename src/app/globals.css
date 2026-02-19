@@ -268,6 +268,8 @@ body {
 /* ── Footer brand ── */
 .footer-brand-wrap {
   margin-top: 3rem;
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -281,13 +283,15 @@ body {
   letter-spacing: -0.05em;
   color: #000;
   flex-shrink: 0;
-  font-size: 25vw;
+  font-size: 18.5vw;
   margin-bottom: -0.18em;
 }
 
 @media (min-width: 768px) {
   .footer-brand-wrap {
     margin-top: 4rem;
+    margin-left: -2rem;
+    margin-right: -2rem;
   }
   .footer-brand {
     font-size: min(25vw, 25rem);
