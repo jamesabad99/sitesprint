@@ -34,7 +34,7 @@ export default function ContactForm() {
     <section id="contacto" data-animate className="px-5 py-16 md:px-8 md:py-20" style={{ background: "#f8fafc" }}>
       <div className="mx-auto max-w-[560px]">
         {/* Header */}
-        <div className="text-center" data-animate-child>
+        <div className="text-center" data-child>
           <h2 className="text-[1.6rem] font-bold tracking-tight text-slate-900 md:text-[2.2rem]">
             Conversemos sobre tu proyecto
           </h2>
@@ -44,7 +44,7 @@ export default function ContactForm() {
         </div>
 
         {/* Form */}
-        <div data-animate-child>
+        <div data-child>
           {status === "sent" ? (
             <div className="mt-8 rounded-2xl border border-emerald-200 bg-emerald-50 p-8 text-center">
               <svg viewBox="0 0 24 24" fill="none" className="mx-auto mb-3 h-8 w-8 text-emerald-500">

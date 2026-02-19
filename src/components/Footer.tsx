@@ -88,7 +88,7 @@ export default function Footer() {
       </div>
 
       {/* Giant brand name */}
-      <div className="-mx-5 mt-12 flex justify-center overflow-hidden md:-mx-8 md:mt-16">
+      <div className="mt-12 flex justify-center overflow-hidden md:mt-16">
         <div
           className="shrink-0 select-none whitespace-nowrap font-bold leading-[0.8] tracking-tighter text-black"
           style={{

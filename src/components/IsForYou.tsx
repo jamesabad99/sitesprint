@@ -30,44 +30,22 @@ const faqs = [
   },
 ];
 
-const stats = [
-  { value: "8+", label: "Proyectos entregados" },
-  { value: "2", label: "Planes disponibles" },
-  { value: "100%", label: "Optimizada para móvil" },
-];
-
 export default function IsForYou() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
     <section data-animate className="relative overflow-hidden px-5 py-16 md:px-8 md:py-20" style={{ background: "#f8fafc" }}>
-      <div className="mx-auto max-w-[1200px]">
-        <div className="flex flex-col gap-10 lg:flex-row lg:gap-16">
+      <div className="mx-auto max-w-[760px]">
+        <div className="text-center" data-child>
+          <h2 className="text-[1.6rem] font-bold tracking-tight text-slate-900 md:text-[2.2rem]">
+            Preguntas frecuentes
+          </h2>
+          <p className="mx-auto mt-3 max-w-[380px] text-[15px] leading-relaxed text-slate-500">
+            Lo más común sobre nuestros servicios.
+          </p>
+        </div>
 
-          {/* Left: Visual card */}
-          <div className="flex-shrink-0 lg:w-[360px]" data-animate-child>
-            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-7 md:p-8">
-              <h2 className="text-[1.5rem] font-bold tracking-tight text-slate-900 md:text-[1.7rem]">
-                Preguntas frecuentes
-              </h2>
-              <p className="mt-2 text-[13px] leading-[1.7] text-slate-500">
-                Lo más común sobre nuestros servicios de diseño web.
-              </p>
-
-              {/* Stats */}
-              <div className="mt-6 flex flex-col gap-3">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="flex items-center justify-between border-t border-slate-100 pt-3">
-                    <span className="text-[13px] text-slate-500">{stat.label}</span>
-                    <span className="text-[15px] font-bold text-slate-900">{stat.value}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Accordion */}
-          <div className="flex-1" data-animate-child>
+        <div className="mt-8" data-child>
             <div className="flex flex-col gap-2">
               {faqs.map((faq, i) => {
                 const isOpen = openIndex === i;
@@ -118,7 +96,6 @@ export default function IsForYou() {
                 );
               })}
             </div>
-          </div>
         </div>
       </div>
     </section>

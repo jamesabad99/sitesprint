@@ -28,7 +28,7 @@ export default function HowItWorks() {
     <section id="como-funciona" data-animate className="px-5 py-16 md:px-8 md:py-20">
       <div className="mx-auto max-w-[960px]">
         {/* Header */}
-        <div className="text-center" data-animate-child>
+        <div className="text-center" data-child>
           <h2 className="text-[1.6rem] font-bold tracking-tight text-slate-900 md:text-[2.2rem]">
             Cómo funciona
           </h2>
@@ -38,7 +38,7 @@ export default function HowItWorks() {
         </div>
 
         {/* Steps */}
-        <div data-animate-child className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 md:grid-cols-3">
+        <div data-child className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 md:grid-cols-3">
           {steps.map((step) => (
             <div key={step.num} className="bg-white p-6 md:p-7">
               <span className="text-[12px] font-semibold text-slate-400">{step.num}</span>
@@ -53,7 +53,7 @@ export default function HowItWorks() {
         </div>
 
         {/* CTA */}
-        <div className="mt-8 text-center" data-animate-child>
+        <div className="mt-8 text-center" data-child>
           <a
             href={WA_URL}
             target="_blank"

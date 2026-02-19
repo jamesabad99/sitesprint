@@ -178,9 +178,9 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   };
 
   return (
-    <section id="portafolio" data-animate className="relative py-12 md:py-16">
+    <section id="portafolio" data-section className="relative py-12 md:py-16">
       {/* Header */}
-      <div className="relative mx-auto max-w-[1100px] px-5 text-center md:px-8" data-animate-child>
+      <div className="relative mx-auto max-w-[1100px] px-5 text-center md:px-8" data-child>
         <h2 className="text-[1.5rem] font-bold tracking-tight text-slate-900 md:text-[2.2rem]">
           Proyectos que hablan por sí solos
         </h2>
@@ -192,7 +192,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
       {/* Carousel */}
       <div
         ref={containerRef}
-        data-animate-child
+        data-child
         className="group relative mx-auto mt-8 max-w-[1200px] select-none overflow-hidden"
         style={{ touchAction: "pan-y" }}
         onMouseEnter={() => setIsHovering(true)}
