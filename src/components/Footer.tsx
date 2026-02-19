@@ -88,15 +88,15 @@ export default function Footer() {
       </div>
 
       {/* Giant brand name */}
-      <div className="mt-12 overflow-hidden text-center md:mt-16 md:flex md:justify-center">
+      <div className="mt-12 flex justify-center overflow-hidden md:mt-16">
         <div
-          className="select-none whitespace-nowrap font-bold leading-[0.8] tracking-tighter text-black md:shrink-0"
-          style={{ marginBottom: "-0.18em" }}
+          className="shrink-0 select-none whitespace-nowrap font-bold leading-[0.8] tracking-tighter text-black"
+          style={{
+            fontSize: "min(25vw, 25rem)",
+            marginBottom: "-0.18em",
+          }}
         >
-          {/* Mobile size */}
-          <span className="text-[4rem] md:hidden">SiteSprint</span>
-          {/* Desktop size */}
-          <span className="hidden md:inline" style={{ fontSize: "clamp(5rem, 25vw, 25rem)" }}>SiteSprint</span>
+          SiteSprint
         </div>
       </div>
     </footer>
