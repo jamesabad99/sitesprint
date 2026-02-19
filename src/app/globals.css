@@ -269,7 +269,8 @@ body {
 .footer-brand-wrap {
   margin-top: 3rem;
   overflow: hidden;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .footer-brand {
@@ -279,18 +280,16 @@ body {
   line-height: 0.8;
   letter-spacing: -0.05em;
   color: #000;
-  font-size: 15vw;
+  flex-shrink: 0;
+  font-size: 25vw;
   margin-bottom: -0.18em;
 }
 
 @media (min-width: 768px) {
   .footer-brand-wrap {
     margin-top: 4rem;
-    display: flex;
-    justify-content: center;
   }
   .footer-brand {
-    flex-shrink: 0;
     font-size: min(25vw, 25rem);
   }
 }
