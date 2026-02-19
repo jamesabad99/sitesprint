@@ -92,7 +92,7 @@ export default function Footer() {
         <div
           className="shrink-0 select-none whitespace-nowrap font-bold leading-[0.8] tracking-tighter text-black"
           style={{
-            fontSize: "clamp(5rem, 25vw, 25rem)",
+            fontSize: "clamp(5rem, 42vw, 25rem)",
             marginBottom: "-0.18em",
           }}
         >
