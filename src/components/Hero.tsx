@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import RotatingWords from "./RotatingWords";
 
 const WA_URL = `https://api.whatsapp.com/send?phone=51952648191&text=${encodeURIComponent(
@@ -7,6 +8,19 @@ const WA_URL = `https://api.whatsapp.com/send?phone=51952648191&text=${encodeURI
 )}`;
 
 export default function Hero() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const words = isMobile
+    ? ["impulsa", "transforma", "potencia"]
+    : ["impulsa", "transforma", "potencia", "eleva"];
+
   return (
     <section data-hero className="relative flex min-h-[100svh] w-full flex-col overflow-hidden px-5 py-5 md:px-8 md:py-6">
       {/* ── Navbar ── */}
@@ -53,7 +67,7 @@ export default function Hero() {
           Diseño web que{" "}
           <br className="hidden sm:block" />
           <RotatingWords
-            words={["impulsa", "transforma", "potencia", "eleva"]}
+            words={words}
             stepDuration={2}
             className="text-blue-600"
           />{" "}
