@@ -82,7 +82,7 @@ body {
   border-radius: 1.5em;
   position: absolute;
   top: 0.1em;
-  right: 0em;
+  right: 0.75em;
 }
 
 @media (min-width: 768px) {
