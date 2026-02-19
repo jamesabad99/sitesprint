@@ -31,7 +31,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contacto" data-animate className="px-5 py-16 md:px-8 md:py-20" style={{ background: "#f8fafc" }}>
+    <section id="contacto" data-section className="px-5 py-16 md:px-8 md:py-20" style={{ background: "#f8fafc" }}>
       <div className="mx-auto max-w-[560px]">
         {/* Header */}
         <div className="text-center" data-child>

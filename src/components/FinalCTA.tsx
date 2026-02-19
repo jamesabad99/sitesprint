@@ -4,7 +4,7 @@ const WA_URL = `https://api.whatsapp.com/send?phone=51952648191&text=${encodeURI
 
 export default function FinalCTA() {
   return (
-    <section data-animate className="px-5 py-16 md:px-8 md:py-20">
+    <section data-section className="px-5 py-16 md:px-8 md:py-20">
       <div data-child className="relative mx-auto w-full max-w-[900px] overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 text-center sm:p-10 md:p-14">
         <h2 className="text-[1.4rem] font-bold tracking-tight text-slate-900 md:text-[1.8rem]">
           Tu próxima web profesional empieza aquí

@@ -34,7 +34,7 @@ export default function IsForYou() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section data-animate className="relative overflow-hidden px-5 py-16 md:px-8 md:py-20" style={{ background: "#f8fafc" }}>
+    <section data-section className="relative overflow-hidden px-5 py-16 md:px-8 md:py-20" style={{ background: "#f8fafc" }}>
       <div className="mx-auto max-w-[760px]">
         <div className="text-center" data-child>
           <h2 className="text-[1.6rem] font-bold tracking-tight text-slate-900 md:text-[2.2rem]">

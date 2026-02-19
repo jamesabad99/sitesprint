@@ -25,7 +25,7 @@ const WA_URL = `https://api.whatsapp.com/send?phone=51952648191&text=${encodeURI
 
 export default function HowItWorks() {
   return (
-    <section id="como-funciona" data-animate className="px-5 py-16 md:px-8 md:py-20">
+    <section id="como-funciona" data-section className="px-5 py-16 md:px-8 md:py-20">
       <div className="mx-auto max-w-[960px]">
         {/* Header */}
         <div className="text-center" data-child>

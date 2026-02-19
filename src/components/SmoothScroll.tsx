@@ -81,14 +81,13 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     }
 
     // ── Section parallax reveals ──
-    // Each section slides up and covers the previous one (parallax depth)
+    const isMobile = window.innerWidth < 768;
     const sections = document.querySelectorAll("[data-section]");
     sections.forEach((section) => {
       const el = section as HTMLElement;
 
-      // Dark overlay on previous content as this section approaches
       gsap.fromTo(el,
-        { y: 100, opacity: 0 },
+        { y: isMobile ? 60 : 100, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -96,8 +95,8 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
           ease: "parallax",
           scrollTrigger: {
             trigger: el,
-            start: "top 90%",
-            end: "top 30%",
+            start: isMobile ? "top 95%" : "top 90%",
+            end: isMobile ? "top 60%" : "top 30%",
             scrub: 1,
           },
         }
@@ -107,16 +106,16 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       const children = el.querySelectorAll("[data-child]");
       if (children.length > 0) {
         gsap.fromTo(children,
-          { y: 50, opacity: 0 },
+          { y: isMobile ? 30 : 50, opacity: 0 },
           {
             y: 0,
             opacity: 1,
             duration: 1,
-            stagger: 0.12,
+            stagger: 0.1,
             ease: "parallax",
             scrollTrigger: {
               trigger: el,
-              start: "top 70%",
+              start: isMobile ? "top 85%" : "top 70%",
               toggleActions: "play none none none",
             },
           }
