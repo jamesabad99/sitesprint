@@ -88,11 +88,11 @@ export default function Footer() {
       </div>
 
       {/* Giant brand name */}
-      <div className="mt-12 flex justify-center overflow-hidden md:mt-16">
+      <div className="mt-12 overflow-hidden text-center md:mt-16 md:flex md:justify-center">
         <div
-          className="shrink-0 select-none whitespace-nowrap font-bold leading-[0.8] tracking-tighter text-black"
+          className="select-none font-bold leading-[0.8] tracking-tighter text-black md:shrink-0 md:whitespace-nowrap"
           style={{
-            fontSize: "clamp(5rem, 42vw, 25rem)",
+            fontSize: "clamp(5rem, 25vw, 25rem)",
             marginBottom: "-0.18em",
           }}
         >
