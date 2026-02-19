@@ -11,7 +11,6 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   const CLONE_COUNT = 2;
   const total = videos.length;
 
-  // Extended slides: [clone last 2] + [real] + [clone first 2]
   const extended = [
     ...videos.slice(-CLONE_COUNT),
     ...videos,
@@ -36,10 +35,8 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   const AUTO_MS = 4500;
   const EASING = "cubic-bezier(.22,1,.36,1)";
 
-  // Real index from extended position
   const realIndex = ((pos - CLONE_COUNT) % total + total) % total;
 
-  // Responsive card width
   useEffect(() => {
     const update = () => {
       if (!containerRef.current) return;
@@ -56,7 +53,6 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
       const prev = posRef.current;
       if (prev === newPos) return;
 
-      // Pause previous video
       const prevReal = ((prev - CLONE_COUNT) % total + total) % total;
       const prevVideo = videoRefs.current[prevReal];
       if (prevVideo) {
@@ -69,7 +65,6 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
       setPos(newPos);
       setIsPaused(false);
 
-      // Play next video
       const nextReal = ((newPos - CLONE_COUNT) % total + total) % total;
       const nextVideo = videoRefs.current[nextReal];
       if (nextVideo) nextVideo.play().catch(() => {});
@@ -77,7 +72,6 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
     [total]
   );
 
-  // Snap back when reaching clones
   useEffect(() => {
     if (pos < CLONE_COUNT || pos >= CLONE_COUNT + total) {
       const timeout = setTimeout(() => {
@@ -90,12 +84,10 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
     }
   }, [pos, total]);
 
-  // Autoplay first on mount
   useEffect(() => {
     videoRefs.current[0]?.play().catch(() => {});
   }, []);
 
-  // Auto-advance
   useEffect(() => {
     if (isHovering) return;
     const timer = setInterval(() => {
@@ -104,7 +96,6 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
     return () => clearInterval(timer);
   }, [pos, isHovering, goTo]);
 
-  // Keyboard
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") goTo(posRef.current - 1);
@@ -126,7 +117,6 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
     }
   };
 
-  // Drag / swipe
   const onPointerDown = (e: React.PointerEvent) => {
     dragStartX.current = e.clientX;
     dragDelta.current = 0;
@@ -143,7 +133,6 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
     else if (dragDelta.current < -40) goTo(posRef.current + 1);
   };
 
-  // Center the active card
   const trackX = `calc(50% - ${cardWidth / 2}px - ${pos * (cardWidth + GAP)}px)`;
 
   const slideStyle = (extIdx: number): React.CSSProperties => {
@@ -178,35 +167,32 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   const frameStyle = (extIdx: number): React.CSSProperties => {
     if (extIdx === pos) {
       return {
-        boxShadow: "0 25px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.06)",
+        boxShadow: "0 25px 60px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.04)",
         transition: animate ? `all 600ms ${EASING}` : "none",
       };
     }
     return {
-      boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+      boxShadow: "0 10px 30px rgba(0,0,0,0.06)",
       transition: animate ? `all 600ms ${EASING}` : "none",
     };
   };
 
   return (
-    <section id="portafolio" className="relative py-12 md:py-16" style={{ background: "#050505" }}>
+    <section id="portafolio" data-animate className="relative py-12 md:py-16">
       {/* Header */}
-      <div className="relative mx-auto max-w-[1100px] px-5 text-center md:px-8">
-        <span className="text-[12px] font-medium uppercase tracking-[0.2em] text-white/30">
-          Portafolio
-        </span>
-        <h2 className="mt-3 text-[1.5rem] font-bold tracking-tight text-white md:text-[2.2rem]">
-          Así se ve una web entregada en{" "}
-          <em className="not-italic bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">48 horas.</em>
+      <div className="relative mx-auto max-w-[1100px] px-5 text-center md:px-8" data-animate-child>
+        <h2 className="text-[1.5rem] font-bold tracking-tight text-slate-900 md:text-[2.2rem]">
+          Proyectos que hablan por sí solos
         </h2>
-        <p className="mt-2.5 text-[13px] tracking-wide text-white/35">
-          Proyectos reales entregados a clientes.
+        <p className="mt-2.5 text-[13px] tracking-wide text-slate-500">
+          Diseños reales entregados a clientes reales.
         </p>
       </div>
 
       {/* Carousel */}
       <div
         ref={containerRef}
+        data-animate-child
         className="group relative mx-auto mt-8 max-w-[1200px] select-none overflow-hidden"
         style={{ touchAction: "pan-y" }}
         onMouseEnter={() => setIsHovering(true)}
@@ -219,11 +205,11 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
         {/* Edge gradients */}
         <div
           className="pointer-events-none absolute inset-y-0 left-0 z-30 w-10 md:w-24"
-          style={{ background: "linear-gradient(to right, #050505 0%, transparent 100%)" }}
+          style={{ background: "linear-gradient(to right, #ffffff 0%, transparent 100%)" }}
         />
         <div
           className="pointer-events-none absolute inset-y-0 right-0 z-30 w-10 md:w-24"
-          style={{ background: "linear-gradient(to left, #050505 0%, transparent 100%)" }}
+          style={{ background: "linear-gradient(to left, #ffffff 0%, transparent 100%)" }}
         />
 
         {/* Track */}
@@ -244,24 +230,21 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
                 className="flex-shrink-0 cursor-pointer will-change-transform"
                 style={{ width: `${cardWidth}px`, ...slideStyle(extIdx) }}
               >
-                {/* Browser frame */}
                 <div
-                  className="relative overflow-hidden rounded-[16px] bg-[#1a1a1a]"
+                  className="relative overflow-hidden rounded-[16px] bg-white"
                   style={frameStyle(extIdx)}
                 >
-                  {/* Top bar */}
-                  <div className="flex h-[32px] items-center gap-[5px] bg-[#111111] px-3.5">
+                  <div className="flex h-[32px] items-center gap-[5px] bg-slate-100 px-3.5">
                     <span className="h-[8px] w-[8px] rounded-full bg-[#ff5f57]" />
                     <span className="h-[8px] w-[8px] rounded-full bg-[#ffbd2e]" />
                     <span className="h-[8px] w-[8px] rounded-full bg-[#27c93f]" />
                     {video.title && (
-                      <span className="ml-2 text-[11px] text-white/40">
+                      <span className="ml-2 text-[11px] text-slate-400">
                         {video.title}
                       </span>
                     )}
                   </div>
 
-                  {/* Video */}
                   <div className="relative overflow-hidden">
                     <video
                       ref={(el) => {
@@ -277,7 +260,6 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
                       <source src={video.src} type="video/mp4" />
                     </video>
 
-                    {/* Play / Pause */}
                     {extIdx === pos && (
                       <button
                         onClick={(e) => {
@@ -313,10 +295,10 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
         <button
           onClick={() => goTo(posRef.current - 1)}
           aria-label="Anterior"
-          className="absolute left-[5%] top-1/2 z-40 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full text-white/70 opacity-0 backdrop-blur-md transition-all duration-300 group-hover:opacity-100 md:flex"
-          style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.1)" }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.15)")}
-          onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
+          className="absolute left-[5%] top-1/2 z-40 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full text-slate-600 opacity-0 backdrop-blur-md transition-all duration-300 group-hover:opacity-100 md:flex"
+          style={{ background: "rgba(255,255,255,0.9)", border: "1px solid #e2e8f0", boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,1)")}
+          onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.9)")}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
             <path fillRule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clipRule="evenodd" />
@@ -325,10 +307,10 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
         <button
           onClick={() => goTo(posRef.current + 1)}
           aria-label="Siguiente"
-          className="absolute right-[5%] top-1/2 z-40 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full text-white/70 opacity-0 backdrop-blur-md transition-all duration-300 group-hover:opacity-100 md:flex"
-          style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.1)" }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.15)")}
-          onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
+          className="absolute right-[5%] top-1/2 z-40 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full text-slate-600 opacity-0 backdrop-blur-md transition-all duration-300 group-hover:opacity-100 md:flex"
+          style={{ background: "rgba(255,255,255,0.9)", border: "1px solid #e2e8f0", boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,1)")}
+          onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.9)")}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
             <path fillRule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 1 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
@@ -345,8 +327,8 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
             aria-label={`Ir al slide ${i + 1}`}
             className={`rounded-full transition-all duration-300 ${
               i === realIndex
-                ? "h-2.5 w-7 bg-white"
-                : "h-2 w-2 bg-white/20 hover:bg-white/40"
+                ? "h-2.5 w-7 bg-blue-600"
+                : "h-2 w-2 bg-slate-300 hover:bg-slate-400"
             }`}
           />
         ))}

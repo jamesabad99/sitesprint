@@ -14,10 +14,10 @@ interface CountdownProps {
 }
 
 export default function Countdown({ targetDate }: CountdownProps) {
-  // Fixed deadline: Feb 19, 2026 23:59:59 Lima time (UTC-5)
+  // Fixed deadline: March 20, 2026 23:59:59 Lima time (UTC-5)
   const [target] = useState<Date>(() => {
     if (targetDate) return targetDate;
-    return new Date("2026-02-20T04:59:59Z");
+    return new Date("2026-03-20T04:59:59Z");
   });
 
   const calculateTimeLeft = (): TimeLeft => {
@@ -60,8 +60,8 @@ export default function Countdown({ targetDate }: CountdownProps) {
       className="w-full max-w-[280px] rounded-xl sm:max-w-[520px]"
       style={{
         padding: "10px 12px",
-        background: "rgba(255,255,255,0.04)",
-        border: "1px solid rgba(255,255,255,0.08)",
+        background: "#f8fafc",
+        border: "1px solid #e2e8f0",
       }}
     >
       <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-center gap-x-1 sm:inline-flex sm:gap-2.5">
@@ -71,21 +71,21 @@ export default function Countdown({ targetDate }: CountdownProps) {
             <div
               className="flex flex-col items-center justify-center py-1 sm:h-[78px] sm:w-[84px] md:h-[82px] md:w-[88px]"
               style={{
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.08)",
+                background: "#ffffff",
+                border: "1px solid #e2e8f0",
                 borderRadius: "10px",
               }}
             >
-              <span className="text-[1.6rem] tabular-nums text-white sm:text-[2rem] md:text-[2.2rem]" style={{ fontWeight: 700, letterSpacing: "-0.5px" }}>
+              <span className="text-[1.6rem] tabular-nums text-slate-900 sm:text-[2rem] md:text-[2.2rem]" style={{ fontWeight: 700, letterSpacing: "-0.5px" }}>
                 {mounted ? String(unit.value).padStart(2, "0") : "--"}
               </span>
-              <span className="mt-0.5 text-[6.5px] font-normal text-white/45 sm:mt-1 sm:text-[7px] md:text-[7.5px]" style={{ letterSpacing: "1px" }}>
+              <span className="mt-0.5 text-[6.5px] font-normal text-slate-400 sm:mt-1 sm:text-[7px] md:text-[7.5px]" style={{ letterSpacing: "1px" }}>
                 {unit.label}
               </span>
             </div>
             {/* Separator */}
             {i < units.length - 1 && (
-              <span className="text-center text-sm font-light text-white/20 sm:text-lg">
+              <span className="text-center text-sm font-light text-slate-300 sm:text-lg">
                 :
               </span>
             )}

@@ -1,11 +1,14 @@
 import Hero from "@/components/Hero";
+import Services from "@/components/Services";
 import VideoCarousel from "@/components/VideoCarousel";
+import AboutMe from "@/components/AboutMe";
 import HowItWorks from "@/components/HowItWorks";
 import IsForYou from "@/components/IsForYou";
 import FinalCTA from "@/components/FinalCTA";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const casos = [
   { src: "/videos/caso1.mp4", title: "Advisora" },
@@ -21,15 +24,19 @@ const casos = [
 export default function Home() {
   return (
     <Preloader>
-      <main>
-        <Hero />
-        <VideoCarousel videos={casos} />
-        <HowItWorks />
-        <IsForYou />
-        <FinalCTA />
-        <ContactForm />
-        <Footer />
-      </main>
+      <SmoothScroll>
+        <main>
+          <Hero />
+          <Services />
+          <VideoCarousel videos={casos} />
+          <AboutMe />
+          <HowItWorks />
+          <IsForYou />
+          <FinalCTA />
+          <ContactForm />
+          <Footer />
+        </main>
+      </SmoothScroll>
     </Preloader>
   );
 }

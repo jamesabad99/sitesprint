@@ -2,15 +2,14 @@
 
 import { useEffect, useState, useRef } from "react";
 
-const DURATION = 1800; // ms total for 0→100%
-const TICK = 16; // ~60fps
+const DURATION = 1800;
+const TICK = 16;
 
 export default function Preloader({ children }: { children: React.ReactNode }) {
   const [progress, setProgress] = useState(0);
   const [phase, setPhase] = useState<"loading" | "exiting" | "done">("loading");
   const startRef = useRef(0);
 
-  // Scroll lock
   useEffect(() => {
     if (phase !== "done") {
       document.body.style.overflow = "hidden";
@@ -22,14 +21,12 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
     };
   }, [phase]);
 
-  // Counter animation
   useEffect(() => {
     startRef.current = Date.now();
 
     const timer = setInterval(() => {
       const elapsed = Date.now() - startRef.current;
       const raw = Math.min(elapsed / DURATION, 1);
-      // Ease-out curve for natural feel
       const eased = 1 - Math.pow(1 - raw, 3);
       const pct = Math.round(eased * 100);
 
@@ -37,7 +34,6 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
 
       if (pct >= 100) {
         clearInterval(timer);
-        // Small pause at 100% before exit
         setTimeout(() => setPhase("exiting"), 150);
       }
     }, TICK);
@@ -45,7 +41,6 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
     return () => clearInterval(timer);
   }, []);
 
-  // After exit animation completes, remove overlay
   useEffect(() => {
     if (phase === "exiting") {
       const timeout = setTimeout(() => setPhase("done"), 600);
@@ -55,7 +50,6 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      {/* Content always mounted but hidden behind overlay */}
       <div
         style={{
           opacity: phase === "done" ? 1 : 0,
@@ -65,7 +59,6 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
         {children}
       </div>
 
-      {/* Overlay */}
       {phase !== "done" && (
         <div
           style={{
@@ -76,21 +69,21 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            background: "#050505",
+            background: "#ffffff",
             opacity: phase === "exiting" ? 0 : 1,
             transform: phase === "exiting" ? "scale(1.02)" : "scale(1)",
             transition: "opacity 0.6s ease, transform 0.6s ease",
             pointerEvents: phase === "exiting" ? "none" : "auto",
           }}
         >
-          {/* Cargando label */}
+          {/* Loading label */}
           <span
             style={{
               fontSize: "13px",
               fontWeight: 500,
               letterSpacing: "0.15em",
               textTransform: "uppercase",
-              color: "rgba(255,255,255,0.35)",
+              color: "#94a3b8",
               marginBottom: "16px",
             }}
           >
@@ -103,7 +96,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
               fontSize: "clamp(2rem, 5vw, 3.5rem)",
               fontWeight: 600,
               letterSpacing: "-0.03em",
-              color: "#ffffff",
+              color: "#0f172a",
               fontVariantNumeric: "tabular-nums",
               lineHeight: 1,
             }}
@@ -117,7 +110,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
               marginTop: "28px",
               width: "min(200px, 50vw)",
               height: "2px",
-              background: "rgba(255,255,255,0.08)",
+              background: "#e2e8f0",
               borderRadius: "1px",
               overflow: "hidden",
             }}
@@ -126,7 +119,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
               style={{
                 height: "100%",
                 width: `${progress}%`,
-                background: "rgba(255,255,255,0.5)",
+                background: "#2563eb",
                 borderRadius: "1px",
                 transition: "width 0.05s linear",
               }}

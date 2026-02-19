@@ -8,18 +8,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SiteSprint – Tu web profesional en 48h",
+  title: "SiteSprint – Diseño web profesional",
   description:
-    "Diseñamos webs modernas y claras para emprendedores y marcas nuevas en LATAM. Web Express 48h desde $250.",
+    "Diseñamos webs profesionales, estratégicas y optimizadas para convertir visitantes en clientes. Servicio express y a medida para emprendedores en LATAM.",
   openGraph: {
-    title: "SiteSprint – Tu web profesional en 48h",
+    title: "SiteSprint – Diseño web profesional",
     description:
-      "Diseñamos webs modernas y claras para emprendedores y marcas nuevas en LATAM. Web Express 48h desde $250.",
+      "Diseñamos webs profesionales, estratégicas y optimizadas para convertir visitantes en clientes. Servicio express y a medida para emprendedores en LATAM.",
     type: "website",
     locale: "es_LA",
   },
   other: {
-    "theme-color": "#050505",
+    "theme-color": "#ffffff",
   },
 };
 
