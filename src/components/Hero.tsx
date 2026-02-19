@@ -11,7 +11,7 @@ export default function Hero() {
     <section data-hero className="relative flex min-h-[100svh] w-full flex-col overflow-hidden px-5 py-5 md:px-8 md:py-6">
       {/* ── Navbar ── */}
       <nav className="relative z-20 mx-auto flex w-full max-w-[1200px] items-center justify-between">
-        <span className="text-[15px] font-bold tracking-tight text-slate-900">
+        <span className="text-[17px] font-bold tracking-tight text-slate-900 md:text-[15px]">
           SiteSprint
         </span>
 
