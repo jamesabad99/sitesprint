@@ -264,3 +264,33 @@ body {
 [data-navigation-status="active"] .nav-hamburger__toggle .nav-hamburger__bar:nth-child(2) {
   transform: translateY(0em) rotate(-45deg);
 }
+
+/* ── Footer brand ── */
+.footer-brand-wrap {
+  margin-top: 3rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+.footer-brand {
+  user-select: none;
+  white-space: nowrap;
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  color: #000;
+  font-size: 15vw;
+  margin-bottom: -0.18em;
+}
+
+@media (min-width: 768px) {
+  .footer-brand-wrap {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+  }
+  .footer-brand {
+    flex-shrink: 0;
+    font-size: min(25vw, 25rem);
+  }
+}
