@@ -17,7 +17,7 @@ interface CountdownProps {
 export default function Countdown({ targetDate, dark = false }: CountdownProps) {
   const [target] = useState<Date>(() => {
     if (targetDate) return targetDate;
-    return new Date("2026-03-20T04:59:59Z");
+    return new Date("2026-03-27T04:59:59Z");
   });
 
   const calculateTimeLeft = (): TimeLeft => {

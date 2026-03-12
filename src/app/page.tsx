@@ -4,7 +4,7 @@ import VideoCarousel from "@/components/VideoCarousel";
 import HowItWorks from "@/components/HowItWorks";
 import IsForYou from "@/components/IsForYou";
 import FinalCTA from "@/components/FinalCTA";
-import ContactForm from "@/components/ContactForm";
+import ProjectBriefing from "@/components/ProjectBriefing";
 import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -33,7 +33,7 @@ export default function Home() {
           <HowItWorks />
           <IsForYou />
           <FinalCTA />
-          <ContactForm />
+          <ProjectBriefing />
           <Footer />
         </main>
       </SmoothScroll>

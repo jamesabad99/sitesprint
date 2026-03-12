@@ -245,7 +245,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
                     )}
                   </div>
 
-                  <div className="relative overflow-hidden">
+                  <div className="relative aspect-video overflow-hidden">
                     <video
                       ref={(el) => {
                         if (extIdx >= CLONE_COUNT && extIdx < CLONE_COUNT + total) {
@@ -255,7 +255,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
                       muted
                       loop
                       playsInline
-                      className="block w-full"
+                      className="absolute inset-0 h-full w-full object-cover object-top"
                     >
                       <source src={video.src} type="video/mp4" />
                     </video>
