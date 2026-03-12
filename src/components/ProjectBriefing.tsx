@@ -86,7 +86,7 @@ export default function ProjectBriefing() {
       case 4:
         return true;
       case 5:
-        return name.trim() !== "" && phone.trim() !== "";
+        return name.trim() !== "" && phone.trim() !== "" && email.trim() !== "";
       default:
         return false;
     }
@@ -384,7 +384,8 @@ export default function ProjectBriefing() {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Correo electrónico (opcional)"
+                      placeholder="Correo electrónico *"
+                      required
                       className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-[16px] text-slate-900 placeholder-slate-400 outline-none transition-all focus:border-blue-400 focus:ring-2 focus:ring-blue-100 md:text-[14px]"
                     />
                   </div>
