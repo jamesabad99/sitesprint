@@ -61,92 +61,82 @@ body {
   .nav-hamburger {
     display: none !important;
   }
-}
-
-.nav-hamburger__dark-bg {
-  transition: all 0.7s cubic-bezier(0.5, 0.5, 0, 1);
-  opacity: 0;
-  pointer-events: auto;
-  visibility: hidden;
-  background-color: #000;
-  position: absolute;
-  inset: 0;
-}
-
-[data-navigation-status="active"] .nav-hamburger__dark-bg {
-  opacity: 0.33;
-  visibility: visible;
-}
-
-.nav-hamburger__container {
-  border-radius: 1.5em;
-  position: absolute;
-  top: 0.1em;
-  right: 0.75em;
-}
-
-@media (min-width: 768px) {
-  .nav-hamburger__container {
-    top: 1.5em;
-    right: 2em;
-  }
   [data-desktop-only] {
     display: flex !important;
   }
 }
 
-.nav-hamburger__bg {
-  transition: all 0.7s cubic-bezier(0.5, 0.5, 0, 1);
-  background-color: #f1f5f9;
-  border-radius: 1.75em;
-  width: 3.25em;
-  height: 3.25em;
+/* Light overlay behind panel */
+.nav-hamburger__dark-bg {
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  position: absolute;
+  inset: 0;
+}
+
+[data-navigation-status="active"] .nav-hamburger__dark-bg {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Panel slides from right */
+.nav-hamburger__container {
   position: absolute;
   top: 0;
   right: 0;
-}
-
-[data-navigation-status="active"] .nav-hamburger__bg {
-  width: 100%;
-  height: 100%;
+  bottom: 0;
+  width: 280px;
+  max-width: 80vw;
   background-color: #ffffff;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+  border-left: 1px solid #e2e8f0;
+  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.08);
+  transform: translateX(100%);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
 }
 
+[data-navigation-status="active"] .nav-hamburger__container {
+  transform: translateX(0);
+}
+
+.nav-hamburger__bg {
+  display: none;
+}
+
+/* Menu links group */
 .nav-hamburger__group {
-  transition: all 0.5s cubic-bezier(0.5, 0.5, 0, 1), transform 0.7s cubic-bezier(0.5, 0.5, 0, 1);
-  pointer-events: auto;
-  transform-origin: 100% 0;
   flex-direction: column;
-  gap: 0.75em;
-  padding: 2em 2.25em 1.75em 1.75em;
+  gap: 1em;
+  padding: 5em 2em 2em;
   display: flex;
   position: relative;
-  transform: scale(0.15) rotate(0.001deg);
-  opacity: 0;
-  visibility: hidden;
-}
-
-[data-navigation-status="active"] .nav-hamburger__group {
-  transform: scale(1) rotate(0.001deg);
   opacity: 1;
   visibility: visible;
+  flex: 1;
 }
 
 .nav-hamburger__menu-label {
   opacity: 0.4;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-size: 0.75em;
-  font-weight: 500;
-  color: #64748b;
-  margin: 0;
+  font-size: 0.65em;
+  font-weight: 600;
+  color: #94a3b8;
+  margin: 0 0 0.25em;
 }
 
 .nav-hamburger__list {
   display: flex;
   flex-direction: column;
-  gap: 0.25em;
+  gap: 0;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -155,6 +145,11 @@ body {
 .nav-hamburger__item {
   margin: 0;
   padding: 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.nav-hamburger__item:last-child {
+  border-bottom: none;
 }
 
 .nav-hamburger__link {
@@ -168,53 +163,54 @@ body {
   border: none;
   cursor: pointer;
   text-align: left;
-  padding: 0.15em 0;
+  padding: 0.85em 0;
+  transition: color 0.2s ease;
 }
 
-.nav-hamburger__link[aria-current] .nav-hamburger__text {
-  opacity: 0.33;
+
+/* Dim non-current links */
+.nav-hamburger__link[data-active="false"] .nav-hamburger__text {
+  color: #94a3b8;
+  transition: color 0.2s ease;
+}
+
+.nav-hamburger__link[data-active="true"] .nav-hamburger__text {
+  color: #0f172a;
+  transition: color 0.2s ease;
+}
+
+.nav-hamburger__link[data-active="true"] .nav-hamburger__dot {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.nav-hamburger__link[data-active="false"] .nav-hamburger__dot {
+  transform: scale(0);
+  opacity: 0;
 }
 
 .nav-hamburger__text {
   white-space: nowrap;
-  padding-right: 1.25em;
-  font-size: 1.5em;
+  padding-right: 0;
+  font-size: 1.05em;
   font-weight: 500;
 }
 
-@media (min-width: 768px) {
-  .nav-hamburger__text {
-    font-size: 1.75em;
-  }
-}
-
 .nav-hamburger__dot {
-  transition: all 0.7s cubic-bezier(0.5, 0.5, 0, 1);
-  background-color: currentColor;
+  transition: all 0.3s ease;
+  background-color: #2563eb;
   border-radius: 50%;
   flex-shrink: 0;
-  width: 0.4em;
-  height: 0.4em;
-  transform: scale(0) rotate(0.001deg);
-  opacity: 0.5;
+  width: 6px;
+  height: 6px;
+  transform: scale(0);
+  opacity: 0;
 }
 
-.nav-hamburger__link[aria-current] .nav-hamburger__dot {
-  transform: scale(1) rotate(0.001deg);
-  opacity: 1;
-}
 
-.nav-hamburger__container:has(.nav-hamburger__link:hover) .nav-hamburger__dot {
-  transform: scale(0) rotate(0.001deg);
-}
-
-.nav-hamburger__container .nav-hamburger__link:hover .nav-hamburger__dot {
-  transform: scale(1) rotate(0.001deg);
-  opacity: 0.25;
-}
-
+/* Toggle button */
 .nav-hamburger__toggle {
-  transition: transform 0.7s cubic-bezier(0.5, 0.5, 0, 1);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: auto;
   cursor: pointer;
   border-radius: 50%;
@@ -223,21 +219,18 @@ body {
   width: 3.25em;
   height: 3.25em;
   display: flex;
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(0em, 0em) rotate(0.001deg);
+  position: fixed;
+  top: 0.1em;
+  right: 0.75em;
+  z-index: 510;
+  transform: rotate(0.001deg);
   background: none;
   border: none;
   padding: 0;
 }
 
-[data-navigation-status="active"] .nav-hamburger__toggle {
-  transform: translate(-0.75em, 0.75em) rotate(0.001deg);
-}
-
 .nav-hamburger__bar {
-  transition: transform 0.7s cubic-bezier(0.5, 0.5, 0, 1);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   background-color: #0f172a;
   width: 40%;
   height: 0.125em;
@@ -245,11 +238,7 @@ body {
   transform: translateY(-0.15em) rotate(0.001deg);
 }
 
-.nav-hamburger__toggle:hover .nav-hamburger__bar {
-  transform: translateY(0.15em) rotate(0.001deg);
-}
-
-[data-navigation-status="active"] .nav-hamburger__toggle .nav-hamburger__bar {
+[data-navigation-status="active"] .nav-hamburger__bar {
   transform: translateY(0em) rotate(45deg);
 }
 
@@ -257,11 +246,7 @@ body {
   transform: translateY(0.15em) rotate(0.001deg);
 }
 
-.nav-hamburger__toggle:hover .nav-hamburger__bar:nth-child(2) {
-  transform: translateY(-0.15em) rotate(0.001deg);
-}
-
-[data-navigation-status="active"] .nav-hamburger__toggle .nav-hamburger__bar:nth-child(2) {
+[data-navigation-status="active"] .nav-hamburger__bar:nth-child(2) {
   transform: translateY(0em) rotate(-45deg);
 }
 

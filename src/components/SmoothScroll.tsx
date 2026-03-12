@@ -78,6 +78,15 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
           0.2
         );
       }
+
+      const heroMockupMobile = hero.querySelector("[data-hero-mockup-mobile]");
+      if (heroMockupMobile) {
+        tl.fromTo(heroMockupMobile,
+          { y: 60, opacity: 0, scale: 0.95 },
+          { y: 0, opacity: 1, scale: 1, duration: 1.2, ease: "parallax" },
+          0.5
+        );
+      }
     }
 
     // ── Section parallax reveals ──

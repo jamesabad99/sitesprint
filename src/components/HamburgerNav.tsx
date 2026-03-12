@@ -12,6 +12,7 @@ const navLinks = [
 
 export default function HamburgerNav() {
   const [active, setActive] = useState(false);
+  const [activeLink, setActiveLink] = useState("#");
 
   const close = useCallback(() => setActive(false), []);
   const toggle = useCallback(() => setActive((v) => !v), []);
@@ -37,6 +38,7 @@ export default function HamburgerNav() {
   }, [active]);
 
   const handleNavClick = (href: string) => {
+    setActiveLink(href);
     close();
     if (href === "#") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -62,12 +64,18 @@ export default function HamburgerNav() {
         onClick={close}
       />
 
-      {/* Menu container */}
-      <div className="nav-hamburger__container">
-        {/* Background that expands */}
-        <div className="nav-hamburger__bg" />
+      {/* Toggle button - outside container so it's always visible */}
+      <button
+        className="nav-hamburger__toggle"
+        onClick={toggle}
+        aria-label={active ? "Cerrar menú" : "Abrir menú"}
+      >
+        <span className="nav-hamburger__bar" />
+        <span className="nav-hamburger__bar" />
+      </button>
 
-        {/* Menu content */}
+      {/* Side panel */}
+      <div className="nav-hamburger__container">
         <div className="nav-hamburger__group">
           <p className="nav-hamburger__menu-label">Menu</p>
           <ul className="nav-hamburger__list">
@@ -76,7 +84,7 @@ export default function HamburgerNav() {
                 <button
                   onClick={() => handleNavClick(link.href)}
                   className="nav-hamburger__link"
-                  {...(link.current ? { "aria-current": "page" as const } : {})}
+                  data-active={activeLink === link.href ? "true" : "false"}
                 >
                   <span className="nav-hamburger__text">{link.label}</span>
                   <span className="nav-hamburger__dot" />
@@ -85,16 +93,6 @@ export default function HamburgerNav() {
             ))}
           </ul>
         </div>
-
-        {/* Toggle button */}
-        <button
-          className="nav-hamburger__toggle"
-          onClick={toggle}
-          aria-label={active ? "Cerrar menú" : "Abrir menú"}
-        >
-          <span className="nav-hamburger__bar" />
-          <span className="nav-hamburger__bar" />
-        </button>
       </div>
     </nav>
   );

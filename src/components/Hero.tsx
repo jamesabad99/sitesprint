@@ -111,6 +111,7 @@ export default function Hero() {
           <span className="hidden h-1 w-1 rounded-full bg-slate-300 sm:block" />
           <span>Optimizada para móvil</span>
         </div>
+
       </div>
 
       {/* ── Floating browser mockups ── */}
