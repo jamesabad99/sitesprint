@@ -85,7 +85,24 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   }, [pos, total]);
 
   useEffect(() => {
+    // Try to play first video on mount
     videoRefs.current[0]?.play().catch(() => {});
+
+    // Also try on first user interaction (needed for mobile)
+    const playOnInteraction = () => {
+      videoRefs.current.forEach((v) => {
+        if (v) v.play().catch(() => {});
+      });
+      window.removeEventListener("touchstart", playOnInteraction);
+      window.removeEventListener("scroll", playOnInteraction);
+    };
+    window.addEventListener("touchstart", playOnInteraction, { once: true });
+    window.addEventListener("scroll", playOnInteraction, { once: true });
+
+    return () => {
+      window.removeEventListener("touchstart", playOnInteraction);
+      window.removeEventListener("scroll", playOnInteraction);
+    };
   }, []);
 
   useEffect(() => {
@@ -253,6 +270,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
                         }
                       }}
                       muted
+                      autoPlay
                       loop
                       playsInline
                       className="absolute inset-0 h-full w-full object-cover object-top"
