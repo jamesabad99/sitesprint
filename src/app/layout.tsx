@@ -8,6 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.sitesprintperu.com"),
   title: "SiteSprint – Diseño web profesional",
   description:
     "Diseñamos webs profesionales, estratégicas y optimizadas para convertir visitantes en clientes. Servicio express y a medida para emprendedores en LATAM.",
@@ -17,6 +18,13 @@ export const metadata: Metadata = {
       "Diseñamos webs profesionales, estratégicas y optimizadas para convertir visitantes en clientes. Servicio express y a medida para emprendedores en LATAM.",
     type: "website",
     locale: "es_LA",
+    url: "https://www.sitesprintperu.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SiteSprint – Diseño web profesional",
+    description:
+      "Diseñamos webs profesionales, estratégicas y optimizadas para convertir visitantes en clientes.",
   },
   other: {
     "theme-color": "#ffffff",
