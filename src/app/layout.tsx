@@ -19,12 +19,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_LA",
     url: "https://www.sitesprintperu.com",
+    images: [
+      {
+        url: "https://www.sitesprintperu.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "SiteSprint – Diseño web profesional",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "SiteSprint – Diseño web profesional",
     description:
       "Diseñamos webs profesionales, estratégicas y optimizadas para convertir visitantes en clientes.",
+    images: ["https://www.sitesprintperu.com/og-image.png"],
   },
   other: {
     "theme-color": "#ffffff",
